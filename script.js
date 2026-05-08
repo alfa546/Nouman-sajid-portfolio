@@ -1,0 +1,264 @@
+function animateBlobs() {
+    const blobs = document.querySelectorAll(".blob");
+    blobs.forEach((blob) => {
+        // Set initial random position instantly
+        gsap.set(blob, {
+            x: `${Math.random() * 100 - 50}vw`,
+            y: `${Math.random() * 100 - 50}vh`,
+            scale: 0.8 + Math.random() * 0.4
+        });
+        
+        // Start moving immediately
+        moveBlob(blob);
+    });
+}
+
+function moveBlob(blob) {
+    const randomX = Math.random() * 80 - 40;
+    const randomY = Math.random() * 80 - 40;
+    const randomDuration = 3 + Math.random() * 3; // Sped up from 5-10s
+
+    gsap.to(blob, {
+        x: `${randomX}vw`,
+        y: `${randomY}vh`,
+        duration: randomDuration,
+        ease: "sine.inOut",
+        onComplete: () => moveBlob(blob)
+    });
+}
+
+// Initialize Movement Immediately
+animateBlobs();
+
+// Initialize Lenis for Ultra Smooth Scrolling
+const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    wheelMultiplier: 1,
+})
+
+function raf(time) {
+    lenis.raf(time)
+    requestAnimationFrame(raf)
+}
+
+requestAnimationFrame(raf)
+
+// GSAP Animations
+gsap.registerPlugin(ScrollTrigger);
+
+// 3D Tilt Effect for Hero Image
+const heroImage = document.querySelector(".image-frame");
+if (heroImage) {
+    heroImage.addEventListener("mousemove", (e) => {
+        const { left, top, width, height } = heroImage.getBoundingClientRect();
+        const x = (e.clientX - left) / width - 0.5;
+        const y = (e.clientY - top) / height - 0.5;
+
+        gsap.to(heroImage, {
+            rotationY: x * 20,
+            rotationX: -y * 20,
+            transformPerspective: 1000,
+            duration: 0.6,
+            ease: "power2.out"
+        });
+    });
+
+    heroImage.addEventListener("mouseleave", () => {
+        gsap.to(heroImage, {
+            rotationY: 0,
+            rotationX: 0,
+            duration: 0.8,
+            ease: "power4.out"
+        });
+    });
+}
+
+// Navigation Hover Pill Logic
+const nav = document.querySelector("nav");
+const navLinks = document.querySelectorAll(".nav-links a");
+const hoverPill = document.querySelector(".nav-hover-pill");
+
+navLinks.forEach(link => {
+    link.addEventListener("mouseenter", (e) => {
+        const { left, top, width, height } = link.getBoundingClientRect();
+        const navRect = nav.getBoundingClientRect();
+        
+        const relativeLeft = left - navRect.left;
+        const relativeTop = top - navRect.top;
+
+        gsap.to(hoverPill, {
+            left: relativeLeft,
+            top: relativeTop,
+            width: width,
+            height: height,
+            opacity: 1,
+            duration: 0.4,
+            ease: "power3.out"
+        });
+    });
+});
+
+nav.addEventListener("mouseleave", () => {
+    gsap.to(hoverPill, {
+        opacity: 0,
+        duration: 0.3
+    });
+    // Return pill to active link if it exists
+    highlightNav();
+});
+
+function highlightNav() {
+    const currentPath = window.location.pathname.split("/").pop() || "index.html";
+    navLinks.forEach(link => {
+        const linkPath = link.getAttribute("href");
+        if (linkPath === currentPath) {
+            link.classList.add("active");
+            
+            const { left, top, width, height } = link.getBoundingClientRect();
+            const navRect = nav.getBoundingClientRect();
+            
+            gsap.to(hoverPill, {
+                left: left - navRect.left,
+                top: top - navRect.top,
+                width: width,
+                height: height,
+                opacity: 1,
+                duration: 0.6,
+                ease: "power3.out"
+            });
+        } else {
+            link.classList.remove("active");
+        }
+    });
+}
+
+// Initialize Nav
+setTimeout(highlightNav, 100);
+window.addEventListener("resize", highlightNav);
+
+// Hero Section Reveal
+const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+
+// Cinematic Text Reveal for Name
+const nameElement = document.querySelector(".hero h1");
+if (nameElement) {
+    const nameText = nameElement.innerText;
+    nameElement.innerHTML = "";
+
+    const words = nameText.split(" ");
+    words.forEach((word, wordIndex) => {
+        const wordSpan = document.createElement("span");
+        wordSpan.style.display = "inline-block";
+        wordSpan.style.overflow = "hidden";
+        wordSpan.style.verticalAlign = "top";
+        
+        if (wordIndex === 1) {
+            wordSpan.classList.add("halkaa-text");
+        }
+
+        word.split("").forEach(char => {
+            const charSpan = document.createElement("span");
+            charSpan.innerText = char;
+            charSpan.style.display = "inline-block";
+            charSpan.classList.add("char");
+            wordSpan.appendChild(charSpan);
+        });
+
+        nameElement.appendChild(wordSpan);
+        if (wordIndex === 0) {
+            const space = document.createElement("span");
+            space.innerHTML = "&nbsp;";
+            nameElement.appendChild(space);
+        }
+    });
+
+    tl.from(".hero-tag", {
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+        delay: 0.2
+    })
+    .from(".char", {
+        y: 60,
+        opacity: 0,
+        rotateX: -45,
+        duration: 0.8,
+        stagger: 0.02,
+        ease: "power3.out"
+    }, "-=0.3")
+    .from(".hero-sub", {
+        y: 20,
+        opacity: 0,
+        duration: 0.7
+    }, "-=0.5")
+    .from(".image-frame", {
+        scale: 0.9,
+        opacity: 0,
+        duration: 1,
+        ease: "power4.out"
+    }, "-=0.7");
+}
+
+// Scroll Reveal for sections
+const revealElements = document.querySelectorAll(".reveal");
+revealElements.forEach((el) => {
+    gsap.from(el, {
+        scrollTrigger: {
+            trigger: el,
+            start: "top 90%",
+            toggleActions: "play none none none"
+        },
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+    });
+});
+
+// Parallax effect for blobs
+window.addEventListener("mousemove", (e) => {
+    const { clientX, clientY } = e;
+    const x = (clientX - window.innerWidth / 2) * 0.02;
+    const y = (clientY - window.innerHeight / 2) * 0.02;
+
+    gsap.to(".bg-blobs", { x: x, y: y, duration: 2, ease: "power2.out" });
+});
+
+// Typewriter Effect
+const typewriterElement = document.getElementById("typewriter");
+if (typewriterElement) {
+    const roles = ["UI/UX Designer", "Web Developer", "Python Expert", "Problem Solver"];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typeSpeed = 100;
+
+    function type() {
+        const currentRole = roles[roleIndex];
+        
+        if (isDeleting) {
+            typewriterElement.textContent = currentRole.substring(0, charIndex - 1);
+            charIndex--;
+            typeSpeed = 40;
+        } else {
+            typewriterElement.textContent = currentRole.substring(0, charIndex + 1);
+            charIndex++;
+            typeSpeed = 70;
+        }
+
+        if (!isDeleting && charIndex === currentRole.length) {
+            isDeleting = true;
+            typeSpeed = 1500;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            typeSpeed = 300;
+        }
+
+        setTimeout(type, typeSpeed);
+    }
+
+    setTimeout(type, 100);
+}
