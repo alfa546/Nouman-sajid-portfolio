@@ -697,20 +697,17 @@ section {
 }
 
 .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
     width: 100%;
-    max-width: 1000px;
+    max-width: 800px;
     margin: 0 auto;
-    text-align: center;
 }
 
 .contact-card {
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    padding: 2.5rem 2rem;
-    border-radius: 20px;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -719,8 +716,6 @@ section {
     color: var(--text-main);
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     position: relative;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .contact-card::before {
@@ -737,13 +732,7 @@ section {
 }
 
 .contact-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent);
-    box-shadow: 0 20px 40px rgba(124, 77, 255, 0.2);
-}
-
-.contact-card:hover::before {
-    opacity: 1;
+    transform: translateY(-5px);
 }
 
 .contact-card > * {
@@ -752,14 +741,13 @@ section {
 }
 
 .contact-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 2.2rem;
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--glass-border);
@@ -794,6 +782,11 @@ section {
 .contact-card:hover .bxl-linkedin {
     color: #0A66C2;
     text-shadow: 0 0 15px rgba(10, 102, 194, 0.5);
+}
+
+.contact-card:hover .bxl-facebook-circle {
+    color: #1877F2;
+    text-shadow: 0 0 15px rgba(24, 119, 242, 0.5);
 }
 
 .contact-info h3 {
