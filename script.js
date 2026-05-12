@@ -262,3 +262,34 @@ if (typewriterElement) {
 
     setTimeout(type, 100);
 }
+
+// Contact Form Handling
+const contactForm = document.getElementById("contact-form");
+if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const submitBtn = contactForm.querySelector(".submit-btn");
+        const originalContent = submitBtn.innerHTML;
+
+        // Visual feedback
+        submitBtn.innerHTML = "<span>Sending...</span><i class='bx bx-loader-alt bx-spin'></i>";
+        submitBtn.style.pointerEvents = "none";
+        submitBtn.style.opacity = "0.7";
+
+        setTimeout(() => {
+            submitBtn.innerHTML = "<span>Message Sent!</span><i class='bx bx-check'></i>";
+            submitBtn.style.background = "#22c55e"; // Green success color
+            submitBtn.style.boxShadow = "0 10px 20px rgba(34, 197, 94, 0.3)";
+            
+            contactForm.reset();
+
+            setTimeout(() => {
+                submitBtn.innerHTML = originalContent;
+                submitBtn.style.pointerEvents = "auto";
+                submitBtn.style.opacity = "1";
+                submitBtn.style.background = "var(--accent)";
+                submitBtn.style.boxShadow = "0 10px 20px rgba(124, 77, 255, 0.2)";
+            }, 3000);
+        }, 1500);
+    });
+}

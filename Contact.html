@@ -43,11 +43,28 @@
 
     <main>
         <section id="contact" class="contact" style="padding-top: 25vh; min-height: 100vh;">
-            <h2 class="reveal">Let's Build <br><span class="gradient-text">Something Great</span>.</h2>
-            <p class="reveal" style="margin-top: 1.5rem; margin-bottom: 4rem; color: var(--text-dim);">Open for
-                collaborations and opportunities.</p>
+            <h2 class="reveal" style="margin-bottom: 3rem; font-size: 3rem;">Get In <span class="gradient-text">Touch</span></h2>
+            <div class="contact-pad reveal">
+                <form id="contact-form">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <input type="text" id="name" placeholder="Name" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" id="email" placeholder="Email" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span>Send Message</span>
+                        <i class='bx bx-paper-plane'></i>
+                    </button>
+                </form>
+            </div>
 
-            <div class="contact-grid reveal">
+            <div class="contact-grid reveal" style="margin-top: 3rem;">
                 <!-- WhatsApp -->
                 <a href="tel:+923136823997" class="contact-card">
                     <div class="contact-icon"><i class='bx bxl-whatsapp'></i></div>
