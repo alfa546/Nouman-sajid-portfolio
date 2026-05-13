@@ -196,6 +196,12 @@ nav {
     opacity: 1;
 }
 
+/* Magnetic Utility */
+.magnetic-item {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
 /* Sections */
 section {
     min-height: 100vh;

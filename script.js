@@ -98,6 +98,54 @@ navLinks.forEach(link => {
             ease: "power3.out"
         });
     });
+
+    // Magnetic effect for individual links
+    link.addEventListener("mousemove", (e) => {
+        const { left, top, width, height } = link.getBoundingClientRect();
+        const x = (e.clientX - (left + width / 2)) * 0.35;
+        const y = (e.clientY - (top + height / 2)) * 0.35;
+
+        gsap.to(link, {
+            x: x,
+            y: y,
+            duration: 0.4,
+            ease: "power2.out"
+        });
+    });
+
+    link.addEventListener("mouseleave", () => {
+        gsap.to(link, {
+            x: 0,
+            y: 0,
+            duration: 0.6,
+            ease: "elastic.out(1, 0.3)"
+        });
+    });
+});
+
+// Magnetic effect for other elements
+document.querySelectorAll(".magnetic-item:not(.nav-links a)").forEach(item => {
+    item.addEventListener("mousemove", (e) => {
+        const { left, top, width, height } = item.getBoundingClientRect();
+        const x = (e.clientX - (left + width / 2)) * 0.3;
+        const y = (e.clientY - (top + height / 2)) * 0.3;
+
+        gsap.to(item, {
+            x: x,
+            y: y,
+            duration: 0.4,
+            ease: "power2.out"
+        });
+    });
+
+    item.addEventListener("mouseleave", () => {
+        gsap.to(item, {
+            x: 0,
+            y: 0,
+            duration: 0.6,
+            ease: "elastic.out(1, 0.3)"
+        });
+    });
 });
 
 nav.addEventListener("mouseleave", () => {
