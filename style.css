@@ -986,6 +986,11 @@ section {
         gap: 0;
     }
 
+    .nav-links a {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+    }
+
     .hero-container {
         flex-direction: column-reverse;
         text-align: center;
