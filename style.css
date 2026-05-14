@@ -116,6 +116,10 @@ h3 {
     letter-spacing: -0.02em;
 }
 
+h1 { font-size: clamp(2.5rem, 8vw, 5rem); }
+h2 { font-size: clamp(2rem, 6vw, 3.5rem); }
+h3 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+
 .gradient-text {
     background: linear-gradient(135deg, #fff 0%, #a29bfe 100%);
     -webkit-background-clip: text;
@@ -150,7 +154,19 @@ nav {
     align-items: center;
     z-index: 1000;
     width: auto;
-    max-width: 95vw;
+    max-width: 98vw;
+}
+
+@media (max-width: 480px) {
+    nav {
+        width: 100%;
+        max-width: 100vw;
+        top: 0;
+        border-radius: 0;
+        padding: 0.5rem;
+        background: rgba(10, 10, 12, 0.8);
+        border-bottom: 1px solid var(--glass-border);
+    }
 }
 
 .nav-hover-pill {
@@ -205,11 +221,18 @@ nav {
 /* Sections */
 section {
     min-height: 100vh;
-    padding: 0 10%;
+    padding: 10vh 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     position: relative;
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 12vh 6% 8%;
+        min-height: auto;
+    }
 }
 
 /* Hero */
@@ -338,14 +361,23 @@ section {
 }
 
 .about-content h2 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .about-content p {
     font-size: 1.1rem;
     color: var(--text-dim);
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+    max-width: 750px;
+    font-weight: 300;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
 /* About & Skills */
@@ -474,6 +506,27 @@ section {
 /* Scroll Indicator removed */
 
 /* Projects */
+.project-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    padding-top: 10vh;
+}
+
+.project-header .hero-tag {
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.header-line {
+    width: 30px;
+    height: 1.5px;
+    background: var(--accent);
+    margin: 1.5rem auto 0;
+    opacity: 0.5;
+    border-radius: 10px;
+}
+
 .project-list {
     display: flex;
     flex-direction: column;
@@ -616,6 +669,12 @@ section {
     background: rgba(124, 77, 255, 0.08);
 }
 
+.cert-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    padding-top: 10vh;
+}
+
 /* Certificates */
 .cert-grid {
     display: grid;
@@ -703,8 +762,7 @@ section {
 }
 
 .contact h2 {
-    font-size: clamp(1.8rem, 5vw, 3.5rem);
-    line-height: 1.1;
+    margin-bottom: 3rem;
 }
 
 .contact-grid {
@@ -714,7 +772,7 @@ section {
     gap: 1.5rem;
     width: 100%;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 3rem auto 0;
 }
 
 .contact-card {
@@ -994,10 +1052,12 @@ section {
         top: auto;
         transform: none;
         width: 100%;
-        max-width: 400px;
+        max-width: 100%;
+        aspect-ratio: 16/9;
         opacity: 1;
         pointer-events: auto;
         display: block;
+        margin: 1rem 0;
     }
 
     .project-item:hover .project-img-preview {
@@ -1035,11 +1095,20 @@ section {
         padding-top: 3rem;
     }
 
+    .about-content p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
     .skill-tag {
         padding: 0.6rem 1.2rem;
-        font-size: 0.8rem;
-        margin-right: 0.5rem;
-        margin-bottom: 0.5rem;
+        font-size: 0.75rem;
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+
+    .skills-grid {
+        gap: 0.8rem;
     }
 
     /* Certificates Mobile */
@@ -1052,7 +1121,8 @@ section {
     }
 
     .cert-img-container {
-        height: 180px;
+        height: auto;
+        aspect-ratio: 1.4;
     }
     /* Contact Mobile */
     .contact h2 {
@@ -1060,18 +1130,18 @@ section {
     }
 
     .contact-grid {
-        gap: 1rem;
-        padding-bottom: 2rem;
+        gap: 0.8rem;
+        margin-top: 2rem;
     }
 
     .contact-card {
-        padding: 0.5rem;
+        padding: 0.4rem;
     }
 
     .contact-icon {
-        width: 55px;
-        height: 55px;
-        font-size: 1.8rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.6rem;
     }
 }
 
@@ -1133,6 +1203,98 @@ section {
 
 .next-page-link:hover i {
     transform: translateX(5px);
+}
+
+
+/* GitHub Activity Section */
+.github-activity {
+    padding: 10vh 10%;
+    min-height: auto;
+}
+
+.github-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.github-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.github-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.github-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(124, 77, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.contribution-card {
+    width: 100%;
+}
+
+.contribution-card img {
+    width: 100%;
+    max-width: 100%;
+    filter: drop-shadow(0 0 10px rgba(124, 77, 255, 0.2));
+}
+
+.github-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.stats-card {
+    min-height: 200px;
+}
+
+.stats-card img {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+}
+
+@media (max-width: 768px) {
+    .github-activity {
+        padding: 8vh 6%;
+    }
+    
+    .github-grid {
+        gap: 1.5rem;
+    }
+
+    .github-card {
+        padding: 1.2rem;
+    }
+
+    .stats-card img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .github-stats {
+        grid-template-columns: 1fr;
+    }
 }
 
 .nav-links a.active {
