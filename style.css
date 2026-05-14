@@ -1029,21 +1029,23 @@ section {
 /* Responsive */
 @media (max-width: 768px) {
     nav {
-        top: 1rem;
-        background: rgba(10, 10, 12, 0.5);
-        backdrop-filter: blur(10px);
+        top: 0.5rem;
+        background: rgba(10, 10, 12, 0.8);
+        backdrop-filter: blur(20px);
         border-radius: 100px;
         border: 1px solid var(--glass-border);
+        width: 90%;
+        max-width: 400px;
     }
 
     .nav-links {
         display: flex;
-        gap: 0;
+        gap: 0.1rem;
     }
 
     .nav-links a {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.7rem;
     }
 
     .hero-container {
@@ -1219,8 +1221,8 @@ section {
     }
 
     .cv-download {
-        padding: 1.2rem 2rem;
-        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.85rem;
         width: 100%;
         justify-content: center;
     }

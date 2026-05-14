@@ -50,7 +50,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 // 3D Tilt Effect for Hero Image
 const heroImage = document.querySelector(".image-frame");
-if (heroImage) {
+if (heroImage && window.innerWidth > 768) {
     heroImage.addEventListener("mousemove", (e) => {
         const { left, top, width, height } = heroImage.getBoundingClientRect();
         const x = (e.clientX - left) / width - 0.5;
@@ -273,9 +273,9 @@ window.addEventListener("mousemove", (e) => {
 
     gsap.to(".bg-blobs", { x: x, y: y, duration: 2, ease: "power2.out" });
     
-    // 3D Tilt for CV Container
+    // 3D Tilt for CV Container (Disabled on mobile for performance)
     const cvContainer = document.querySelector(".cv-container");
-    if (cvContainer) {
+    if (cvContainer && window.innerWidth > 768) {
         const rect = cvContainer.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
