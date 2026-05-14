@@ -420,38 +420,59 @@ section {
 }
 
 .cv-text h2 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
+    font-size: 2.8rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
 }
 
 .cv-text p {
-    font-size: 1.2rem;
+    font-size: 0.95rem;
     color: var(--text-dim);
-    max-width: 500px;
+    max-width: 420px;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+.cv-action {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .cv-download {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    padding: 1.5rem 3rem;
+    gap: 0.8rem;
+    padding: 0.7rem 1.8rem;
     background: var(--accent);
     color: white;
     text-decoration: none;
     border-radius: 100px;
-    font-weight: 600;
-    font-size: 1.1rem;
+    font-weight: 500;
+    font-size: 0.85rem;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 10px 30px rgba(124, 77, 255, 0.3);
-    border: none;
+    box-shadow: 0 5px 15px rgba(124, 77, 255, 0.2);
+    border: 1px solid var(--accent);
     cursor: none;
+}
+
+.cv-download.cv-view {
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .cv-download:hover {
     transform: translateY(-5px) scale(1.02);
     box-shadow: 0 20px 40px rgba(124, 77, 255, 0.4);
+}
+
+.cv-download.cv-view:hover {
+    border-color: var(--accent);
+    background: rgba(124, 77, 255, 0.05);
 }
 
 .btn-icon {
@@ -473,16 +494,18 @@ section {
 }
 
 .exp-item h4 {
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     color: var(--accent);
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 0.5rem;
+    opacity: 0.8;
 }
 
 .exp-item p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 500;
+    color: var(--text-main);
 }
 
 @media (max-width: 768px) {
@@ -1090,7 +1113,7 @@ section {
     }
     
     .cv-text h2 {
-        font-size: 2.8rem;
+        font-size: 2.2rem;
     }
 
     .experience-mini {
@@ -1156,7 +1179,11 @@ section {
     }
     
     .cv-text h2 {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
+    }
+
+    .cv-action {
+        gap: 1rem;
     }
 
     .cv-download {
