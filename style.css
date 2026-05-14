@@ -590,6 +590,11 @@ section {
     object-fit: cover;
 }
 
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
 .project-link {
     font-size: 0.8rem;
     opacity: 0;
@@ -1000,12 +1005,16 @@ section {
         transform: none;
     }
 
+    .project-links {
+        align-self: flex-start;
+        gap: 0.8rem;
+    }
+
     .project-link {
         opacity: 1;
         transform: none;
         border-color: var(--accent);
         background: rgba(124, 77, 255, 0.08);
-        align-self: flex-start;
     }
 
     /* CV/About Mobile */
