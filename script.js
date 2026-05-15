@@ -373,9 +373,59 @@ async function fetchGitHubContributions(username) {
     if (!container) return;
 
     try {
-        const response = await fetch(`https://github-contributions-api.deno.dev/${username}.json`);
-        if (!response.ok) throw new Error('Failed to fetch contributions');
-        const data = await response.json();
+        // Fetch both contributions and recent events for real-time accuracy
+        const [contribRes, eventsRes] = await Promise.all([
+            fetch(`https://github-contributions-api.deno.dev/${username}.json`),
+            fetch(`https://api.github.com/users/${username}/events/public`)
+        ]);
+
+        if (!contribRes.ok) throw new Error('Failed to fetch contributions');
+        
+        const data = await contribRes.json();
+        let events = [];
+        if (eventsRes.ok) {
+            events = await eventsRes.json();
+        }
+
+        // Real-time update for today
+        const today = new Date().toISOString().split('T')[0];
+        let todayCount = 0;
+
+        // Calculate today's contributions from events
+        events.forEach(event => {
+            const eventDate = event.created_at.split('T')[0];
+            if (eventDate === today) {
+                if (event.type === 'PushEvent') {
+                    todayCount += event.payload.size || 1;
+                } else if (['PullRequestEvent', 'IssuesEvent', 'CreateEvent'].includes(event.type)) {
+                    // Only count repository creation as a contribution
+                    if (event.type === 'CreateEvent' && event.payload.ref_type !== 'repository') return;
+                    todayCount += 1;
+                }
+            }
+        });
+
+        // Find today in the contribution data and update it if our event count is higher
+        let foundToday = false;
+        data.contributions.forEach(week => {
+            week.forEach(day => {
+                if (day.date === today) {
+                    if (todayCount > day.contributionCount) {
+                        day.contributionCount = todayCount;
+                        // Update level based on count (rough estimation)
+                        if (todayCount >= 10) day.contributionLevel = 'FOURTH_QUARTILE';
+                        else if (todayCount >= 5) day.contributionLevel = 'THIRD_QUARTILE';
+                        else if (todayCount >= 3) day.contributionLevel = 'SECOND_QUARTILE';
+                        else if (todayCount > 0) day.contributionLevel = 'FIRST_QUARTILE';
+                    }
+                    foundToday = true;
+                }
+            });
+        });
+
+        // If today isn't in the data yet (edge case), we can't easily add it to the grid 
+        // without complex logic, but usually the API includes the current week.
+
         renderContributions(data);
     } catch (error) {
         console.error('Error fetching GitHub contributions:', error);
