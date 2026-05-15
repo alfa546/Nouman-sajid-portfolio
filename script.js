@@ -366,3 +366,102 @@ if (contactForm) {
         }, 1500);
     });
 }
+
+// GitHub Contributions Logic
+async function fetchGitHubContributions(username) {
+    const container = document.getElementById('github-contributions');
+    if (!container) return;
+
+    try {
+        const response = await fetch(`https://github-contributions-api.deno.dev/${username}.json`);
+        if (!response.ok) throw new Error('Failed to fetch contributions');
+        const data = await response.json();
+        renderContributions(data);
+    } catch (error) {
+        console.error('Error fetching GitHub contributions:', error);
+        container.innerHTML = `<div class="gh-error">Failed to load contributions. Please try again later.</div>`;
+    }
+}
+
+function renderContributions(data) {
+    const container = document.getElementById('github-contributions');
+    if (!container) return;
+
+    container.innerHTML = ''; // Clear loading state
+
+    // Create Tooltip
+    const tooltip = document.createElement('div');
+    tooltip.className = 'gh-tooltip';
+    document.body.appendChild(tooltip);
+
+    const monthLabels = document.createElement('div');
+    monthLabels.className = 'gh-month-labels';
+    
+    const grid = document.createElement('div');
+    grid.className = 'gh-grid';
+
+    // Extract months for labels
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const displayedMonths = new Set();
+
+    // The API returns contributions as an array of weeks (each week is an array of days)
+    data.contributions.forEach((week, weekIndex) => {
+        week.forEach((day, dayIndex) => {
+            const dayEl = document.createElement('div');
+            dayEl.className = 'gh-day';
+            dayEl.setAttribute('data-level', day.contributionLevel);
+            dayEl.setAttribute('data-count', day.contributionCount);
+            dayEl.setAttribute('data-date', day.date);
+
+            // Positioning in CSS grid (weeks are columns, days are rows)
+            // grid-column is 1-indexed, so weekIndex + 1
+            // grid-row is 1-indexed, so dayIndex + 1
+            dayEl.style.gridColumn = weekIndex + 1;
+            dayEl.style.gridRow = dayIndex + 1;
+
+            // Month Label Logic
+            const date = new Date(day.date);
+            const monthName = months[date.getMonth()];
+            if (!displayedMonths.has(monthName) && dayIndex === 0) {
+                const monthSpan = document.createElement('span');
+                monthSpan.textContent = monthName;
+                monthLabels.appendChild(monthSpan);
+                displayedMonths.add(monthName);
+            }
+
+            // Tooltip Events
+            dayEl.addEventListener('mouseenter', (e) => {
+                const count = day.contributionCount;
+                const dateStr = new Date(day.date).toLocaleDateString('en-US', { 
+                    month: 'short', 
+                    day: 'numeric', 
+                    year: 'numeric' 
+                });
+                tooltip.textContent = `${count} contribution${count !== 1 ? 's' : ''} on ${dateStr}`;
+                tooltip.classList.add('visible');
+            });
+
+            dayEl.addEventListener('mousemove', (e) => {
+                const x = e.clientX + 15;
+                const y = e.clientY - 40;
+                tooltip.style.left = `${x}px`;
+                tooltip.style.top = `${y}px`;
+            });
+
+            dayEl.addEventListener('mouseleave', () => {
+                tooltip.classList.remove('visible');
+            });
+
+            grid.appendChild(dayEl);
+        });
+    });
+
+    container.appendChild(monthLabels);
+    container.appendChild(grid);
+
+    // Initial positioning check for tooltip
+    window.addEventListener('scroll', () => tooltip.classList.remove('visible'));
+}
+
+// Initialize GitHub Graph
+fetchGitHubContributions('alfa546');
