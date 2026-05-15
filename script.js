@@ -432,6 +432,20 @@ function renderContributions(data) {
 
     container.innerHTML = ''; // Clear loading state
 
+    // Calculate total contributions
+    let totalCount = 0;
+    data.contributions.forEach(week => {
+        week.forEach(day => {
+            totalCount += day.contributionCount;
+        });
+    });
+
+    const totalEl = document.getElementById('gh-total-contributions');
+    if (totalEl) {
+        totalEl.textContent = `${totalCount} contributions in the last year`;
+    }
+
+
     // Create Tooltip
     const tooltip = document.createElement('div');
     tooltip.className = 'gh-tooltip';
