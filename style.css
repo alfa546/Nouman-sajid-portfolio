@@ -1348,6 +1348,7 @@ section {
     padding-bottom: 10px;
     scrollbar-width: thin;
     scrollbar-color: var(--accent) transparent;
+    position: relative;
 }
 
 .gh-graph-container::-webkit-scrollbar {
@@ -1362,9 +1363,19 @@ section {
 .gh-grid {
     display: grid;
     grid-template-columns: repeat(53, 1fr);
-    grid-template-rows: repeat(7, 1fr);
+    grid-template-rows: auto repeat(7, 1fr); /* Top row for months */
     gap: 3px;
     min-width: 800px;
+    margin-top: 10px;
+}
+
+.gh-month-label {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    grid-row: 1;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    font-weight: 500;
 }
 
 .gh-day {
@@ -1426,13 +1437,7 @@ section {
     transform: translateY(0);
 }
 
-.gh-month-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.7rem;
-    color: var(--text-dim);
-    padding-left: 30px; /* Offset for day labels if needed */
-}
+/* Removed .gh-month-labels since labels are now part of the grid */
 
 .github-stats {
     display: grid;
@@ -1468,7 +1473,7 @@ section {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 900px) {
     .github-stats {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -1484,7 +1489,39 @@ section {
     }
 
     .github-card {
-        padding: 1.2rem 0.8rem;
+        padding: 1.2rem 0.6rem;
+    }
+
+    /* GitHub Graph Mobile Specifics */
+    .gh-graph-container {
+        overflow-x: hidden;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .gh-grid {
+        min-width: unset;
+        width: 100%;
+        gap: 1px;
+        transform: none;
+        margin-inline: auto;
+    }
+
+    .gh-day {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1/1;
+        border-radius: 1px;
+    }
+
+    .gh-month-label {
+        font-size: 0.5rem;
+        margin-bottom: 4px;
+        font-weight: 600;
+        text-align: center;
     }
 }
 

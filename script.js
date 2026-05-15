@@ -462,9 +462,6 @@ function renderContributions(data) {
     tooltip.className = 'gh-tooltip';
     document.body.appendChild(tooltip);
 
-    const monthLabels = document.createElement('div');
-    monthLabels.className = 'gh-month-labels';
-    
     const grid = document.createElement('div');
     grid.className = 'gh-grid';
 
@@ -482,18 +479,23 @@ function renderContributions(data) {
             dayEl.setAttribute('data-date', day.date);
 
             // Positioning in CSS grid (weeks are columns, days are rows)
-            // grid-column is 1-indexed, so weekIndex + 1
-            // grid-row is 1-indexed, so dayIndex + 1
+            // Shifted grid-row by 1 to accommodate month labels in row 1
             dayEl.style.gridColumn = weekIndex + 1;
-            dayEl.style.gridRow = dayIndex + 1;
+            dayEl.style.gridRow = dayIndex + 2;
 
             // Month Label Logic
             const date = new Date(day.date);
-            const monthName = months[date.getMonth()];
+            const isMobile = window.innerWidth < 480;
+            const monthName = isMobile ? months[date.getMonth()][0] : months[date.getMonth()];
+            
+            // Only add label if it's the start of a month and we haven't displayed it yet
             if (!displayedMonths.has(monthName) && dayIndex === 0) {
                 const monthSpan = document.createElement('span');
                 monthSpan.textContent = monthName;
-                monthLabels.appendChild(monthSpan);
+                monthSpan.className = 'gh-month-label';
+                monthSpan.style.gridColumn = weekIndex + 1;
+                monthSpan.style.gridRow = 1;
+                grid.appendChild(monthSpan);
                 displayedMonths.add(monthName);
             }
 
@@ -524,7 +526,6 @@ function renderContributions(data) {
         });
     });
 
-    container.appendChild(monthLabels);
     container.appendChild(grid);
 
     // Initial positioning check for tooltip
