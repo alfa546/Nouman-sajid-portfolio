@@ -374,9 +374,10 @@ async function fetchGitHubContributions(username) {
 
     try {
         // Fetch both contributions and recent events for real-time accuracy
+        // Added cache: 'no-store' and timestamp to avoid stale data
         const [contribRes, eventsRes] = await Promise.all([
-            fetch(`https://github-contributions-api.deno.dev/${username}.json`),
-            fetch(`https://api.github.com/users/${username}/events/public`)
+            fetch(`https://github-contributions-api.deno.dev/${username}.json?t=${Date.now()}`, { cache: 'no-store' }),
+            fetch(`https://api.github.com/users/${username}/events/public?t=${Date.now()}`, { cache: 'no-store' })
         ]);
 
         if (!contribRes.ok) throw new Error('Failed to fetch contributions');
@@ -387,44 +388,35 @@ async function fetchGitHubContributions(username) {
             events = await eventsRes.json();
         }
 
-        // Real-time update for today
-        const today = new Date().toISOString().split('T')[0];
-        let todayCount = 0;
-
-        // Calculate today's contributions from events
+        // Create a map of contributions from recent public events
+        const eventCounts = {};
         events.forEach(event => {
-            const eventDate = event.created_at.split('T')[0];
-            if (eventDate === today) {
-                if (event.type === 'PushEvent') {
-                    todayCount += event.payload.size || 1;
-                } else if (['PullRequestEvent', 'IssuesEvent', 'CreateEvent'].includes(event.type)) {
-                    // Only count repository creation as a contribution
-                    if (event.type === 'CreateEvent' && event.payload.ref_type !== 'repository') return;
-                    todayCount += 1;
-                }
+            const date = event.created_at.split('T')[0];
+            if (!eventCounts[date]) eventCounts[date] = 0;
+            
+            if (event.type === 'PushEvent') {
+                eventCounts[date] += event.payload.size || 1;
+            } else if (['PullRequestEvent', 'IssuesEvent', 'CreateEvent'].includes(event.type)) {
+                if (event.type === 'CreateEvent' && event.payload.ref_type !== 'repository') return;
+                eventCounts[date] += 1;
             }
         });
 
-        // Find today in the contribution data and update it if our event count is higher
-        let foundToday = false;
+        // Sync data: Update counts for all dates found in events
         data.contributions.forEach(week => {
             week.forEach(day => {
-                if (day.date === today) {
-                    if (todayCount > day.contributionCount) {
-                        day.contributionCount = todayCount;
-                        // Update level based on count (rough estimation)
-                        if (todayCount >= 10) day.contributionLevel = 'FOURTH_QUARTILE';
-                        else if (todayCount >= 5) day.contributionLevel = 'THIRD_QUARTILE';
-                        else if (todayCount >= 3) day.contributionLevel = 'SECOND_QUARTILE';
-                        else if (todayCount > 0) day.contributionLevel = 'FIRST_QUARTILE';
-                    }
-                    foundToday = true;
+                const countFromEvents = eventCounts[day.date] || 0;
+                if (countFromEvents > day.contributionCount) {
+                    day.contributionCount = countFromEvents;
+                    
+                    // Update level based on count (standard GitHub tiers)
+                    if (countFromEvents >= 10) day.contributionLevel = 'FOURTH_QUARTILE';
+                    else if (countFromEvents >= 6) day.contributionLevel = 'THIRD_QUARTILE';
+                    else if (countFromEvents >= 3) day.contributionLevel = 'SECOND_QUARTILE';
+                    else if (countFromEvents > 0) day.contributionLevel = 'FIRST_QUARTILE';
                 }
             });
         });
-
-        // If today isn't in the data yet (edge case), we can't easily add it to the grid 
-        // without complex logic, but usually the API includes the current week.
 
         renderContributions(data);
     } catch (error) {
@@ -432,6 +424,7 @@ async function fetchGitHubContributions(username) {
         container.innerHTML = `<div class="gh-error">Failed to load contributions. Please try again later.</div>`;
     }
 }
+
 
 function renderContributions(data) {
     const container = document.getElementById('github-contributions');
