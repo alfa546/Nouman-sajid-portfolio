@@ -373,7 +373,18 @@ async function fetchGitHubContributions(username) {
     if (!container) return;
 
     try {
+        // Refresh stats images with timestamp to avoid caching
+        const statsImages = document.querySelectorAll('.stats-card img');
+        statsImages.forEach(img => {
+            const src = img.getAttribute('src');
+            if (src && !src.includes('t=')) {
+                const separator = src.includes('?') ? '&' : '?';
+                img.src = `${src}${separator}t=${Date.now()}`;
+            }
+        });
+
         // Fetch both contributions and recent events for real-time accuracy
+
         // Added cache: 'no-store' and timestamp to avoid stale data
         const [contribRes, eventsRes] = await Promise.all([
             fetch(`https://github-contributions-api.deno.dev/${username}.json?t=${Date.now()}`, { cache: 'no-store' }),
