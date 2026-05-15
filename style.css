@@ -1471,8 +1471,23 @@ section {
 @media (max-width: 480px) {
     .github-stats {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .gh-header {
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    .gh-total-count {
+        font-size: 0.85rem;
+    }
+
+    .github-card {
+        padding: 1.2rem 0.8rem;
     }
 }
+
 
 .nav-links a.active {
     opacity: 1;
