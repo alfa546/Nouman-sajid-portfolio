@@ -530,6 +530,14 @@ function renderContributions(data) {
 
     // Initial positioning check for tooltip
     window.addEventListener('scroll', () => tooltip.classList.remove('visible'));
+
+    // Smoothly auto-scroll to the far right on load so the most recent contributions are highlighted first
+    setTimeout(() => {
+        container.scrollTo({
+            left: container.scrollWidth,
+            behavior: 'smooth'
+        });
+    }, 300);
 }
 
 // Initialize GitHub Graph

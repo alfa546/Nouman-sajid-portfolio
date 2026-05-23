@@ -1329,6 +1329,39 @@ section {
     align-items: center;
 }
 
+.gh-swipe-hint {
+    display: none;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    align-items: center;
+    gap: 6px;
+    background: rgba(124, 77, 255, 0.1);
+    border: 1px solid rgba(124, 77, 255, 0.2);
+    padding: 5px 12px;
+    border-radius: 100px;
+    animation: swipePulse 2s infinite ease-in-out;
+    letter-spacing: 0.3px;
+    font-weight: 500;
+}
+
+.gh-swipe-hint i {
+    font-size: 0.9rem;
+    color: var(--accent);
+}
+
+@keyframes swipePulse {
+    0%, 100% { 
+        opacity: 0.7; 
+        transform: translateX(0); 
+        box-shadow: 0 0 0 0 rgba(124, 77, 255, 0);
+    }
+    50% { 
+        opacity: 1; 
+        transform: translateX(-4px); 
+        box-shadow: 0 0 8px rgba(124, 77, 255, 0.2);
+    }
+}
+
 .gh-total-count {
     font-size: 0.95rem;
     font-weight: 600;
@@ -1480,8 +1513,17 @@ section {
     }
 
     .gh-header {
-        justify-content: center;
-        margin-bottom: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 1.2rem;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .gh-swipe-hint {
+        display: inline-flex;
     }
 
     .gh-total-count {
@@ -1494,34 +1536,35 @@ section {
 
     /* GitHub Graph Mobile Specifics */
     .gh-graph-container {
-        overflow-x: hidden;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 0 0 8px 0;
+        display: block;
         width: 100%;
+        scrollbar-width: thin;
+        scrollbar-color: var(--accent) transparent;
+        -webkit-overflow-scrolling: touch;
     }
 
     .gh-grid {
-        min-width: unset;
-        width: 100%;
-        gap: 1px;
+        min-width: 800px;
+        width: max-content;
+        gap: 3px;
         transform: none;
-        margin-inline: auto;
+        margin-inline: unset;
     }
 
     .gh-day {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1/1;
-        border-radius: 1px;
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
     }
 
     .gh-month-label {
-        font-size: 0.5rem;
-        margin-bottom: 4px;
-        font-weight: 600;
-        text-align: center;
+        font-size: 0.75rem;
+        margin-bottom: 8px;
+        font-weight: 500;
+        text-align: left;
     }
 }
 
