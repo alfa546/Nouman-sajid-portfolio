@@ -48,6 +48,8 @@ requestAnimationFrame(raf)
 // GSAP Animations
 gsap.registerPlugin(ScrollTrigger);
 
+
+
 // 3D Tilt Effect for Hero Image
 const heroImage = document.querySelector(".image-frame");
 if (heroImage && window.innerWidth > 768) {
@@ -71,6 +73,35 @@ if (heroImage && window.innerWidth > 768) {
             rotationX: 0,
             duration: 0.8,
             ease: "power4.out"
+        });
+    });
+}
+
+// 3D Tilt Effect for Cards (.cert-card, .contact-card)
+const tiltCards = document.querySelectorAll(".cert-card, .contact-card");
+if (tiltCards.length > 0 && window.innerWidth > 768) {
+    tiltCards.forEach(card => {
+        card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+            gsap.to(card, {
+                rotationY: x * 15,
+                rotationX: -y * 15,
+                transformPerspective: 800,
+                duration: 0.5,
+                ease: "power2.out"
+            });
+        });
+
+        card.addEventListener("mouseleave", () => {
+            gsap.to(card, {
+                rotationY: 0,
+                rotationX: 0,
+                duration: 0.8,
+                ease: "power4.out"
+            });
         });
     });
 }
