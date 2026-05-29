@@ -403,6 +403,24 @@ async function fetchGitHubContributions(username) {
     const container = document.getElementById('github-contributions');
     if (!container) return;
 
+    // Local Caching Optimization
+    const CACHE_KEY = `gh_contribs_${username}`;
+    const CACHE_TIME_KEY = `gh_contribs_time_${username}`;
+    const CACHE_DURATION = 15 * 60 * 1000; // 15 minutes
+
+    const cachedData = localStorage.getItem(CACHE_KEY);
+    const cachedTime = localStorage.getItem(CACHE_TIME_KEY);
+
+    if (cachedData && cachedTime && (Date.now() - cachedTime < CACHE_DURATION)) {
+        try {
+            renderContributions(JSON.parse(cachedData));
+            return;
+        } catch (e) {
+            localStorage.removeItem(CACHE_KEY);
+            localStorage.removeItem(CACHE_TIME_KEY);
+        }
+    }
+
     try {
         // Refresh stats images with timestamp to avoid caching
         const statsImages = document.querySelectorAll('.stats-card img');
@@ -413,8 +431,6 @@ async function fetchGitHubContributions(username) {
                 img.src = `${src}${separator}t=${Date.now()}`;
             }
         });
-
-        // Fetch both contributions and recent events for real-time accuracy
 
         // Added cache: 'no-store' and timestamp to avoid stale data
         const [contribRes, eventsRes] = await Promise.all([
@@ -459,6 +475,10 @@ async function fetchGitHubContributions(username) {
                 }
             });
         });
+
+        // Cache the processed data
+        localStorage.setItem(`gh_contribs_${username}`, JSON.stringify(data));
+        localStorage.setItem(`gh_contribs_time_${username}`, Date.now());
 
         renderContributions(data);
     } catch (error) {

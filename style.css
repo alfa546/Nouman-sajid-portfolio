@@ -1151,19 +1151,23 @@ section {
         position: relative;
         right: auto;
         top: auto;
-        transform: none;
+        transform: none !important;
         width: 100%;
         max-width: 100%;
         aspect-ratio: 16/9;
-        opacity: 1;
+        opacity: 1 !important;
         pointer-events: auto;
         display: block;
-        margin: 1rem 0;
+        margin: 1.5rem 0 0.5rem 0;
+        border-color: var(--glass-border);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
 
     .project-item:hover .project-img-preview {
         right: auto;
-        transform: none;
+        transform: none !important;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4) !important;
+        border-color: var(--glass-border) !important;
     }
 
     .project-links {
