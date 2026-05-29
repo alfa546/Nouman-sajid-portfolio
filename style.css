@@ -1067,6 +1067,26 @@ section {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .bg-blobs {
+        filter: blur(70px);
+        opacity: 0.35;
+    }
+
+    .blob {
+        width: 75vw;
+        height: 75vw;
+    }
+
+    .blob-3 {
+        width: 60vw;
+        height: 60vw;
+    }
+
+    .blob-4 {
+        width: 50vw;
+        height: 50vw;
+    }
+
     nav {
         top: 0.5rem;
         background: rgba(10, 10, 12, 0.8);
@@ -1615,4 +1635,66 @@ section {
 .nav-links a.active {
     opacity: 1;
     color: var(--accent);
+}
+
+/* ============================================
+   MOBILE BACKGROUND BLOBS FIX
+   Mobile par purple circles visible karne ke liye
+   ============================================ */
+@media (max-width: 768px) {
+
+    /* Blobs ka size barha aur blur kam kiya taake visible hon */
+    .bg-blobs {
+        filter: blur(60px) !important;
+        opacity: 0.7 !important;
+    }
+
+    .blob {
+        width: 85vw !important;
+        height: 85vw !important;
+    }
+
+    .blob-1 {
+        top: -5% !important;
+        left: -15% !important;
+        width: 90vw !important;
+        height: 90vw !important;
+        background: #4f46e5 !important;
+        opacity: 1 !important;
+    }
+
+    .blob-2 {
+        bottom: -5% !important;
+        right: -15% !important;
+        width: 90vw !important;
+        height: 90vw !important;
+        background: #7c4dff !important;
+        opacity: 1 !important;
+    }
+
+    .blob-3 {
+        top: 40% !important;
+        left: 20% !important;
+        width: 70vw !important;
+        height: 70vw !important;
+        background: #6366f1 !important;
+        opacity: 0.9 !important;
+    }
+
+    .blob-4 {
+        top: 15% !important;
+        right: 10% !important;
+        width: 60vw !important;
+        height: 60vw !important;
+        background: #8b5cf6 !important;
+        opacity: 0.85 !important;
+    }
+
+    /* Cinematic sphere bhi visible hoga mobile par */
+    .cinematic-bg .sphere {
+        width: 300px !important;
+        height: 300px !important;
+        filter: blur(50px) !important;
+        opacity: 0.5 !important;
+    }
 }
