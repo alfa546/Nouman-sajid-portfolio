@@ -335,39 +335,41 @@ revealElements.forEach((el) => {
     });
 });
 
-// Parallax effect for blobs
-window.addEventListener("mousemove", (e) => {
-    const { clientX, clientY } = e;
-    const x = (clientX - window.innerWidth / 2) * 0.02;
-    const y = (clientY - window.innerHeight / 2) * 0.02;
+// Parallax effect for blobs (desktop only for performance)
+if (window.innerWidth > 768) {
+    window.addEventListener("mousemove", (e) => {
+        const { clientX, clientY } = e;
+        const x = (clientX - window.innerWidth / 2) * 0.02;
+        const y = (clientY - window.innerHeight / 2) * 0.02;
 
-    gsap.to(".bg-blobs", { x: x, y: y, duration: 2, ease: "power2.out" });
-    
-    // 3D Tilt for CV Container (Disabled on mobile for performance)
-    const cvContainer = document.querySelector(".cv-container");
-    if (cvContainer && window.innerWidth > 768) {
-        const rect = cvContainer.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        const rotateX = (clientY - centerY) * 0.01;
-        const rotateY = (clientX - centerX) * -0.01;
+        gsap.to(".bg-blobs", { x: x, y: y, duration: 2, ease: "power2.out" });
+        
+        // 3D Tilt for CV Container (Disabled on mobile for performance)
+        const cvContainer = document.querySelector(".cv-container");
+        if (cvContainer) {
+            const rect = cvContainer.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const rotateX = (clientY - centerY) * 0.01;
+            const rotateY = (clientX - centerX) * -0.01;
 
-        gsap.to(cvContainer, {
-            rotationX: rotateX,
-            rotationY: rotateY,
-            duration: 0.5,
-            ease: "power2.out"
+            gsap.to(cvContainer, {
+                rotationX: rotateX,
+                rotationY: rotateY,
+                duration: 0.5,
+                ease: "power2.out"
+            });
+        }
+
+        // Cinematic Sphere follow
+        gsap.to(".sphere", {
+            x: x * 2,
+            y: y * 2,
+            duration: 1.5,
+            ease: "power1.out"
         });
-    }
-
-    // Cinematic Sphere follow
-    gsap.to(".sphere", {
-        x: x * 2,
-        y: y * 2,
-        duration: 1.5,
-        ease: "power1.out"
     });
-});
+}
 
 // Typewriter Effect
 const typewriterElement = document.getElementById("typewriter");

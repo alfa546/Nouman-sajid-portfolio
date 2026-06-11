@@ -88,6 +88,7 @@ body {
     left: -10%;
     background: #1a1a2e;
     opacity: 0.9;
+    animation: blobColor1 12s ease-in-out infinite alternate;
 }
 
 .blob-2 {
@@ -95,6 +96,7 @@ body {
     right: -10%;
     background: #16213e;
     opacity: 0.8;
+    animation: blobColor2 15s ease-in-out infinite alternate;
 }
 
 .blob-3 {
@@ -104,6 +106,7 @@ body {
     height: 30vw;
     background: #0f3460;
     opacity: 0.4;
+    animation: blobColor3 18s ease-in-out infinite alternate;
 }
 
 .blob-4 {
@@ -111,8 +114,40 @@ body {
     right: 30%;
     width: 25vw;
     height: 25vw;
-    background: #ffffff;
-    opacity: 0.03;
+    background: #0a0a1a;
+    opacity: 0.06;
+    animation: blobColor4 10s ease-in-out infinite alternate;
+}
+
+/* Smooth background color animations */
+@keyframes blobColor1 {
+    0%   { background: #1a1a2e; }
+    20%  { background: #0f3460; }
+    40%  { background: #1b1b3a; }
+    60%  { background: #16213e; }
+    80%  { background: #0d1b4b; }
+    100% { background: #1a0a2e; }
+}
+
+@keyframes blobColor2 {
+    0%   { background: #16213e; }
+    25%  { background: #0f2027; }
+    50%  { background: #203a43; }
+    75%  { background: #1a1a2e; }
+    100% { background: #0a192f; }
+}
+
+@keyframes blobColor3 {
+    0%   { background: #0f3460; }
+    33%  { background: #1a0533; }
+    66%  { background: #0d2137; }
+    100% { background: #162032; }
+}
+
+@keyframes blobColor4 {
+    0%   { background: #ffffff; opacity: 0.03; }
+    50%  { background: #7c3aed; opacity: 0.05; }
+    100% { background: #1e40af; opacity: 0.04; }
 }
 
 /* Cinematic 3D Elements */
@@ -203,14 +238,18 @@ nav:hover {
 
 @media (max-width: 480px) {
     nav {
-        width: 100%;
-        max-width: 100vw;
-        top: 0;
-        border-radius: 0;
-        padding: 0.6rem;
-        background: rgba(7, 7, 9, 0.85);
-        border: none;
-        border-bottom: 1px solid var(--glass-border);
+        top: 0.6rem;
+        padding: 0.4rem 0.6rem;
+        width: 96vw;
+        max-width: 96vw;
+        border-radius: 100px;
+        background: rgba(7, 7, 9, 0.9);
+        border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-links a {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.65rem;
     }
 }
 
@@ -275,7 +314,14 @@ section {
 
 @media (max-width: 768px) {
     section {
-        padding: 12vh 6% 8%;
+        padding: 12vh 5% 8%;
+        min-height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 10vh 4% 6%;
         min-height: auto;
     }
 }
@@ -1122,8 +1168,8 @@ section {
     .hero-container {
         flex-direction: column-reverse;
         text-align: center;
-        gap: 2rem;
-        padding-top: 5vh;
+        gap: 1.5rem;
+        padding-top: 4vh;
     }
 
     .hero-image {
@@ -1131,27 +1177,29 @@ section {
     }
 
     .image-frame {
-        max-width: 220px;
+        max-width: 200px;
     }
 
     .hero h1 {
-        font-size: clamp(2.5rem, 12vw, 3.5rem);
-        margin-bottom: 1.5rem;
+        font-size: clamp(2rem, 11vw, 3.2rem);
+        margin-bottom: 1rem;
     }
 
     .hero-sub {
         margin-inline: auto;
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     .hero-quote {
         margin-inline: auto;
         text-align: left;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+        padding-left: 1rem;
+        margin-bottom: 2rem;
     }
 
     section {
-        padding: 15vh 6% 8%;
+        padding: 14vh 5% 8%;
     }
 
     /* Projects Mobile */
@@ -1284,7 +1332,11 @@ section {
 
 @media (max-width: 480px) {
     .hero h1 {
-        font-size: 2.8rem;
+        font-size: clamp(1.8rem, 10vw, 2.6rem);
+    }
+
+    .hero-sub {
+        font-size: 0.95rem;
     }
     
     .cv-text h2 {
@@ -1292,14 +1344,100 @@ section {
     }
 
     .cv-action {
-        gap: 1rem;
+        gap: 0.8rem;
+        flex-direction: column;
+        align-items: center;
     }
 
     .cv-download {
         padding: 0.8rem 1.5rem;
         font-size: 0.85rem;
         width: 100%;
+        max-width: 280px;
         justify-content: center;
+    }
+
+    /* Project items on very small screens */
+    .project-item {
+        padding: 1.5rem 0.8rem;
+    }
+
+    .project-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .project-num {
+        font-size: 0.7rem;
+    }
+
+    /* Contact form on small screens */
+    .contact-pad {
+        padding: 1.5rem 1rem;
+        border-radius: 20px;
+    }
+
+    .input-group input,
+    .input-group textarea {
+        padding: 1rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    /* Cert grid on tiny screens */
+    .cert-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .cert-card {
+        padding: 1rem;
+    }
+
+    /* Skills grid on tiny screens */
+    .skills-grid {
+        gap: 0.6rem;
+    }
+
+    .skill-tag {
+        padding: 0.5rem 1rem;
+        font-size: 0.7rem;
+    }
+
+    /* GitHub section on tiny screens */
+    .github-activity {
+        padding: 8vh 4%;
+    }
+
+    .github-card {
+        padding: 1rem 0.5rem;
+    }
+
+    .section-title {
+        font-size: clamp(1.5rem, 7vw, 2rem);
+    }
+
+    /* About section */
+    .about-content h2 {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+    }
+
+    .about-content p {
+        font-size: 0.9rem;
+    }
+
+    /* Contact section */
+    .contact h2 {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+        margin-bottom: 2rem;
+    }
+
+    .contact-grid {
+        gap: 0.6rem;
+    }
+
+    .contact-icon {
+        width: 46px;
+        height: 46px;
+        font-size: 1.4rem;
     }
 }
 
@@ -1661,63 +1799,78 @@ section {
 }
 
 /* ============================================
-   MOBILE BACKGROUND BLOBS FIX
-   Mobile par white/grey circles visible karne ke liye
+   MOBILE BACKGROUND BLOBS FIX + COLOR ANIMATION
    ============================================ */
 @media (max-width: 768px) {
 
-    /* Blobs ka size barha aur blur kam kiya taake visible hon */
     .bg-blobs {
-        filter: blur(60px) !important;
-        opacity: 0.5 !important;
+        filter: blur(70px);
+        opacity: 0.6;
     }
 
     .blob {
-        width: 85vw !important;
-        height: 85vw !important;
+        width: 90vw;
+        height: 90vw;
     }
 
     .blob-1 {
-        top: -5% !important;
-        left: -15% !important;
-        width: 90vw !important;
-        height: 90vw !important;
-        background: #1a1a2e !important;
-        opacity: 0.9 !important;
+        top: -5%;
+        left: -15%;
+        width: 100vw;
+        height: 100vw;
+        opacity: 0.9;
+        /* Keep the color animation running on mobile too */
+        animation: blobColor1 12s ease-in-out infinite alternate;
     }
 
     .blob-2 {
-        bottom: -5% !important;
-        right: -15% !important;
-        width: 90vw !important;
-        height: 90vw !important;
-        background: #16213e !important;
-        opacity: 0.8 !important;
+        bottom: -5%;
+        right: -15%;
+        width: 100vw;
+        height: 100vw;
+        opacity: 0.8;
+        animation: blobColor2 15s ease-in-out infinite alternate;
     }
 
     .blob-3 {
-        top: 40% !important;
-        left: 20% !important;
-        width: 70vw !important;
-        height: 70vw !important;
-        background: #0f3460 !important;
-        opacity: 0.35 !important;
+        top: 40%;
+        left: 10%;
+        width: 80vw;
+        height: 80vw;
+        opacity: 0.35;
+        animation: blobColor3 18s ease-in-out infinite alternate;
     }
 
     .blob-4 {
-        top: 15% !important;
-        right: 10% !important;
-        width: 60vw !important;
-        height: 60vw !important;
-        background: #ffffff !important;
-        opacity: 0.02 !important;
+        top: 15%;
+        right: 5%;
+        width: 65vw;
+        height: 65vw;
+        opacity: 0.04;
     }
 
-    /* Cinematic sphere visible on mobile */
+    /* Cinematic sphere on mobile */
     .cinematic-bg .sphere {
-        width: 300px !important;
-        height: 300px !important;
-        filter: blur(50px) !important;
-        opacity: 0.3 !important;
+        width: 280px;
+        height: 280px;
+        filter: blur(50px);
+        opacity: 0.25;
+    }
+}
+
+@media (max-width: 480px) {
+    .bg-blobs {
+        filter: blur(55px);
+        opacity: 0.55;
+    }
+
+    .blob-1, .blob-2 {
+        width: 110vw;
+        height: 110vw;
+    }
+
+    .blob-3 {
+        width: 85vw;
+        height: 85vw;
     }
 }
