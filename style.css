@@ -6,17 +6,19 @@
 }
 
 :root {
-    --bg-dark: #070709;
-    --accent: #7c4dff;
-    --cyan: #00f2fe;
-    --pink: #ff0080;
-    --text-main: #ffffff;
-    --text-dim: #a0a0a0;
-    --glass: rgba(255, 255, 255, 0.02);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --accent-glow: rgba(124, 77, 255, 0.3);
-    --cyan-glow: rgba(0, 242, 254, 0.3);
-    --pink-glow: rgba(255, 0, 128, 0.3);
+    --bg-dark: #ffffff;
+    --accent: #000000;
+    --accent-dim: #6e6e73;
+    --accent-dark: #f5f5f7;
+    --cyan: #000000;
+    --pink: #000000;
+    --text-main: #000000;
+    --text-dim: #6e6e73;
+    --glass: rgba(0, 0, 0, 0.015);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --accent-glow: rgba(0, 0, 0, 0.05);
+    --cyan-glow: rgba(0, 0, 0, 0.05);
+    --pink-glow: rgba(0, 0, 0, 0.05);
 }
 
 html.lenis {
@@ -55,9 +57,9 @@ body {
     height: 100%;
     pointer-events: none;
     z-index: 9999;
-    opacity: 0.04;
+    opacity: 0.02;
     background: url('https://grainy-gradients.vercel.app/noise.svg');
-    filter: contrast(150%) brightness(150%);
+    filter: contrast(120%) brightness(120%);
 }
 
 /* Background Effects */
@@ -70,7 +72,7 @@ body {
     z-index: -1;
     overflow: hidden;
     filter: blur(120px);
-    opacity: 0.45;
+    opacity: 0.65;
 }
 
 .blob {
@@ -84,13 +86,15 @@ body {
 .blob-1 {
     top: -10%;
     left: -10%;
-    background: #4f46e5;
+    background: #f0f0f2;
+    opacity: 0.8;
 }
 
 .blob-2 {
     bottom: -10%;
     right: -10%;
-    background: #7c4dff;
+    background: #e5e5ea;
+    opacity: 0.7;
 }
 
 .blob-3 {
@@ -98,7 +102,7 @@ body {
     left: 40%;
     width: 30vw;
     height: 30vw;
-    background: #6366f1;
+    background: #e0e0e2;
     opacity: 0.6;
 }
 
@@ -107,8 +111,8 @@ body {
     right: 30%;
     width: 25vw;
     height: 25vw;
-    background: #8b5cf6;
-    opacity: 0.5;
+    background: #f5f5f7;
+    opacity: 0.9;
 }
 
 /* Cinematic 3D Elements */
@@ -127,17 +131,15 @@ body {
     position: absolute;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle at 30% 30%, var(--accent) 0%, transparent 70%);
+    background: radial-gradient(circle at 30% 30%, rgba(0, 0, 0, 0.05) 0%, transparent 70%);
     border-radius: 50%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     filter: blur(80px);
-    opacity: 0.3;
-    mix-blend-mode: screen;
+    opacity: 0.4;
+    mix-blend-mode: multiply;
 }
-
-
 
 /* Typography */
 h1,
@@ -152,7 +154,7 @@ h2 { font-size: clamp(2rem, 6vw, 3.5rem); }
 h3 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
 
 .gradient-text {
-    background: linear-gradient(135deg, #fff 0%, #a29bfe 100%);
+    background: linear-gradient(135deg, #000000 0%, #555555 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -160,7 +162,7 @@ h3 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
 .halkaa-text {
     font-weight: 300;
     font-size: 0.85em;
-    background: linear-gradient(135deg, #a29bfe 0%, #7c4dff 100%);
+    background: linear-gradient(135deg, #111111 0%, #6e6e73 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     opacity: 0.8;
@@ -186,17 +188,17 @@ nav {
     z-index: 1000;
     width: auto;
     max-width: 95vw;
-    background: rgba(7, 7, 9, 0.65);
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(25px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06), inset 0 1px 1px rgba(255, 255, 255, 0.9);
     border-radius: 100px;
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 nav:hover {
-    border-color: rgba(124, 77, 255, 0.3);
-    box-shadow: 0 20px 45px rgba(124, 77, 255, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    border-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.9);
 }
 
 @media (max-width: 480px) {
@@ -215,14 +217,14 @@ nav:hover {
 .nav-hover-pill {
     position: absolute;
     height: 70%;
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.04);
     border-radius: 100px;
     pointer-events: none;
     z-index: -1;
     opacity: 0;
     transition: opacity 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.04);
 }
 
 .nav-links {
@@ -241,7 +243,7 @@ nav:hover {
 }
 
 .nav-links a {
-    color: white;
+    color: var(--text-main);
     text-decoration: none;
     font-size: 0.82rem;
     font-weight: 500;
@@ -427,9 +429,9 @@ section {
 .skill-tag {
     display: inline-block;
     padding: 0.8rem 1.6rem;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8);
     border-radius: 100px;
     margin-right: 0.8rem;
     margin-bottom: 0.8rem;
@@ -443,16 +445,19 @@ section {
 }
 
 .skill-tag:hover {
-    color: var(--text-main);
+    color: #ffffff !important;
+    background: #000000 !important;
+    border-color: #000000 !important;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(0, 0, 0, 0.2);
     transform: translateY(-5px);
 }
 
-.st-ai:hover { background: rgba(0, 242, 254, 0.08); border-color: var(--cyan); color: var(--cyan); box-shadow: 0 12px 25px rgba(0, 242, 254, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1); }
-.st-python:hover { background: rgba(255, 211, 67, 0.08); border-color: #ffd343; color: #ffd343; box-shadow: 0 12px 25px rgba(255, 211, 67, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1); }
-.st-logic:hover { background: rgba(124, 77, 255, 0.08); border-color: var(--accent); color: #a29bfe; box-shadow: 0 12px 25px rgba(124, 77, 255, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1); }
-.st-cpp:hover { background: rgba(0, 89, 156, 0.08); border-color: #00599c; color: #659ad2; box-shadow: 0 12px 25px rgba(0, 89, 156, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1); }
-.st-tailwind:hover { background: rgba(56, 178, 172, 0.08); border-color: #38b2ac; color: #38b2ac; box-shadow: 0 12px 25px rgba(56, 178, 172, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1); }
-.st-design:hover { background: rgba(255, 0, 128, 0.08); border-color: var(--pink); color: var(--pink); box-shadow: 0 12px 25px rgba(255, 0, 128, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1); }
+.st-ai:hover, .st-python:hover, .st-logic:hover, .st-cpp:hover, .st-tailwind:hover, .st-design:hover {
+    background: #000000 !important;
+    border-color: #000000 !important;
+    color: #ffffff !important;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+}
 
 /* CV Section */
 .cv {
@@ -508,7 +513,7 @@ section {
     font-size: 0.85rem;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 5px 15px rgba(124, 77, 255, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--accent);
     cursor: none;
 }
@@ -516,17 +521,19 @@ section {
 .cv-download.cv-view {
     background: transparent;
     border: 1px solid var(--glass-border);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    color: var(--text-main);
 }
 
 .cv-download:hover {
     transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(124, 77, 255, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
 }
 
 .cv-download.cv-view:hover {
     border-color: var(--accent);
-    background: rgba(124, 77, 255, 0.05);
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--text-main);
 }
 
 .btn-icon {
@@ -683,12 +690,11 @@ section {
 
 .project-tech {
     font-size: 0.65rem;
-    color: #7dd3fc;
+    color: var(--accent-dim);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     opacity: 0.9;
-    text-shadow: 0 0 12px rgba(125, 211, 252, 0.4);
 }
 
 .project-img-preview {
@@ -703,8 +709,8 @@ section {
     opacity: 0;
     pointer-events: none;
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 242, 254, 0);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12), 0 0 25px rgba(0, 0, 0, 0);
     z-index: 5;
     will-change: transform, opacity;
     display: none;
@@ -720,8 +726,8 @@ section {
     opacity: 1;
     transform: translateY(-50%) scale(1.05) rotate(1deg);
     right: 26%;
-    border-color: rgba(0, 242, 254, 0.4);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(0, 242, 254, 0.25);
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
 }
 
 .project-img-preview img {
@@ -758,7 +764,7 @@ section {
     opacity: 1;
     transform: translateX(0);
     border-color: var(--accent);
-    background: rgba(124, 77, 255, 0.08);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .cert-header {
@@ -812,8 +818,8 @@ section {
 
 .cert-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(124, 77, 255, 0.3);
-    box-shadow: 0 25px 50px rgba(124, 77, 255, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 25px 50px rgba(255, 255, 255, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.2);
 }
 
 .cert-card:hover::before {
@@ -888,7 +894,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(124, 77, 255, 0.1) 0%, transparent 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: 0;
@@ -918,7 +924,7 @@ section {
 
 .contact-card:hover .contact-icon {
     transform: scale(1.1) rotate(5deg);
-    background: rgba(124, 77, 255, 0.2);
+    background: rgba(255, 255, 255, 0.12);
     border-color: var(--accent);
 }
 
@@ -1018,14 +1024,14 @@ section {
 .input-group textarea:focus {
     border-color: var(--accent);
     background: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 0 20px rgba(124, 77, 255, 0.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
 }
 
 .submit-btn {
     width: 100%;
     padding: 1.2rem;
-    background: var(--accent);
-    color: white;
+    background: #ffffff;
+    color: #000000;
     border: none;
     border-radius: 15px;
     font-size: 1.1rem;
@@ -1036,13 +1042,13 @@ section {
     justify-content: center;
     gap: 1rem;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 10px 20px rgba(124, 77, 255, 0.2);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.08);
 }
 
 .submit-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(124, 77, 255, 0.4);
-    filter: brightness(1.1);
+    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.15);
+    background: #f3f4f6;
 }
 
 .submit-btn i {
@@ -1372,7 +1378,7 @@ section {
 
 .github-card:hover {
     border-color: var(--accent);
-    box-shadow: 0 10px 30px rgba(124, 77, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.08);
     transform: translateY(-5px);
 }
 
@@ -1398,8 +1404,8 @@ section {
     color: var(--text-dim);
     align-items: center;
     gap: 6px;
-    background: rgba(124, 77, 255, 0.1);
-    border: 1px solid rgba(124, 77, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     padding: 5px 12px;
     border-radius: 100px;
     animation: swipePulse 2s infinite ease-in-out;
@@ -1416,12 +1422,12 @@ section {
     0%, 100% { 
         opacity: 0.7; 
         transform: translateX(0); 
-        box-shadow: 0 0 0 0 rgba(124, 77, 255, 0);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
     }
     50% { 
         opacity: 1; 
         transform: translateX(-4px); 
-        box-shadow: 0 0 8px rgba(124, 77, 255, 0.2);
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
     }
 }
 
@@ -1429,7 +1435,7 @@ section {
     font-size: 0.95rem;
     font-weight: 600;
     letter-spacing: 0.5px;
-    background: linear-gradient(135deg, #fff 0%, #a29bfe 100%);
+    background: linear-gradient(135deg, #fff 0%, #a1a1a6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -1504,10 +1510,10 @@ section {
 
 /* Contribution Levels */
 .gh-day[data-level="NONE"] { background: rgba(255, 255, 255, 0.05); }
-.gh-day[data-level="FIRST_QUARTILE"] { background: #0e4429; }
-.gh-day[data-level="SECOND_QUARTILE"] { background: #006d32; }
-.gh-day[data-level="THIRD_QUARTILE"] { background: #26a641; }
-.gh-day[data-level="FOURTH_QUARTILE"] { background: #39d353; }
+.gh-day[data-level="FIRST_QUARTILE"] { background: rgba(255, 255, 255, 0.2); }
+.gh-day[data-level="SECOND_QUARTILE"] { background: rgba(255, 255, 255, 0.45); }
+.gh-day[data-level="THIRD_QUARTILE"] { background: rgba(255, 255, 255, 0.7); }
+.gh-day[data-level="FOURTH_QUARTILE"] { background: rgba(255, 255, 255, 0.95); }
 
 /* Tooltip Styles */
 .gh-tooltip {
@@ -1639,14 +1645,14 @@ section {
 
 /* ============================================
    MOBILE BACKGROUND BLOBS FIX
-   Mobile par purple circles visible karne ke liye
+   Mobile par white/grey circles visible karne ke liye
    ============================================ */
 @media (max-width: 768px) {
 
     /* Blobs ka size barha aur blur kam kiya taake visible hon */
     .bg-blobs {
         filter: blur(60px) !important;
-        opacity: 0.7 !important;
+        opacity: 0.5 !important;
     }
 
     .blob {
@@ -1659,8 +1665,8 @@ section {
         left: -15% !important;
         width: 90vw !important;
         height: 90vw !important;
-        background: #4f46e5 !important;
-        opacity: 1 !important;
+        background: #ffffff !important;
+        opacity: 0.15 !important;
     }
 
     .blob-2 {
@@ -1668,8 +1674,8 @@ section {
         right: -15% !important;
         width: 90vw !important;
         height: 90vw !important;
-        background: #7c4dff !important;
-        opacity: 1 !important;
+        background: #444446 !important;
+        opacity: 0.2 !important;
     }
 
     .blob-3 {
@@ -1677,8 +1683,8 @@ section {
         left: 20% !important;
         width: 70vw !important;
         height: 70vw !important;
-        background: #6366f1 !important;
-        opacity: 0.9 !important;
+        background: #2c2c2e !important;
+        opacity: 0.4 !important;
     }
 
     .blob-4 {
@@ -1686,8 +1692,8 @@ section {
         right: 10% !important;
         width: 60vw !important;
         height: 60vw !important;
-        background: #8b5cf6 !important;
-        opacity: 0.85 !important;
+        background: #8e8e93 !important;
+        opacity: 0.08 !important;
     }
 
     /* Cinematic sphere bhi visible hoga mobile par */
@@ -1695,6 +1701,6 @@ section {
         width: 300px !important;
         height: 300px !important;
         filter: blur(50px) !important;
-        opacity: 0.5 !important;
+        opacity: 0.3 !important;
     }
 }

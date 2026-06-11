@@ -152,6 +152,18 @@ navLinks.forEach(link => {
             ease: "elastic.out(1, 0.3)"
         });
     });
+
+    // Smooth scroll navigation
+    link.addEventListener("click", (e) => {
+        const targetId = link.getAttribute("href");
+        if (targetId.startsWith("#")) {
+            e.preventDefault();
+            lenis.scrollTo(targetId, {
+                offset: 0,
+                duration: 1.2
+            });
+        }
+    });
 });
 
 // Magnetic effect for other elements
@@ -179,20 +191,13 @@ document.querySelectorAll(".magnetic-item:not(.nav-links a)").forEach(item => {
     });
 });
 
-nav.addEventListener("mouseleave", () => {
-    gsap.to(hoverPill, {
-        opacity: 0,
-        duration: 0.3
-    });
-    // Return pill to active link if it exists
-    highlightNav();
-});
+let currentActiveSection = "home";
 
-function highlightNav() {
-    const currentPath = window.location.pathname.split("/").pop() || "index.html";
+function updateActiveNav(activeId) {
+    currentActiveSection = activeId;
     navLinks.forEach(link => {
-        const linkPath = link.getAttribute("href");
-        if (linkPath === currentPath) {
+        const href = link.getAttribute("href");
+        if (href === `#${activeId}`) {
             link.classList.add("active");
             
             const { left, top, width, height } = link.getBoundingClientRect();
@@ -213,9 +218,43 @@ function highlightNav() {
     });
 }
 
-// Initialize Nav
-setTimeout(highlightNav, 100);
-window.addEventListener("resize", highlightNav);
+nav.addEventListener("mouseleave", () => {
+    gsap.to(hoverPill, {
+        opacity: 0,
+        duration: 0.3
+    });
+    // Return pill to active link if it exists
+    updateActiveNav(currentActiveSection);
+});
+
+function initScrollNavigation() {
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach(section => {
+        ScrollTrigger.create({
+            trigger: section,
+            start: "top 40%",
+            end: "bottom 40%",
+            onToggle: self => {
+                if (self.isActive) {
+                    const id = section.getAttribute("id");
+                    updateActiveNav(id);
+                }
+            }
+        });
+    });
+}
+
+function handleResize() {
+    updateActiveNav(currentActiveSection);
+}
+
+// Initialize Scroll Nav and resize listener
+setTimeout(() => {
+    initScrollNavigation();
+    updateActiveNav("home");
+}, 100);
+
+window.addEventListener("resize", handleResize);
 
 // Hero Section Reveal
 const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
