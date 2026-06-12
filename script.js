@@ -1,5 +1,17 @@
+// Mobile detection
+const isMobile = window.innerWidth < 768;
+
 function animateBlobs() {
     const blobs = document.querySelectorAll(".blob");
+    
+    // Disable blob animations on mobile for performance
+    if (isMobile) {
+        blobs.forEach(blob => {
+            gsap.set(blob, { x: 0, y: 0, scale: 1 });
+        });
+        return;
+    }
+    
     blobs.forEach((blob) => {
         // Set initial random position instantly
         gsap.set(blob, {
@@ -16,7 +28,7 @@ function animateBlobs() {
 function moveBlob(blob) {
     const randomX = Math.random() * 80 - 40;
     const randomY = Math.random() * 80 - 40;
-    const randomDuration = 3 + Math.random() * 3; // Sped up from 5-10s
+    const randomDuration = 3 + Math.random() * 3;
 
     gsap.to(blob, {
         x: `${randomX}vw`,
@@ -27,23 +39,29 @@ function moveBlob(blob) {
     });
 }
 
-// Initialize Movement Immediately
+// Initialize Movement (disabled on mobile)
 animateBlobs();
 
-// Initialize Lenis for Ultra Smooth Scrolling
-const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smoothWheel: true,
-    wheelMultiplier: 1,
-})
+// Initialize Lenis for Ultra Smooth Scrolling (disabled on mobile)
+let lenis = null;
+if (!isMobile) {
+    lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        wheelMultiplier: 1,
+    })
 
-function raf(time) {
-    lenis.raf(time)
+    function raf(time) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
+    }
+
     requestAnimationFrame(raf)
+} else {
+    // Use default scroll on mobile
+    window.scrollBehavior = 'auto';
 }
-
-requestAnimationFrame(raf)
 
 // GSAP Animations
 gsap.registerPlugin(ScrollTrigger);
@@ -158,10 +176,15 @@ navLinks.forEach(link => {
         const targetId = link.getAttribute("href");
         if (targetId.startsWith("#")) {
             e.preventDefault();
-            lenis.scrollTo(targetId, {
-                offset: 0,
-                duration: 1.2
-            });
+            if (lenis) {
+                lenis.scrollTo(targetId, {
+                    offset: 0,
+                    duration: 1.2
+                });
+            } else {
+                // Fallback for mobile
+                document.querySelector(targetId)?.scrollIntoView({ behavior: 'smooth' });
+            }
         }
     });
 });
@@ -322,6 +345,8 @@ if (nameElement) {
 // Scroll Reveal for sections
 const revealElements = document.querySelectorAll(".reveal");
 revealElements.forEach((el) => {
+    // Optimize reveal animations on mobile
+    const duration = isMobile ? 0.6 : 1;
     gsap.from(el, {
         scrollTrigger: {
             trigger: el,
@@ -330,44 +355,58 @@ revealElements.forEach((el) => {
         },
         y: 40,
         opacity: 0,
-        duration: 1,
+        duration: duration,
         ease: "power3.out"
     });
 });
 
 // Parallax effect for blobs (desktop only for performance)
-if (window.innerWidth > 768) {
+if (!isMobile && window.innerWidth > 768) {
+    let ticking = false;
+    let lastX = 0;
+    let lastY = 0;
+
     window.addEventListener("mousemove", (e) => {
-        const { clientX, clientY } = e;
-        const x = (clientX - window.innerWidth / 2) * 0.02;
-        const y = (clientY - window.innerHeight / 2) * 0.02;
+        lastX = e.clientX;
+        lastY = e.clientY;
 
-        gsap.to(".bg-blobs", { x: x, y: y, duration: 2, ease: "power2.out" });
-        
-        // 3D Tilt for CV Container (Disabled on mobile for performance)
-        const cvContainer = document.querySelector(".cv-container");
-        if (cvContainer) {
-            const rect = cvContainer.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            const rotateX = (clientY - centerY) * 0.01;
-            const rotateY = (clientX - centerX) * -0.01;
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                const { clientX, clientY } = { clientX: lastX, clientY: lastY };
+                const x = (clientX - window.innerWidth / 2) * 0.02;
+                const y = (clientY - window.innerHeight / 2) * 0.02;
 
-            gsap.to(cvContainer, {
-                rotationX: rotateX,
-                rotationY: rotateY,
-                duration: 0.5,
-                ease: "power2.out"
+                gsap.to(".bg-blobs", { x: x, y: y, duration: 2, ease: "power2.out" });
+                
+                // 3D Tilt for CV Container (Disabled on mobile for performance)
+                const cvContainer = document.querySelector(".cv-container");
+                if (cvContainer) {
+                    const rect = cvContainer.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    const rotateX = (clientY - centerY) * 0.01;
+                    const rotateY = (clientX - centerX) * -0.01;
+
+                    gsap.to(cvContainer, {
+                        rotationX: rotateX,
+                        rotationY: rotateY,
+                        duration: 0.5,
+                        ease: "power2.out"
+                    });
+                }
+
+                // Cinematic Sphere follow
+                gsap.to(".sphere", {
+                    x: x * 2,
+                    y: y * 2,
+                    duration: 1.5,
+                    ease: "power1.out"
+                });
+
+                ticking = false;
             });
+            ticking = true;
         }
-
-        // Cinematic Sphere follow
-        gsap.to(".sphere", {
-            x: x * 2,
-            y: y * 2,
-            duration: 1.5,
-            ease: "power1.out"
-        });
     });
 }
 
@@ -378,7 +417,7 @@ if (typewriterElement) {
     let roleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    let typeSpeed = 100;
+    let typeSpeed = isMobile ? 60 : 100;
 
     function type() {
         const currentRole = roles[roleIndex];
@@ -386,11 +425,11 @@ if (typewriterElement) {
         if (isDeleting) {
             typewriterElement.textContent = currentRole.substring(0, charIndex - 1);
             charIndex--;
-            typeSpeed = 40;
+            typeSpeed = isMobile ? 25 : 40;
         } else {
             typewriterElement.textContent = currentRole.substring(0, charIndex + 1);
             charIndex++;
-            typeSpeed = 70;
+            typeSpeed = isMobile ? 40 : 70;
         }
 
         if (!isDeleting && charIndex === currentRole.length) {
