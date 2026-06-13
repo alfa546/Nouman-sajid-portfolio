@@ -3,28 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#090912">
-    <meta name="description" content="Nouman Sajid portfolio - backend developer, QA automation engineer, and UI/UX designer.">
+    <meta name="theme-color" content="#0b0d13">
+    <meta name="description" content="Nouman Sajid portfolio - backend developer, QA automation engineer, and UI-focused problem solver.">
     <title>Nouman Sajid | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="page-shell"></div>
-    <div class="ambient ambient-one"></div>
-    <div class="ambient ambient-two"></div>
-    <div class="ambient ambient-three"></div>
+    <div class="grain"></div>
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+    <div class="orb orb-three"></div>
 
-    <header class="topbar">
-        <a class="brand" href="#home">Nouman <span>Sajid</span></a>
-        <nav class="nav-pill" aria-label="Primary">
+    <header class="site-header">
+        <a class="brand" href="#home">
+            <span class="brand-mark">NS</span>
+            <span class="brand-copy">Nouman Sajid</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
             <a href="#home" class="nav-link active">Home</a>
             <a href="#about" class="nav-link">About</a>
             <a href="#skills" class="nav-link">Skills</a>
             <a href="#projects" class="nav-link">Projects</a>
+            <a href="#github" class="nav-link">GitHub</a>
             <a href="#education" class="nav-link">Education</a>
             <a href="#contact" class="nav-link">Contact</a>
         </nav>
@@ -33,63 +37,87 @@
     <main>
         <section id="home" class="hero section">
             <div class="hero-copy reveal">
-                <p class="eyebrow">Hi, I’m</p>
+                <p class="kicker">Hi, I'm</p>
                 <h1>Nouman Sajid</h1>
-                <p class="role">Web Developer</p>
-                <p class="hero-line">Building polished digital experiences with backend logic, QA automation, and clean UI systems.</p>
+                <p class="hero-role">Backend Developer • QA Automation • UI/UX Designer</p>
+                <p class="hero-text">I build polished, stable, and usable digital products with Python, C++, Playwright, modern frontends, and thoughtful interface design.</p>
                 <div class="hero-actions">
-                    <a class="btn btn-primary" href="#contact">Get In Touch</a>
-                    <a class="btn btn-secondary" href="CV/Nouman_Sajid_Resume.pdf" target="_blank" rel="noreferrer">My Resume</a>
+                    <a class="btn btn-primary" href="#contact">Get In Touch <i class='bx bx-right-arrow-alt'></i></a>
+                    <a class="btn btn-secondary" href="CV/Nouman_Sajid_Resume.pdf" target="_blank" rel="noreferrer">Download CV <i class='bx bx-download'></i></a>
                 </div>
-                <div class="hero-scroll">
-                    <span>Scroll</span>
-                    <i class='bx bx-mouse'></i>
+                <div class="hero-tags" aria-label="Core expertise">
+                    <span>Python</span>
+                    <span>Playwright</span>
+                    <span>C++</span>
+                    <span>UI/UX</span>
                 </div>
             </div>
-            <div class="hero-portrait reveal">
-                <div class="portrait-frame">
-                    <img src="Picture.png" alt="Nouman Sajid portrait">
+
+            <div class="hero-visual reveal">
+                <div class="profile-card">
+                    <div class="profile-image-wrap">
+                        <img src="Picture.png" alt="Nouman Sajid portrait">
+                    </div>
+                    <div class="profile-meta">
+                        <p class="mini-label">AI Engineer</p>
+                        <h2>Building the future with stable software and calm interfaces.</h2>
+                        <div class="mini-stats">
+                            <div>
+                                <strong>06+</strong>
+                                <span>featured projects</span>
+                            </div>
+                            <div>
+                                <strong>06+</strong>
+                                <span>certifications</span>
+                            </div>
+                            <div>
+                                <strong>04</strong>
+                                <span>focus areas</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="about" class="about section">
             <div class="section-heading reveal">
-                <p class="section-kicker">About Me</p>
+                <p class="kicker">About Me</p>
                 <h2>AI Software Engineer</h2>
+                <p class="section-text">Focused on backend systems, automation, and interfaces that feel deliberate, balanced, and fast to use.</p>
             </div>
 
-            <div class="about-layout">
-                <div class="about-card reveal">
-                    <div class="about-card-top">
-                        <img src="Picture.png" alt="Nouman Sajid working profile">
+            <div class="about-grid">
+                <article class="about-panel reveal">
+                    <div class="about-head">
+                        <img src="Picture.png" alt="Nouman Sajid at desk">
                         <div>
-                            <p class="mini-label">AI Engineer</p>
-                            <h3>Nouman Sajid · Building the future with intelligent systems</h3>
+                            <p class="mini-label">Nouman Sajid</p>
+                            <h3>Building practical products with an emphasis on clarity and quality.</h3>
                         </div>
                     </div>
-                    <p>I’m a backend-focused developer passionate about scalable services, QA automation, and user-centered interfaces. I work with Python, C++, C#, Playwright, and modern web tools to ship practical products with strong technical foundations.</p>
+                    <p>I work across backend development, QA automation, and UI implementation. My approach is to keep the structure clean, the interactions smooth, and the experience easy to understand. I use Python, Playwright, C++, C#, HTML, CSS, JavaScript, and design thinking to turn ideas into working products.</p>
                     <div class="about-actions">
-                        <a class="btn btn-primary" href="#contact">Get In Touch</a>
-                        <a class="btn btn-secondary" href="CV/Nouman_Sajid_Resume.pdf" target="_blank" rel="noreferrer">Download CV</a>
+                        <a class="btn btn-primary" href="#contact">Get In Touch <i class='bx bx-message-square-dots'></i></a>
+                        <a class="btn btn-secondary" href="CV/Nouman_Sajid_Resume.pdf" target="_blank" rel="noreferrer">Download CV <i class='bx bx-file'></i></a>
                     </div>
-                </div>
+                </article>
 
-                <div class="service-grid reveal">
-                    <article class="service-card">
-                        <i class='bx bx-code-alt'></i>
-                        <h3>Backend Development</h3>
-                        <p>Python services, APIs, and business logic with a focus on reliability and maintainability.</p>
+                <div class="feature-stack reveal">
+                    <article class="feature-card">
+                        <i class='bx bx-server'></i>
+                        <h3>Backend Engineering</h3>
+                        <p>API design, data flow, logic, and dependable application architecture.</p>
                     </article>
-                    <article class="service-card">
-                        <i class='bx bx-bug'></i>
+                    <article class="feature-card">
+                        <i class='bx bx-check-shield'></i>
                         <h3>QA Automation</h3>
-                        <p>Playwright-based testing flows that catch regressions early and keep releases stable.</p>
+                        <p>Playwright-driven testing that protects user journeys and release confidence.</p>
                     </article>
-                    <article class="service-card">
-                        <i class='bx bx-layout'></i>
-                        <h3>UI/UX Design</h3>
-                        <p>Thoughtful interfaces with clear spacing, strong hierarchy, and smooth user flow.</p>
+                    <article class="feature-card">
+                        <i class='bx bx-palette'></i>
+                        <h3>UI/UX Direction</h3>
+                        <p>Elegant visual systems with proportion, spacing, and readable hierarchy.</p>
                     </article>
                 </div>
             </div>
@@ -97,11 +125,12 @@
 
         <section id="skills" class="skills section">
             <div class="section-heading reveal">
-                <p class="section-kicker">Skills</p>
+                <p class="kicker">Skills</p>
                 <h2>My Skills</h2>
+                <p class="section-text">A focused set of strengths across engineering, design, and shipping quality work.</p>
             </div>
 
-            <div class="skills-toolbar reveal" role="tablist" aria-label="Skill filters">
+            <div class="skill-toolbar reveal" role="tablist" aria-label="Skill filters">
                 <button class="chip active" type="button" data-filter="all">All</button>
                 <button class="chip" type="button" data-filter="frontend">Frontend</button>
                 <button class="chip" type="button" data-filter="backend">Backend</button>
@@ -111,61 +140,49 @@
 
             <div class="skill-grid">
                 <article class="skill-card reveal" data-category="backend ai">
-                    <h3>Python for AI/ML</h3><span>95%</span>
-                    <div class="bar"><span style="width:95%"></span></div>
+                    <div><h3>Python for AI/ML</h3><span>95%</span></div>
+                    <div class="skill-bar"><span style="width:95%"></span></div>
                 </article>
                 <article class="skill-card reveal" data-category="ai backend">
-                    <h3>Playwright QA</h3><span>90%</span>
-                    <div class="bar"><span style="width:90%"></span></div>
+                    <div><h3>Playwright QA</h3><span>90%</span></div>
+                    <div class="skill-bar"><span style="width:90%"></span></div>
                 </article>
                 <article class="skill-card reveal" data-category="backend">
-                    <h3>OOP & DSA</h3><span>92%</span>
-                    <div class="bar"><span style="width:92%"></span></div>
+                    <div><h3>OOP & DSA</h3><span>92%</span></div>
+                    <div class="skill-bar"><span style="width:92%"></span></div>
                 </article>
                 <article class="skill-card reveal" data-category="backend">
-                    <h3>C++ / C#</h3><span>85%</span>
-                    <div class="bar"><span style="width:85%"></span></div>
+                    <div><h3>C++ / C#</h3><span>85%</span></div>
+                    <div class="skill-bar"><span style="width:85%"></span></div>
                 </article>
                 <article class="skill-card reveal" data-category="frontend">
-                    <h3>Tailwind CSS</h3><span>88%</span>
-                    <div class="bar"><span style="width:88%"></span></div>
+                    <div><h3>HTML / CSS / JS</h3><span>89%</span></div>
+                    <div class="skill-bar"><span style="width:89%"></span></div>
                 </article>
                 <article class="skill-card reveal" data-category="frontend">
-                    <h3>UI/UX Design</h3><span>86%</span>
-                    <div class="bar"><span style="width:86%"></span></div>
+                    <div><h3>UI/UX Design</h3><span>86%</span></div>
+                    <div class="skill-bar"><span style="width:86%"></span></div>
                 </article>
                 <article class="skill-card reveal" data-category="tools">
-                    <h3>Git & GitHub</h3><span>90%</span>
-                    <div class="bar"><span style="width:90%"></span></div>
+                    <div><h3>Git & GitHub</h3><span>90%</span></div>
+                    <div class="skill-bar"><span style="width:90%"></span></div>
                 </article>
                 <article class="skill-card reveal" data-category="tools backend">
-                    <h3>Flask & APIs</h3><span>84%</span>
-                    <div class="bar"><span style="width:84%"></span></div>
+                    <div><h3>Flask & APIs</h3><span>84%</span></div>
+                    <div class="skill-bar"><span style="width:84%"></span></div>
                 </article>
                 <article class="skill-card reveal" data-category="ai tools">
-                    <h3>Problem Solving</h3><span>93%</span>
-                    <div class="bar"><span style="width:93%"></span></div>
-                </article>
-                <article class="skill-card reveal" data-category="backend frontend">
-                    <h3>HTML / CSS / JS</h3><span>89%</span>
-                    <div class="bar"><span style="width:89%"></span></div>
-                </article>
-                <article class="skill-card reveal" data-category="tools ai">
-                    <h3>Automation Mindset</h3><span>91%</span>
-                    <div class="bar"><span style="width:91%"></span></div>
-                </article>
-                <article class="skill-card reveal" data-category="frontend tools">
-                    <h3>Responsive UI</h3><span>87%</span>
-                    <div class="bar"><span style="width:87%"></span></div>
+                    <div><h3>Problem Solving</h3><span>93%</span></div>
+                    <div class="skill-bar"><span style="width:93%"></span></div>
                 </article>
             </div>
         </section>
 
         <section id="projects" class="projects section">
             <div class="section-heading reveal">
-                <p class="section-kicker">Featured Projects</p>
+                <p class="kicker">Featured Work</p>
                 <h2>Projects</h2>
-                <p class="section-text">A curated set of work that spans web platforms, automation, and desktop tools.</p>
+                <p class="section-text">Selected work spanning web platforms, automation, and desktop tools.</p>
             </div>
 
             <div class="project-grid">
@@ -175,7 +192,7 @@
                         <div class="project-tags"><span>Next.js</span><span>React</span><span>JavaScript</span></div>
                         <h3>Pak Job Portal</h3>
                         <p>A modern job portal platform connecting Pakistani job seekers with employers.</p>
-                        <a href="https://pakjobportal.vercel.app" target="_blank" rel="noreferrer">View Project <i class='bx bx-arrow-up-right'></i></a>
+                        <a href="https://pakjobportal.vercel.app" target="_blank" rel="noreferrer">View Project <i class='bx bx-up-right-arrow-circle'></i></a>
                     </div>
                 </article>
                 <article class="project-card reveal">
@@ -184,7 +201,7 @@
                         <div class="project-tags"><span>Python</span><span>AI</span><span>Video Gen</span></div>
                         <h3>LIMO Agent</h3>
                         <p>An advanced AI assistant with chatbot capability and video generation integration.</p>
-                        <a href="https://github.com/alfa546/LIMO_AGENT" target="_blank" rel="noreferrer">View Repo <i class='bx bx-arrow-up-right'></i></a>
+                        <a href="https://github.com/alfa546/LIMO_AGENT" target="_blank" rel="noreferrer">View Repo <i class='bx bx-up-right-arrow-circle'></i></a>
                     </div>
                 </article>
                 <article class="project-card reveal">
@@ -193,7 +210,7 @@
                         <div class="project-tags"><span>Flask</span><span>Python</span><span>ML</span></div>
                         <h3>Diabetes Prediction Web</h3>
                         <p>Machine learning web app with bilingual support and AI-powered health guidance.</p>
-                        <a href="https://github.com/alfa546/Diabetes-Prediction-Web" target="_blank" rel="noreferrer">View Repo <i class='bx bx-arrow-up-right'></i></a>
+                        <a href="https://github.com/alfa546/Diabetes-Prediction-Web" target="_blank" rel="noreferrer">View Repo <i class='bx bx-up-right-arrow-circle'></i></a>
                     </div>
                 </article>
                 <article class="project-card reveal">
@@ -202,7 +219,7 @@
                         <div class="project-tags"><span>Python</span><span>Desktop</span><span>Inno Setup</span></div>
                         <h3>Vet Management System</h3>
                         <p>Desktop clinic management for inventory, billing, treatment, and accounting flows.</p>
-                        <a href="https://github.com/alfa546/Vet-management-system-desktop-application" target="_blank" rel="noreferrer">View Repo <i class='bx bx-arrow-up-right'></i></a>
+                        <a href="https://github.com/alfa546/Vet-management-system-desktop-application" target="_blank" rel="noreferrer">View Repo <i class='bx bx-up-right-arrow-circle'></i></a>
                     </div>
                 </article>
                 <article class="project-card reveal">
@@ -211,37 +228,70 @@
                         <div class="project-tags"><span>Python</span><span>Tkinter</span><span>Folium</span></div>
                         <h3>AI Maze Solver</h3>
                         <p>Visualization for BFS and DFS maze solving with real-world city routing support.</p>
-                        <a href="https://github.com/alfa546/AI_Maze_Solver-Location-Finder" target="_blank" rel="noreferrer">View Repo <i class='bx bx-arrow-up-right'></i></a>
+                        <a href="https://github.com/alfa546/AI_Maze_Solver-Location-Finder" target="_blank" rel="noreferrer">View Repo <i class='bx bx-up-right-arrow-circle'></i></a>
                     </div>
                 </article>
             </div>
         </section>
 
+        <section id="github" class="github section">
+            <div class="section-heading reveal">
+                <p class="kicker">GitHub Activity</p>
+                <h2>Contributions</h2>
+                <p class="section-text">A live contribution heatmap and stats summary with a green GitHub visual language.</p>
+            </div>
+
+            <div class="github-grid">
+                <article class="github-panel reveal">
+                    <div class="github-panel-head">
+                        <div>
+                            <p class="mini-label">Last 12 months</p>
+                            <h3 id="gh-total-contributions">Loading contributions...</h3>
+                        </div>
+                        <span class="github-pill">GitHub heatmap</span>
+                    </div>
+                    <div id="github-contributions" class="contribution-grid" aria-label="GitHub contribution calendar"></div>
+                </article>
+
+                <div class="github-stats">
+                    <article class="github-stat reveal">
+                        <img src="https://stats.programcx.cn/api?username=alfa546&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=ffffff&icon_color=39d353&text_color=8e8e93" alt="GitHub stats">
+                    </article>
+                    <article class="github-stat reveal">
+                        <img src="https://github-readme-streak-stats.herokuapp.com/?user=alfa546&theme=dark&hide_border=true&background=0d1117&stroke=30363d&ring=39d353&fire=39d353&currStreakNum=ffffff&sideNums=ffffff&currStreakLabel=8e8e93&sideLabels=8e8e93&dates=636e7b" alt="GitHub streak stats">
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <section id="education" class="education section">
             <div class="section-heading reveal">
-                <p class="section-kicker">Education</p>
+                <p class="kicker">Education</p>
                 <h2>Professional Snapshot</h2>
             </div>
 
-            <div class="education-panel reveal">
-                <div>
+            <div class="timeline">
+                <article class="timeline-card reveal">
                     <p class="mini-label">Institution</p>
                     <h3>NTU Faisalabad</h3>
-                </div>
-                <div>
+                    <p>Academic foundation with focus on computer science, AI, and software engineering.</p>
+                </article>
+                <article class="timeline-card reveal">
                     <p class="mini-label">Focus</p>
                     <h3>AI and ML</h3>
-                </div>
-                <div>
+                    <p>Building practical knowledge around machine learning, automation, and intelligent tools.</p>
+                </article>
+                <article class="timeline-card reveal">
                     <p class="mini-label">Passion</p>
                     <h3>Creative UI & AI</h3>
-                </div>
+                    <p>Combining design quality with engineering discipline to make products feel premium.</p>
+                </article>
             </div>
         </section>
 
         <section id="certificates" class="certificates section">
             <div class="section-heading reveal">
-                <p class="section-kicker">Certificates</p>
+                <p class="kicker">Certificates</p>
                 <h2>Verified Expertise</h2>
             </div>
 
@@ -299,29 +349,49 @@
 
         <section id="contact" class="contact section">
             <div class="section-heading reveal">
-                <p class="section-kicker">Contact</p>
+                <p class="kicker">Contact</p>
                 <h2>Get In Touch</h2>
+                <p class="section-text">Open to opportunities, collaborations, and thoughtful technical work.</p>
             </div>
 
-            <div class="contact-card reveal">
-                <form id="contact-form">
-                    <div class="input-row">
-                        <input type="text" id="name" name="name" placeholder="Name" required>
-                        <input type="email" id="email" name="email" placeholder="Email" required>
-                    </div>
-                    <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-                    <button type="submit" class="btn btn-primary submit-btn">Send Message <i class='bx bx-paper-plane'></i></button>
-                </form>
-            </div>
+            <div class="contact-layout">
+                <article class="contact-panel reveal">
+                    <form id="contact-form">
+                        <div class="input-row">
+                            <input type="text" id="name" name="name" placeholder="Your name" required>
+                            <input type="email" id="email" name="email" placeholder="Your email" required>
+                        </div>
+                        <textarea id="message" name="message" placeholder="Tell me about your idea or project" rows="6" required></textarea>
+                        <button type="submit" class="btn btn-primary submit-btn">Send Message <i class='bx bx-paper-plane'></i></button>
+                    </form>
+                </article>
 
-            <div class="contact-links reveal">
-                <a href="tel:+923136823997" class="contact-link"><i class='bx bxl-whatsapp'></i><span>WhatsApp</span></a>
-                <a href="mailto:noumansajid623@gmail.com" class="contact-link"><i class='bx bxl-gmail'></i><span>Email</span></a>
-                <a href="https://github.com/alfa546" target="_blank" rel="noreferrer" class="contact-link"><i class='bx bxl-github'></i><span>GitHub</span></a>
-                <a href="https://www.linkedin.com/in/nouman-sajid-7199803a5?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noreferrer" class="contact-link"><i class='bx bxl-linkedin'></i><span>LinkedIn</span></a>
+                <div class="contact-stack">
+                    <a href="tel:+923136823997" class="contact-card reveal">
+                        <i class='bx bxl-whatsapp'></i>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a href="mailto:noumansajid623@gmail.com" class="contact-card reveal">
+                        <i class='bx bxl-gmail'></i>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://github.com/alfa546" target="_blank" rel="noreferrer" class="contact-card reveal">
+                        <i class='bx bxl-github'></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/nouman-sajid-7199803a5?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noreferrer" class="contact-card reveal">
+                        <i class='bx bxl-linkedin'></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
+
+    <footer class="site-footer">
+        <p>Nouman Sajid · Portfolio built with a refined modern visual system.</p>
+        <a href="#home">Back to top <i class='bx bx-up-arrow-alt'></i></a>
+    </footer>
 
     <a class="floating-whatsapp" href="https://wa.me/923136823997" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
         <i class='bx bxl-whatsapp'></i>
