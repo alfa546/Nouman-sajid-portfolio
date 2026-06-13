@@ -8,44 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
         window.lucide.createIcons();
     }
 
-    // 2. Custom Cursor
-    const cursor = document.querySelector('.custom-cursor');
-    const follower = document.querySelector('.custom-cursor-follower');
-    
+    // 2. Custom Cursor - removed, using default OS cursor
+    // (cursor elements were removed from HTML; tracking code omitted to prevent null errors)
     let mouseX = 0, mouseY = 0;
-    let followerX = 0, followerY = 0;
-    
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        
-        // Immediate position for inner cursor dot
-        cursor.style.left = mouseX + 'px';
-        cursor.style.top = mouseY + 'px';
-    });
-    
-    // Smooth interpolation (lerp) for cursor follower ring
-    function updateFollower() {
-        // lerp: current + (target - current) * factor
-        followerX += (mouseX - followerX) * 0.15;
-        followerY += (mouseY - followerY) * 0.15;
-        
-        follower.style.left = followerX + 'px';
-        follower.style.top = followerY + 'px';
-        
-        requestAnimationFrame(updateFollower);
-    }
-    updateFollower();
-    
-    // Magnetic / Hover cursor scale up
-    const hoverElements = document.querySelectorAll('a, button, .project-card, .cert-card, .social-btn, .theme-toggle-btn');
-    hoverElements.forEach(elem => {
-        elem.addEventListener('mouseenter', () => {
-            document.body.classList.add('hovering');
-        });
-        elem.addEventListener('mouseleave', () => {
-            document.body.classList.remove('hovering');
-        });
     });
 
     // 3. Interactive Canvas Particle Background
