@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "Limo Agent is a state-of-the-art AI Assistant integrated with Google's advanced Veo 3.1 Lite video generation model. The application features a highly responsive chatbot interface built with Python, allowing users to write natural language prompts and retrieve high-fidelity video outcomes. Key accomplishments include developing highly optimized polling and webhook retrieval structures to asynchronously retrieve video files, caching active prompt logs, and providing a clean conversational layout for smooth interactions.",
             tech: ["Python", "Google Veo 3.1 Lite API", "Webhooks", "JSON Parser", "Threading"],
             link: "#",
-            github: "https://github.com/alfa546"
+            github: "https://github.com/alfa546/LIMO_AGENT"
         },
         "pak-job-portal": {
             title: "Pak Job Portal",
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "A modern, highly secure recruitment and application platform tailored for Pakistani job seekers. Built using React and Next.js, it facilitates real-time jobs listing matching, user resumes uploading, and admin application tracking. The database connectivity handles secure authentication, user roles, real-time filters for city locations, and job category groupings. It features sleek tailwind stylings and absolute mobile responsiveness.",
             tech: ["Next.js", "React.js", "Tailwind CSS", "Firebase Auth", "Firestore DB"],
             link: "#",
-            github: "https://github.com/alfa546"
+            github: "https://github.com/alfa546/Pak-job-portal"
         },
         "diabetes-prediction": {
             title: "Diabetes Prediction Web",
@@ -311,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "An intelligent, bilingual healthcare application designed for early diabetes risk assessment. The backend is powered by a Flask server hosting a Scikit-learn Random Forest model trained on clinical parameters. Key innovations include integrating the Claude API to generate personalized health advice and actionable nutrition tips based on model risk indices. Full support for English and Urdu makes medical predictions accessible to a broader audience in Pakistan.",
             tech: ["Flask", "Scikit-learn", "Python", "Claude API", "Bilingual Localization", "Pandas"],
             link: "#",
-            github: "https://github.com/alfa546"
+            github: "https://github.com/alfa546/Diabetes-Prediction-Web"
         },
         "maze-solver": {
             title: "AI Maze Solver & Location Finder",
@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "A desktop and web visualizer demonstrating advanced route-finding algorithms. It features a custom Tkinter grid system animating Breadth-First Search (BFS) and Depth-First Search (DFS) algorithms in real-time, solving randomized mazes step-by-step. Additionally, it integrates OpenStreetMap coordinates using NumPy and Folium to plot optimal paths between Pakistani cities, rendering interactive geographical maps in HTML windows.",
             tech: ["Python", "Tkinter GUI", "OpenStreetMap", "Folium", "NumPy", "Geopy"],
             link: "#",
-            github: "https://github.com/alfa546"
+            github: "https://github.com/alfa546/AI_Maze_Solver-Location-Finder"
         },
         "vet-management": {
             title: "Vet Management System",
@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "A custom medical management portal built for veterinary clinics. This system facilitates patient scheduling, animal health history tracking, vaccine scheduling, and billing. Built with a responsive interface, it bridges diagnostic tools and records. Demonstrates strong database design with secure record retrieval, and visual dashboard statistics showing animal demographic breakdowns.",
             tech: ["HTML5/CSS3", "JavaScript", "SQLite", "Python Flask", "Chart.js"],
             link: "#",
-            github: "https://github.com/alfa546"
+            github: "https://github.com/alfa546/Vet-management-system-desktop-application"
         }
     };
     

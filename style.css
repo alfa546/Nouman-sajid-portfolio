@@ -77,6 +77,7 @@ body {
     overflow-x: hidden;
     line-height: 1.6;
     transition: background-color 0.6s var(--transition-medium), color 0.6s var(--transition-medium);
+    cursor: default;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -199,42 +200,15 @@ ul {
     box-shadow: 0 25px 50px rgba(99, 102, 241, 0.1);
 }
 
-/* Custom Cursor */
-.custom-cursor {
-    width: 8px;
-    height: 8px;
-    background: var(--accent-secondary);
-    border-radius: 50%;
-    position: fixed;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 10000;
-    transition: width 0.2s, height 0.2s, background-color 0.2s;
-}
-
+/* Custom Cursor - disabled, using default OS cursor */
+.custom-cursor,
 .custom-cursor-follower {
-    width: 40px;
-    height: 40px;
-    border: 1px solid var(--accent-primary);
-    border-radius: 50%;
-    position: fixed;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.08s ease-out, width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s;
+    display: none;
 }
 
-/* Cursor Hover States */
-body.hovering .custom-cursor {
-    width: 12px;
-    height: 12px;
-    background: var(--accent-primary);
-}
-body.hovering .custom-cursor-follower {
-    width: 60px;
-    height: 60px;
-    background-color: rgba(99, 102, 241, 0.1);
-    border-color: var(--accent-secondary);
+/* Pointer cursor on interactive elements */
+a, button, .project-card, .cert-card, [data-project], [data-cert] {
+    cursor: pointer;
 }
 
 /* Background Canvas & Mesh */
@@ -304,6 +278,15 @@ header.scrolled {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+/* Social icon SVGs - always visible regardless of Lucide CDN */
+.social-icon-svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    flex-shrink: 0;
+    display: block;
 }
 
 .logo {
@@ -461,7 +444,7 @@ body:not(.light-mode) .moon-icon {
 
 .hero-buttons {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
     flex-wrap: wrap;
 }
 
@@ -565,15 +548,18 @@ body:not(.light-mode) .moon-icon {
 .about-image-wrapper {
     position: relative;
     border-radius: 20px;
-    padding: 10px;
+    padding: 6px;
     background: var(--accent-gradient);
     box-shadow: var(--card-shadow);
+    max-width: 380px;
+    align-self: flex-start;
 }
 
 .about-image-inner {
     border-radius: 12px;
     overflow: hidden;
     position: relative;
+    max-height: 460px;
 }
 
 .about-image-inner::after {
@@ -590,9 +576,12 @@ body:not(.light-mode) .moon-icon {
 .about-image {
     width: 100%;
     height: auto;
+    max-height: 460px;
     object-fit: cover;
+    object-position: top center;
     filter: grayscale(20%);
     transition: filter var(--transition-medium), transform var(--transition-slow);
+    display: block;
 }
 
 .about-image-wrapper:hover .about-image {
