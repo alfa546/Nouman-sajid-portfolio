@@ -6,27 +6,23 @@ const skillCards = Array.from(document.querySelectorAll('.skill-card'));
 const githubContainer = document.getElementById('github-contributions');
 const githubTotal = document.getElementById('gh-total-contributions');
 
-const observer = new IntersectionObserver((entries) => {
+const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('in-view');
-            observer.unobserve(entry.target);
+            revealObserver.unobserve(entry.target);
         }
     });
 }, { threshold: 0.18 });
 
-revealItems.forEach((item) => observer.observe(item));
-
-function setActiveNav(id) {
-    navLinks.forEach((link) => {
-        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-    });
-}
+revealItems.forEach((item) => revealObserver.observe(item));
 
 const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
-            setActiveNav(entry.target.id);
+            navLinks.forEach((link) => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+            });
         }
     });
 }, { threshold: 0.45 });
@@ -50,7 +46,7 @@ skillButtons.forEach((button) => {
         skillCards.forEach((card) => {
             const categories = card.dataset.category || '';
             const visible = filter === 'all' || categories.includes(filter);
-            card.classList.toggle('hidden', !visible);
+            card.style.display = visible ? '' : 'none';
         });
     });
 });
@@ -63,7 +59,7 @@ function contributionLevel(count) {
     return 4;
 }
 
-function renderContributionCells(contributions) {
+function renderContributions(contributions) {
     if (!githubContainer) return;
 
     githubContainer.innerHTML = '';
@@ -71,10 +67,10 @@ function renderContributionCells(contributions) {
 
     contributions.forEach((entry) => {
         const cell = document.createElement('span');
-        const level = contributionLevel(entry.contributionCount || 0);
-        total += entry.contributionCount || 0;
-        cell.className = `contribution-cell contribution-card-${level}`;
-        cell.title = `${entry.date}: ${entry.contributionCount || 0} contributions`;
+        const count = Number(entry.contributionCount || 0);
+        total += count;
+        cell.className = `contribution-cell contribution-level-${contributionLevel(count)}`;
+        cell.title = `${entry.date}: ${count} contributions`;
         githubContainer.appendChild(cell);
     });
 
@@ -89,13 +85,13 @@ async function loadGitHubContributions() {
     try {
         const response = await fetch('https://github-contributions-api.deno.dev/alfa546.json?flat=true', { cache: 'no-store' });
         const data = await response.json();
-        renderContributionCells(data.contributions || []);
+        renderContributions(data.contributions || []);
     } catch (error) {
-        const fallback = Array.from({ length: 365 }, (_, index) => ({
-            contributionCount: index % 13 === 0 ? 8 : index % 7 === 0 ? 3 : 0,
+        const fallback = Array.from({ length: 364 }, (_, index) => ({
+            contributionCount: index % 11 === 0 ? 8 : index % 5 === 0 ? 3 : 0,
             date: `2025-${String(Math.floor(index / 30) + 1).padStart(2, '0')}-${String((index % 30) + 1).padStart(2, '0')}`
         }));
-        renderContributionCells(fallback);
+        renderContributions(fallback);
     }
 }
 
@@ -104,7 +100,7 @@ if (contactForm) {
     contactForm.addEventListener('submit', (event) => {
         event.preventDefault();
         const button = contactForm.querySelector('.submit-btn');
-        const original = button.innerHTML;
+        const originalContent = button.innerHTML;
 
         button.innerHTML = 'Sending... <i class="bx bx-loader-alt bx-spin"></i>';
         button.disabled = true;
@@ -114,12 +110,11 @@ if (contactForm) {
             contactForm.reset();
 
             setTimeout(() => {
-                button.innerHTML = original;
+                button.innerHTML = originalContent;
                 button.disabled = false;
             }, 1800);
         }, 1100);
     });
 }
 
-setActiveNav('home');
 loadGitHubContributions();
