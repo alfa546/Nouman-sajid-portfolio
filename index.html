@@ -1,386 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#080810">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#090912">
+    <meta name="description" content="Nouman Sajid portfolio - backend developer, QA automation engineer, and UI/UX designer.">
     <title>Nouman Sajid | Portfolio</title>
-    <meta name="description" content="Nouman Sajid - Web Developer & UI/UX Designer Portfolio">
-
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="noise-overlay"></div>
+    <div class="page-shell"></div>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div class="ambient ambient-three"></div>
 
-    <div class="bg-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-        <div class="blob blob-4"></div>
-    </div>
-
-    <nav>
-        <div class="nav-hover-pill"></div>
-        <div class="nav-links">
-            <a href="#home" class="magnetic-item">Home</a>
-            <a href="#about" class="magnetic-item">About</a>
-            <a href="#projects" class="magnetic-item">Projects</a>
-            <a href="#cv" class="magnetic-item">CV</a>
-            <a href="#certificates" class="magnetic-item">Certificates</a>
-            <a href="#contact" class="magnetic-item">Contact</a>
-        </div>
-    </nav>
+    <header class="topbar">
+        <a class="brand" href="#home">Nouman <span>Sajid</span></a>
+        <nav class="nav-pill" aria-label="Primary">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#education" class="nav-link">Education</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+    </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-container">
-                <div class="hero-text">
-                    <h1 class="reveal">NOUMAN SAJID</h1>
-                    <p class="hero-sub reveal"><span class="im-bold">I'm a</span> <span id="typewriter"
-                            class="gradient-text"></span></p>
-                    <p class="hero-quote reveal">"If you can't fly, then run, if you can't run, then walk, if you can't
-                        walk, then crawl, but whatever you do, you have to keep moving forward"</p>
+        <section id="home" class="hero section">
+            <div class="hero-copy reveal">
+                <p class="eyebrow">Hi, I’m</p>
+                <h1>Nouman Sajid</h1>
+                <p class="role">Web Developer</p>
+                <p class="hero-line">Building polished digital experiences with backend logic, QA automation, and clean UI systems.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#contact">Get In Touch</a>
+                    <a class="btn btn-secondary" href="CV/Nouman_Sajid_Resume.pdf" target="_blank" rel="noreferrer">My Resume</a>
                 </div>
-                <div class="hero-image reveal">
-                    <div class="image-frame">
-                        <img src="Picture.png" alt="Nouman Sajid">
-                    </div>
+                <div class="hero-scroll">
+                    <span>Scroll</span>
+                    <i class='bx bx-mouse'></i>
+                </div>
+            </div>
+            <div class="hero-portrait reveal">
+                <div class="portrait-frame">
+                    <img src="Picture.png" alt="Nouman Sajid portrait">
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="about">
-            <div class="about-grid">
-                <div class="about-content">
-                    <h2 class="reveal">About <span class="gradient-text">Me</span></h2>
-                    <p class="reveal">I'm a full-stack developer passionate about building robust applications. I work as a <strong>Backend Developer</strong> with Python, building scalable services and APIs. I'm also skilled as a <strong>Systems Programmer</strong> using C++ and C# for high-performance applications. My expertise includes <strong>OOP & DSA</strong> for efficient problem-solving, and I specialize in <strong>QA Automation</strong> using Playwright for end-to-end testing. I combine web development with UI/UX design, creating seamless user experiences. My goal is to deliver innovative solutions that make a lasting impact.</p>
-                    <div class="skills-grid reveal">
-                        <div class="skill-tag st-python">Python (Backend)</div>
-                        <div class="skill-tag st-playwright">Playwright (QA)</div>
-                        <div class="skill-tag st-logic">OOP & DSA</div>
-                        <div class="skill-tag st-cpp">C++ / C#</div>
-                        <div class="skill-tag st-tailwind">Tailwind CSS</div>
-                        <div class="skill-tag st-design">UI/UX Design</div>
+        <section id="about" class="about section">
+            <div class="section-heading reveal">
+                <p class="section-kicker">About Me</p>
+                <h2>AI Software Engineer</h2>
+            </div>
+
+            <div class="about-layout">
+                <div class="about-card reveal">
+                    <div class="about-card-top">
+                        <img src="Picture.png" alt="Nouman Sajid working profile">
+                        <div>
+                            <p class="mini-label">AI Engineer</p>
+                            <h3>Nouman Sajid · Building the future with intelligent systems</h3>
+                        </div>
                     </div>
+                    <p>I’m a backend-focused developer passionate about scalable services, QA automation, and user-centered interfaces. I work with Python, C++, C#, Playwright, and modern web tools to ship practical products with strong technical foundations.</p>
+                    <div class="about-actions">
+                        <a class="btn btn-primary" href="#contact">Get In Touch</a>
+                        <a class="btn btn-secondary" href="CV/Nouman_Sajid_Resume.pdf" target="_blank" rel="noreferrer">Download CV</a>
+                    </div>
+                </div>
+
+                <div class="service-grid reveal">
+                    <article class="service-card">
+                        <i class='bx bx-code-alt'></i>
+                        <h3>Backend Development</h3>
+                        <p>Python services, APIs, and business logic with a focus on reliability and maintainability.</p>
+                    </article>
+                    <article class="service-card">
+                        <i class='bx bx-bug'></i>
+                        <h3>QA Automation</h3>
+                        <p>Playwright-based testing flows that catch regressions early and keep releases stable.</p>
+                    </article>
+                    <article class="service-card">
+                        <i class='bx bx-layout'></i>
+                        <h3>UI/UX Design</h3>
+                        <p>Thoughtful interfaces with clear spacing, strong hierarchy, and smooth user flow.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="projects">
-            <div class="reveal project-header">
-                <p class="hero-tag">Portfolio</p>
-                <h2>MY <span class="gradient-text">PROJECTS</span></h2>
-                <div class="header-line"></div>
+        <section id="skills" class="skills section">
+            <div class="section-heading reveal">
+                <p class="section-kicker">Skills</p>
+                <h2>My Skills</h2>
             </div>
-            <div class="project-list">
-                <div class="project-item reveal">
-                    <div class="project-info">
-                        <span class="project-num">01</span>
-                        <div class="project-meta">
-                            <h3>Pak Job Portal</h3>
-                            <p class="project-description">A modern job portal platform connecting Pakistani job seekers with top employers across the country.</p>
-                            <p class="project-tech">Next.js • React • JavaScript • License</p>
-                        </div>
-                    </div>
-                    <div class="project-img-preview">
-                        <img src="Projects/Pak job portal.png" alt="Pak Job Portal">
-                    </div>
-                    <div class="project-links">
-                        <a href="https://pakjobportal.vercel.app" target="_blank" class="project-link">View Project ↗</a>
-                        <a href="https://github.com/alfa546/Pak-job-portal" target="_blank" class="project-link">View Repo ↗</a>
-                    </div>
-                </div>
 
-                <div class="project-item reveal">
-                    <div class="project-info">
-                        <span class="project-num">02</span>
-                        <div class="project-meta">
-                            <h3>LIMO AGENT</h3>
-                            <p class="project-description">LIMO Agent is an advanced AI assistant featuring integrated Google Veo 3.1 Lite for professional video generation and intelligent chatbot capabilities.</p>
-                            <p class="project-tech">Python • AI • Video Gen • Chatbot</p>
-                        </div>
-                    </div>
-                    <div class="project-img-preview">
-                        <img src="Projects/Limo agent.png" alt="LIMO AGENT">
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/alfa546/LIMO_AGENT" target="_blank" class="project-link">View Repo ↗</a>
-                    </div>
-                </div>
+            <div class="skills-toolbar reveal" role="tablist" aria-label="Skill filters">
+                <button class="chip active" type="button" data-filter="all">All</button>
+                <button class="chip" type="button" data-filter="frontend">Frontend</button>
+                <button class="chip" type="button" data-filter="backend">Backend</button>
+                <button class="chip" type="button" data-filter="ai">AI</button>
+                <button class="chip" type="button" data-filter="tools">Tools</button>
+            </div>
 
-                <div class="project-item reveal">
-                    <div class="project-info">
-                        <span class="project-num">03</span>
-                        <div class="project-meta">
-                            <h3>Diabetes-Prediction-Web</h3>
-                            <p class="project-description">A machine learning web application for diabetes risk prediction, with bilingual support (English & Urdu) and optional AI-powered health advice via Claude. Built with: Python · Flask · Scikit-learn (Random Forest)</p>
-                            <p class="project-tech">HTML • Python • Flask • Scikit-learn</p>
-                        </div>
-                    </div>
-                    <div class="project-img-preview">
-                        <img src="Projects/diabetes_prediction.png" alt="Diabetes Prediction Web">
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/alfa546/Diabetes-Prediction-Web" target="_blank" class="project-link">View Repo ↗</a>
-                    </div>
-                </div>
+            <div class="skill-grid">
+                <article class="skill-card reveal" data-category="backend ai">
+                    <h3>Python for AI/ML</h3><span>95%</span>
+                    <div class="bar"><span style="width:95%"></span></div>
+                </article>
+                <article class="skill-card reveal" data-category="ai backend">
+                    <h3>Playwright QA</h3><span>90%</span>
+                    <div class="bar"><span style="width:90%"></span></div>
+                </article>
+                <article class="skill-card reveal" data-category="backend">
+                    <h3>OOP & DSA</h3><span>92%</span>
+                    <div class="bar"><span style="width:92%"></span></div>
+                </article>
+                <article class="skill-card reveal" data-category="backend">
+                    <h3>C++ / C#</h3><span>85%</span>
+                    <div class="bar"><span style="width:85%"></span></div>
+                </article>
+                <article class="skill-card reveal" data-category="frontend">
+                    <h3>Tailwind CSS</h3><span>88%</span>
+                    <div class="bar"><span style="width:88%"></span></div>
+                </article>
+                <article class="skill-card reveal" data-category="frontend">
+                    <h3>UI/UX Design</h3><span>86%</span>
+                    <div class="bar"><span style="width:86%"></span></div>
+                </article>
+                <article class="skill-card reveal" data-category="tools">
+                    <h3>Git & GitHub</h3><span>90%</span>
+                    <div class="bar"><span style="width:90%"></span></div>
+                </article>
+                <article class="skill-card reveal" data-category="tools backend">
+                    <h3>Flask & APIs</h3><span>84%</span>
+                    <div class="bar"><span style="width:84%"></span></div>
+                </article>
+                <article class="skill-card reveal" data-category="ai tools">
+                    <h3>Problem Solving</h3><span>93%</span>
+                    <div class="bar"><span style="width:93%"></span></div>
+                </article>
+                <article class="skill-card reveal" data-category="backend frontend">
+                    <h3>HTML / CSS / JS</h3><span>89%</span>
+                    <div class="bar"><span style="width:89%"></span></div>
+                </article>
+                <article class="skill-card reveal" data-category="tools ai">
+                    <h3>Automation Mindset</h3><span>91%</span>
+                    <div class="bar"><span style="width:91%"></span></div>
+                </article>
+                <article class="skill-card reveal" data-category="frontend tools">
+                    <h3>Responsive UI</h3><span>87%</span>
+                    <div class="bar"><span style="width:87%"></span></div>
+                </article>
+            </div>
+        </section>
 
-                <div class="project-item reveal">
-                    <div class="project-info">
-                        <span class="project-num">04</span>
-                        <div class="project-meta">
-                            <h3>Vet Management System</h3>
-                            <p class="project-description">A Tkinter-based desktop application for managing a veterinary clinic: inventory, billing, sales, treatments, expenses and credit (udhaar) tracking.</p>
-                            <p class="project-tech">Python • HTML • Inno Setup</p>
-                        </div>
-                    </div>
-                    <div class="project-img-preview">
-                        <img src="Projects/Vet management system.png" alt="Vet Management System">
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/alfa546/Vet-management-system-desktop-application" target="_blank" class="project-link">View Repo ↗</a>
-                    </div>
-                </div>
+        <section id="projects" class="projects section">
+            <div class="section-heading reveal">
+                <p class="section-kicker">Featured Projects</p>
+                <h2>Projects</h2>
+                <p class="section-text">A curated set of work that spans web platforms, automation, and desktop tools.</p>
+            </div>
 
-                <div class="project-item reveal">
-                    <div class="project-info">
-                        <span class="project-num">05</span>
-                        <div class="project-meta">
-                            <h3>AI maze solver - location finder</h3>
-                            <p class="project-description">A desktop Python application that visualizes BFS and DFS algorithms for maze solving and provides real-world city-to-city routing using OpenStreetMap.</p>
-                            <p class="project-tech">Python • Tkinter • NumPy • Folium</p>
-                        </div>
+            <div class="project-grid">
+                <article class="project-card reveal">
+                    <img src="Projects/Pak job portal.png" alt="Pak Job Portal">
+                    <div class="project-content">
+                        <div class="project-tags"><span>Next.js</span><span>React</span><span>JavaScript</span></div>
+                        <h3>Pak Job Portal</h3>
+                        <p>A modern job portal platform connecting Pakistani job seekers with employers.</p>
+                        <a href="https://pakjobportal.vercel.app" target="_blank" rel="noreferrer">View Project <i class='bx bx-arrow-up-right'></i></a>
                     </div>
-                    <div class="project-img-preview">
-                        <img src="Projects/AI maze solver - Location finder.png" alt="AI maze solver - location finder">
+                </article>
+                <article class="project-card reveal">
+                    <img src="Projects/Limo agent.png" alt="LIMO Agent">
+                    <div class="project-content">
+                        <div class="project-tags"><span>Python</span><span>AI</span><span>Video Gen</span></div>
+                        <h3>LIMO Agent</h3>
+                        <p>An advanced AI assistant with chatbot capability and video generation integration.</p>
+                        <a href="https://github.com/alfa546/LIMO_AGENT" target="_blank" rel="noreferrer">View Repo <i class='bx bx-arrow-up-right'></i></a>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/alfa546/AI_Maze_Solver-Location-Finder" target="_blank" class="project-link">View Repo ↗</a>
+                </article>
+                <article class="project-card reveal">
+                    <img src="Projects/diabetes_prediction.png" alt="Diabetes Prediction Web">
+                    <div class="project-content">
+                        <div class="project-tags"><span>Flask</span><span>Python</span><span>ML</span></div>
+                        <h3>Diabetes Prediction Web</h3>
+                        <p>Machine learning web app with bilingual support and AI-powered health guidance.</p>
+                        <a href="https://github.com/alfa546/Diabetes-Prediction-Web" target="_blank" rel="noreferrer">View Repo <i class='bx bx-arrow-up-right'></i></a>
                     </div>
+                </article>
+                <article class="project-card reveal">
+                    <img src="Projects/Vet management system.png" alt="Vet Management System">
+                    <div class="project-content">
+                        <div class="project-tags"><span>Python</span><span>Desktop</span><span>Inno Setup</span></div>
+                        <h3>Vet Management System</h3>
+                        <p>Desktop clinic management for inventory, billing, treatment, and accounting flows.</p>
+                        <a href="https://github.com/alfa546/Vet-management-system-desktop-application" target="_blank" rel="noreferrer">View Repo <i class='bx bx-arrow-up-right'></i></a>
+                    </div>
+                </article>
+                <article class="project-card reveal">
+                    <img src="Projects/AI maze solver - Location finder.png" alt="AI maze solver location finder">
+                    <div class="project-content">
+                        <div class="project-tags"><span>Python</span><span>Tkinter</span><span>Folium</span></div>
+                        <h3>AI Maze Solver</h3>
+                        <p>Visualization for BFS and DFS maze solving with real-world city routing support.</p>
+                        <a href="https://github.com/alfa546/AI_Maze_Solver-Location-Finder" target="_blank" rel="noreferrer">View Repo <i class='bx bx-arrow-up-right'></i></a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="education" class="education section">
+            <div class="section-heading reveal">
+                <p class="section-kicker">Education</p>
+                <h2>Professional Snapshot</h2>
+            </div>
+
+            <div class="education-panel reveal">
+                <div>
+                    <p class="mini-label">Institution</p>
+                    <h3>NTU Faisalabad</h3>
+                </div>
+                <div>
+                    <p class="mini-label">Focus</p>
+                    <h3>AI and ML</h3>
+                </div>
+                <div>
+                    <p class="mini-label">Passion</p>
+                    <h3>Creative UI & AI</h3>
                 </div>
             </div>
         </section>
 
-        <!-- GitHub Activity Section -->
-        <section id="github" class="github-activity reveal">
-            <div class="github-container">
-                <h2 class="section-title">GitHub <span class="gradient-text">Contributions</span></h2>
-                <div class="github-grid">
-                    <div class="github-card contribution-card">
-                        <div class="gh-header">
-                            <span id="gh-total-contributions" class="gh-total-count">... contributions in the last year</span>
-                            <span class="gh-swipe-hint"><i class='bx bx-left-right'></i> Swipe to scroll</span>
-                        </div>
-                        <div id="github-contributions" class="gh-graph-container">
-                            <div class="gh-loading">Loading contributions...</div>
-                        </div>
-                    </div>
+        <section id="certificates" class="certificates section">
+            <div class="section-heading reveal">
+                <p class="section-kicker">Certificates</p>
+                <h2>Verified Expertise</h2>
+            </div>
 
-                    <div class="github-stats">
-                        <div class="github-card stats-card">
-                            <img src="https://stats.programcx.cn/api?username=alfa546&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=ffffff&icon_color=39d353&text_color=8e8e93" alt="GitHub Stats" />
-                        </div>
-                        <div class="github-card stats-card">
-                            <img src="https://github-readme-streak-stats.herokuapp.com/?user=alfa546&theme=dark&hide_border=true&background=0d1117&stroke=30363d&ring=ffffff&fire=39d353&currStreakNum=ffffff&sideNums=ffffff&currStreakLabel=8e8e93&sideLabels=8e8e93&dates=636e7b" alt="GitHub Streak" />
-                        </div>
-                        <div class="github-card stats-card">
-                            <img src="https://stats.programcx.cn/api/top-langs/?username=alfa546&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=ffffff&text_color=8e8e93" alt="Top Languages" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CV Section -->
-        <section id="cv" class="cv">
-            <div class="cv-container">
-                <div class="cv-text">
-                    <h2 class="reveal">Professional <span class="gradient-text">Snapshot</span></h2>
-                    <p class="reveal">Download my full resume to see my detailed experience, education, and technical certifications.</p>
-                </div>
-                <div class="cv-action reveal">
-                    <a href="CV/Nouman_Sajid_Resume.pdf" target="_blank" class="cv-download cv-view">
-                        <span class="btn-content">View CV</span>
-                        <i class='bx bx-show btn-icon'></i>
-                    </a>
-                    <a href="CV/Nouman_Sajid_Resume.pdf" class="cv-download" download>
-                        <span class="btn-content">Download CV</span>
-                        <i class='bx bx-download btn-icon'></i>
-                    </a>
-                </div>
-            </div>
-            <div class="experience-mini reveal">
-                <div class="exp-item">
-                    <h4>Education</h4>
-                    <p>NTU Faisalabad</p>
-                </div>
-                <div class="exp-item">
-                    <h4>Focus</h4>
-                    <p>AI and ML</p>
-                </div>
-                <div class="exp-item">
-                    <h4>Passion</h4>
-                    <p>Creative UI & AI</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Certificates Section -->
-        <section id="certificates" class="certificates">
-            <div class="reveal cert-header">
-                <p class="hero-tag">Verified Expertise</p>
-                <h2>Global <span class="gradient-text">Certifications</span></h2>
-                <div class="header-line"></div>
-            </div>
-            <div class="cert-grid">
-                <!-- Interaction Design -->
-                <div class="cert-card reveal">
-                    <div class="cert-img-container">
-                        <img src="certificates/xbox certificate.png" alt="Interaction Design Certificate" class="cert-card-img">
-                    </div>
-                    <div class="cert-info">
+            <div class="certificate-grid">
+                <article class="certificate-card reveal">
+                    <img src="certificates/xbox certificate.png" alt="Interaction Design certificate">
+                    <div>
                         <h3>Interaction Design and UX/UI Principles</h3>
                         <p>Issued by Xbox (Coursera) • 2025</p>
                     </div>
-                    <a href="https://coursera.org/verify/B7AITQYRGWXO" target="_blank" class="cert-verify">Verify ↗</a>
-                </div>
-
-                <!-- Web Development -->
-                <div class="cert-card reveal">
-                    <div class="cert-img-container">
-                        <img src="certificates/Web development.png" alt="Web Development Certificate" class="cert-card-img">
-                    </div>
-                    <div class="cert-info">
-                        <h3>Introduction to Web Development with HTML, CSS, JavaScript</h3>
+                    <a href="https://coursera.org/verify/B7AITQYRGWXO" target="_blank" rel="noreferrer">Verify</a>
+                </article>
+                <article class="certificate-card reveal">
+                    <img src="certificates/Web development.png" alt="Web development certificate">
+                    <div>
+                        <h3>Introduction to Web Development</h3>
                         <p>Issued by IBM (Coursera) • Jul 2025</p>
                     </div>
-                    <a href="https://www.coursera.org/account/accomplishments/verify/5PA3HGHZ1QI6" target="_blank" class="cert-verify">Verify ↗</a>
-                </div>
-
-                <!-- Ethical Hacking -->
-                <div class="cert-card reveal">
-                    <div class="cert-img-container">
-                        <img src="certificates/Ethical hacking introduction.png" alt="Ethical Hacking Certificate" class="cert-card-img">
-                    </div>
-                    <div class="cert-info">
+                    <a href="https://www.coursera.org/account/accomplishments/verify/5PA3HGHZ1QI6" target="_blank" rel="noreferrer">Verify</a>
+                </article>
+                <article class="certificate-card reveal">
+                    <img src="certificates/Ethical hacking introduction.png" alt="Ethical hacking certificate">
+                    <div>
                         <h3>Introduction to Ethical Hacking Principles</h3>
                         <p>Issued by IBM • 2025</p>
                     </div>
-                    <a href="https://www.coursera.org/account/accomplishments/verify/O2VC4FVCDG97" target="_blank" class="cert-verify">Verify ↗</a>
-                </div>
-
-                <!-- Ethical Hacking with Kali Linux -->
-                <div class="cert-card reveal">
-                    <div class="cert-img-container">
-                        <img src="certificates/Ethical hacking with kali linux.png" alt="Ethical Hacking with Kali Linux" class="cert-card-img">
-                    </div>
-                    <div class="cert-info">
+                    <a href="https://www.coursera.org/account/accomplishments/verify/O2VC4FVCDG97" target="_blank" rel="noreferrer">Verify</a>
+                </article>
+                <article class="certificate-card reveal">
+                    <img src="certificates/Ethical hacking with kali linux.png" alt="Ethical hacking with Kali Linux">
+                    <div>
                         <h3>Ethical Hacking with Kali Linux</h3>
                         <p>Issued by IBM • 2025</p>
                     </div>
-                    <a href="https://www.coursera.org/account/accomplishments/verify/E0UOJQS11TKT" target="_blank" class="cert-verify">Verify ↗</a>
-                </div>
-
-                <!-- UET Algorithm Design -->
-                <div class="cert-card reveal">
-                    <div class="cert-img-container">
-                        <img src="certificates/UET certificate.png" alt="Algorithm Design Certificate" class="cert-card-img">
-                    </div>
-                    <div class="cert-info">
-                        <h3>QuickStart: From Algorithm Design to Working Prototype</h3>
+                    <a href="https://www.coursera.org/account/accomplishments/verify/E0UOJQS11TKT" target="_blank" rel="noreferrer">Verify</a>
+                </article>
+                <article class="certificate-card reveal">
+                    <img src="certificates/UET certificate.png" alt="Algorithm design certificate">
+                    <div>
+                        <h3>Algorithm Design to Working Prototype</h3>
                         <p>Issued by UET • 2025</p>
                     </div>
-                    <a href="https://www.coursera.org/account/accomplishments/verify/ZWG6JY92QU32" target="_blank" class="cert-verify">Verify ↗</a>
-                </div>
-
-                <!-- HP LIFE AI -->
-                <div class="cert-card reveal">
-                    <div class="cert-img-container">
-                        <img src="certificates/HP life.png" alt="Critical Thinking in the AI Era" class="cert-card-img">
-                    </div>
-                    <div class="cert-info">
+                    <a href="https://www.coursera.org/account/accomplishments/verify/ZWG6JY92QU32" target="_blank" rel="noreferrer">Verify</a>
+                </article>
+                <article class="certificate-card reveal">
+                    <img src="certificates/HP life.png" alt="Critical thinking certificate">
+                    <div>
                         <h3>Critical Thinking in the AI Era</h3>
                         <p>Issued by HP LIFE • 2025</p>
                     </div>
-                    <a href="https://www.life-global.org/certificate/dfe42589-bb9c-4899-9b34-be070448fdc6" target="_blank" class="cert-verify">Verify ↗</a>
-                </div>
+                    <a href="https://www.life-global.org/certificate/dfe42589-bb9c-4899-9b34-be070448fdc6" target="_blank" rel="noreferrer">Verify</a>
+                </article>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <h2 class="reveal">Get In <span class="gradient-text">Touch</span></h2>
-            <div class="contact-pad reveal">
+        <section id="contact" class="contact section">
+            <div class="section-heading reveal">
+                <p class="section-kicker">Contact</p>
+                <h2>Get In Touch</h2>
+            </div>
+
+            <div class="contact-card reveal">
                 <form id="contact-form">
                     <div class="input-row">
-                        <div class="input-group">
-                            <input type="text" id="name" placeholder="Name" required>
-                        </div>
-                        <div class="input-group">
-                            <input type="email" id="email" placeholder="Email" required>
-                        </div>
+                        <input type="text" id="name" name="name" placeholder="Name" required>
+                        <input type="email" id="email" name="email" placeholder="Email" required>
                     </div>
-                    <div class="input-group">
-                        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">
-                        <span>Send Message</span>
-                        <i class='bx bx-paper-plane'></i>
-                    </button>
+                    <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary submit-btn">Send Message <i class='bx bx-paper-plane'></i></button>
                 </form>
             </div>
 
-            <div class="contact-grid reveal">
-                <!-- WhatsApp -->
-                <a href="tel:+923136823997" class="contact-card">
-                    <div class="contact-icon"><i class='bx bxl-whatsapp'></i></div>
-                </a>
-
-                <!-- Email -->
-                <a href="mailto:noumansajid623@gmail.com" class="contact-card">
-                    <div class="contact-icon"><i class='bx bxl-gmail'></i></div>
-                </a>
-
-                <!-- GitHub -->
-                <a href="https://github.com/alfa546" target="_blank" class="contact-card">
-                    <div class="contact-icon"><i class='bx bxl-github'></i></div>
-                </a>
-
-                <!-- LinkedIn -->
-                <a href="https://www.linkedin.com/in/nouman-sajid-7199803a5?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-                    target="_blank" class="contact-card">
-                    <div class="contact-icon"><i class='bx bxl-linkedin'></i></div>
-                </a>
-
-                <!-- Facebook -->
-                <a href="https://www.facebook.com/share/1ByeEF8xDt/" target="_blank" class="contact-card">
-                    <div class="contact-icon"><i class='bx bxl-facebook-circle'></i></div>
-                </a>
+            <div class="contact-links reveal">
+                <a href="tel:+923136823997" class="contact-link"><i class='bx bxl-whatsapp'></i><span>WhatsApp</span></a>
+                <a href="mailto:noumansajid623@gmail.com" class="contact-link"><i class='bx bxl-gmail'></i><span>Email</span></a>
+                <a href="https://github.com/alfa546" target="_blank" rel="noreferrer" class="contact-link"><i class='bx bxl-github'></i><span>GitHub</span></a>
+                <a href="https://www.linkedin.com/in/nouman-sajid-7199803a5?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noreferrer" class="contact-link"><i class='bx bxl-linkedin'></i><span>LinkedIn</span></a>
             </div>
         </section>
     </main>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Observer.min.js"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <a class="floating-whatsapp" href="https://wa.me/923136823997" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
+        <i class='bx bxl-whatsapp'></i>
+    </a>
+
     <script src="script.js"></script>
 </body>
-
 </html>
