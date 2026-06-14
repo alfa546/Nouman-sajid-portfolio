@@ -65,7 +65,7 @@ body.light-mode {
 }
 
 html {
-    scroll-behavior: initial; /* Controlled by GSAP/Custom scroll if needed, otherwise initial */
+    scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--accent-primary) var(--bg-primary);
 }
