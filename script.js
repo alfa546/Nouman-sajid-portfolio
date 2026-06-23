@@ -1,179 +1,162 @@
 /* ==========================================================================
-   PREMIUM PORTFOLIO JAVASCRIPT LOGIC
+   PREMIUM PORTFOLIO — JAVASCRIPT v2.0
+   Author: Nouman Sajid
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initialise Lucide Icons
+
+    // ── 1. Initialize Lucide Icons ──────────────────────────────────────
     if (window.lucide) {
         window.lucide.createIcons();
     }
 
-    // 2. Custom Cursor - removed, using default OS cursor
-    // (cursor elements were removed from HTML; tracking code omitted to prevent null errors)
-    let mouseX = 0, mouseY = 0;
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    // 3. Interactive Starry Sky and Shooting Stars Background
+    // ── 2. Canvas Starfield Background ──────────────────────────────────
     const canvas = document.getElementById('canvas-background');
     const ctx = canvas.getContext('2d');
-    
+
     let stars = [];
     let shootingStars = [];
-    let starCount = 120;
-    let maxShootingStars = 6;
+    let starCount = 100;
+    let maxShootingStars = 4;
     let framesSinceLastSpawn = 0;
-    let nextSpawnDelay = Math.random() * 60 + 60; // random between 60 and 120 frames (1 to 2 seconds at 60 FPS)
-    
-    // Set Canvas dimensions
+    let nextSpawnDelay = Math.random() * 120 + 90;
+
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        
-        // Adjust star count for mobile
+
         if (window.innerWidth < 768) {
-            starCount = 50;
+            starCount = 40;
+            maxShootingStars = 2;
+        } else if (window.innerWidth < 1024) {
+            starCount = 70;
             maxShootingStars = 3;
         } else {
-            starCount = 120;
-            maxShootingStars = 6;
+            starCount = 100;
+            maxShootingStars = 4;
         }
     }
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-    
-    // Star Class (Background Stars)
+
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            resizeCanvas();
+            initStars();
+        }, 200);
+    });
+
     class Star {
         constructor() {
             this.reset();
-            // Stagger initial coordinates across screen
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
         }
-        
+
         reset() {
             this.x = Math.random() * canvas.width;
             this.y = 0;
-            this.radius = Math.random() * 1.5 + 0.5; // size 0.5px to 2.0px
-            this.baseOpacity = Math.random() * 0.5 + 0.3; // opacity 0.3 to 0.8
+            this.radius = Math.random() * 1.2 + 0.4;
+            this.baseOpacity = Math.random() * 0.4 + 0.2;
             this.opacity = this.baseOpacity;
-            this.twinkleSpeed = Math.random() * 0.03 + 0.01;
+            this.twinkleSpeed = Math.random() * 0.02 + 0.008;
             this.twinklePhase = Math.random() * Math.PI * 2;
-            
-            // Very slow drift speed (sideways and down)
-            this.vx = - (Math.random() * 0.04 + 0.02);
-            this.vy = Math.random() * 0.04 + 0.02;
-            
-            // Randomly pick a color scheme based on current mode in drawing phase
+            this.vx = -(Math.random() * 0.03 + 0.01);
+            this.vy = Math.random() * 0.03 + 0.01;
             this.colorType = Math.floor(Math.random() * 3);
         }
-        
+
         update() {
-            // Update position (slow drift)
             this.x += this.vx;
             this.y += this.vy;
-            
-            // Twinkle phase
             this.twinklePhase += this.twinkleSpeed;
-            this.opacity = this.baseOpacity + Math.sin(this.twinklePhase) * 0.25;
-            // Bound opacity between 0.1 and 1.0
-            this.opacity = Math.max(0.1, Math.min(1.0, this.opacity));
-            
-            // Wrap around boundaries
-            if (this.x < 0) {
-                this.x = canvas.width;
-            }
+            this.opacity = this.baseOpacity + Math.sin(this.twinklePhase) * 0.2;
+            this.opacity = Math.max(0.05, Math.min(0.9, this.opacity));
+
+            if (this.x < 0) this.x = canvas.width;
             if (this.y > canvas.height) {
                 this.y = 0;
                 this.x = Math.random() * canvas.width;
             }
         }
-        
+
         draw() {
             const isLight = document.body.classList.contains('light-mode');
             let color;
-            
+
             if (isLight) {
-                // Light mode colors (indigo, sky blue, purple)
-                if (this.colorType === 0) color = `rgba(79, 70, 229, ${this.opacity * 0.7})`;
-                else if (this.colorType === 1) color = `rgba(14, 165, 233, ${this.opacity * 0.7})`;
-                else color = `rgba(147, 51, 234, ${this.opacity * 0.7})`;
+                if (this.colorType === 0) color = `rgba(79, 70, 229, ${this.opacity * 0.6})`;
+                else if (this.colorType === 1) color = `rgba(14, 165, 233, ${this.opacity * 0.6})`;
+                else color = `rgba(139, 92, 246, ${this.opacity * 0.6})`;
             } else {
-                // Dark mode colors (white, soft cyan, soft lavender)
                 if (this.colorType === 0) color = `rgba(255, 255, 255, ${this.opacity})`;
-                else if (this.colorType === 1) color = `rgba(165, 243, 252, ${this.opacity * 0.9})`;
-                else color = `rgba(199, 210, 254, ${this.opacity * 0.9})`;
+                else if (this.colorType === 1) color = `rgba(165, 243, 252, ${this.opacity * 0.85})`;
+                else color = `rgba(196, 181, 253, ${this.opacity * 0.85})`;
             }
-            
+
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             ctx.fillStyle = color;
             ctx.fill();
         }
     }
-    
-    // ShootingStar Class (Meteors)
+
     class ShootingStar {
         constructor() {
             this.reset();
         }
-        
+
         reset() {
-            // Spawn anywhere along the top edge or right edge
             if (Math.random() < 0.6) {
-                this.x = Math.random() * (canvas.width + 300) - 100;
-                this.y = -50;
+                this.x = Math.random() * (canvas.width + 200) - 100;
+                this.y = -40;
             } else {
-                this.x = canvas.width + 50;
-                this.y = Math.random() * (canvas.height * 0.8) - 100;
+                this.x = canvas.width + 40;
+                this.y = Math.random() * (canvas.height * 0.7);
             }
-            
-            const speed = Math.random() * 8 + 10; // speed 10px to 18px (slower, looks more majestic)
-            const angle = (Math.PI / 6) + Math.random() * (Math.PI / 6); // 30 to 60 degrees diagonal
-            
+
+            const speed = Math.random() * 6 + 8;
+            const angle = (Math.PI / 6) + Math.random() * (Math.PI / 6);
+
             this.vx = -Math.cos(angle) * speed;
             this.vy = Math.sin(angle) * speed;
-            
-            this.trailFactor = Math.random() * 8 + 8; // longer tail length factor (8 to 16)
-            this.width = Math.random() * 1.5 + 1.0; // streak width
+            this.trailFactor = Math.random() * 6 + 6;
+            this.width = Math.random() * 1.2 + 0.8;
             this.opacity = 1.0;
-            this.fadeSpeed = Math.random() * 0.005 + 0.005; // fade speed (lasts ~100-200 frames, i.e., 1.6s to 3.3s)
+            this.fadeSpeed = Math.random() * 0.006 + 0.004;
             this.active = true;
         }
-        
+
         update() {
             this.x += this.vx;
             this.y += this.vy;
             this.opacity -= this.fadeSpeed;
-            
-            if (this.opacity <= 0 || this.x < -300 || this.y > canvas.height + 300) {
+
+            if (this.opacity <= 0 || this.x < -200 || this.y > canvas.height + 200) {
                 this.active = false;
             }
         }
-        
+
         draw() {
             if (!this.active) return;
-            
+
             const isLight = document.body.classList.contains('light-mode');
             const tailX = this.x - this.vx * this.trailFactor;
             const tailY = this.y - this.vy * this.trailFactor;
-            
-            let grad = ctx.createLinearGradient(this.x, this.y, tailX, tailY);
-            
+
+            const grad = ctx.createLinearGradient(this.x, this.y, tailX, tailY);
+
             if (isLight) {
-                // Light mode: Purple/Indigo shooting star fading to transparent
                 grad.addColorStop(0, `rgba(79, 70, 229, ${this.opacity})`);
-                grad.addColorStop(0.2, `rgba(14, 165, 233, ${this.opacity * 0.6})`);
-                grad.addColorStop(1, `rgba(147, 51, 234, 0)`);
+                grad.addColorStop(0.3, `rgba(14, 165, 233, ${this.opacity * 0.5})`);
+                grad.addColorStop(1, `rgba(139, 92, 246, 0)`);
             } else {
-                // Dark mode: White/Cyan shooting star fading to transparent
                 grad.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
-                grad.addColorStop(0.2, `rgba(6, 182, 212, ${this.opacity * 0.8})`);
+                grad.addColorStop(0.3, `rgba(6, 182, 212, ${this.opacity * 0.7})`);
                 grad.addColorStop(1, `rgba(99, 102, 241, 0)`);
             }
-            
+
             ctx.strokeStyle = grad;
             ctx.lineWidth = this.width;
             ctx.lineCap = 'round';
@@ -181,18 +164,16 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.moveTo(this.x, this.y);
             ctx.lineTo(tailX, tailY);
             ctx.stroke();
-            
-            // Draw a tiny glowing head
+
             if (!isLight) {
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.width * 1.2, 0, Math.PI * 2);
+                ctx.arc(this.x, this.y, this.width, 0, Math.PI * 2);
                 ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
                 ctx.fill();
             }
         }
     }
-    
-    // Initialize Stars
+
     function initStars() {
         stars = [];
         for (let i = 0; i < starCount; i++) {
@@ -202,20 +183,27 @@ document.addEventListener('DOMContentLoaded', () => {
         framesSinceLastSpawn = 0;
     }
     initStars();
-    
-    // Animation Loop
+
+    let isTabActive = true;
+    document.addEventListener('visibilitychange', () => {
+        isTabActive = !document.hidden;
+    });
+
     function animateStars() {
+        if (!isTabActive) {
+            requestAnimationFrame(animateStars);
+            return;
+        }
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // 1. Draw and update background stars
-        stars.forEach(star => {
+
+        for (const star of stars) {
             star.update();
             star.draw();
-        });
-        
-        // 2. Draw and update shooting stars
+        }
+
         for (let i = shootingStars.length - 1; i >= 0; i--) {
-            let ss = shootingStars[i];
+            const ss = shootingStars[i];
             ss.update();
             if (!ss.active) {
                 shootingStars.splice(i, 1);
@@ -223,25 +211,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 ss.draw();
             }
         }
-        
-        // 3. Spawns new shooting stars every 1 to 2 seconds (60-120 frames)
+
         framesSinceLastSpawn++;
         if (shootingStars.length < maxShootingStars && framesSinceLastSpawn >= nextSpawnDelay) {
             shootingStars.push(new ShootingStar());
             framesSinceLastSpawn = 0;
-            nextSpawnDelay = Math.random() * 60 + 60; // Random delay between 1s and 2s
+            nextSpawnDelay = Math.random() * 120 + 90;
         }
-        
+
         requestAnimationFrame(animateStars);
     }
     animateStars();
-    
-    // Re-initialize stars on resize to ensure full coverage
-    window.addEventListener('resize', () => {
-        initStars();
-    });
 
-    // 4. Rotating Text / Typing Animation
+    // ── 3. Typing Animation ─────────────────────────────────────────────
     const taglineSpan = document.getElementById('rotating-text');
     const taglines = [
         "AI & ML Specialist",
@@ -253,99 +235,104 @@ document.addEventListener('DOMContentLoaded', () => {
     let charIndex = 0;
     let isDeleting = false;
     let typingSpeed = 100;
-    
+
     function typeEffect() {
         const currentTag = taglines[tagIndex];
-        
+
         if (isDeleting) {
             taglineSpan.textContent = currentTag.substring(0, charIndex - 1);
             charIndex--;
-            typingSpeed = 50; // Deletes faster
+            typingSpeed = 40;
         } else {
             taglineSpan.textContent = currentTag.substring(0, charIndex + 1);
             charIndex++;
-            typingSpeed = 100;
+            typingSpeed = 90;
         }
-        
+
         if (!isDeleting && charIndex === currentTag.length) {
             isDeleting = true;
-            typingSpeed = 2000; // Pause at end of tag
+            typingSpeed = 2500;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             tagIndex = (tagIndex + 1) % taglines.length;
-            typingSpeed = 500; // Pause before typing next word
+            typingSpeed = 400;
         }
-        
+
         setTimeout(typeEffect, typingSpeed);
     }
-    setTimeout(typeEffect, 1000);
+    setTimeout(typeEffect, 800);
 
-    // 5. Scroll Header Shadow & Back-To-Top Button Visibility
+    // ── 4. Header Scroll & Back-to-Top ──────────────────────────────────
     const header = document.querySelector('header');
     const backToTop = document.querySelector('.back-to-top');
-    
-    let isScrolling = false;
+
+    let ticking = false;
     window.addEventListener('scroll', () => {
-        if (!isScrolling) {
-            window.requestAnimationFrame(() => {
-                if (window.scrollY > 50) {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                const scrollY = window.scrollY;
+
+                if (scrollY > 50) {
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
                 }
-                
-                if (window.scrollY > 500) {
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.classList.remove('visible');
+
+                if (backToTop) {
+                    if (scrollY > 400) {
+                        backToTop.classList.add('visible');
+                    } else {
+                        backToTop.classList.remove('visible');
+                    }
                 }
-                isScrolling = false;
+
+                ticking = false;
             });
-            isScrolling = true;
+            ticking = true;
         }
     }, { passive: true });
 
-    // 6. Mobile Nav Bar Toggle
-    const mobileToggle = document.querySelector('.mobile-nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
+    // ── 5. Mobile Navigation ────────────────────────────────────────────
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    function openMobileNav() {
+        navLinks.classList.add('active');
+        mobileToggle.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileNav() {
+        navLinks.classList.remove('active');
+        mobileToggle.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
     mobileToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        // Toggle mobile icon animation
-        const spans = mobileToggle.querySelectorAll('span');
         if (navLinks.classList.contains('active')) {
-            spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
-            spans[1].style.opacity = '0';
-            spans[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
+            closeMobileNav();
         } else {
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
+            openMobileNav();
         }
     });
-    
-    // Close mobile menu on click link
+
+    // Close on link click
     document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            const spans = mobileToggle.querySelectorAll('span');
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
-        });
+        link.addEventListener('click', closeMobileNav);
     });
 
-    // Active link highlighting using IntersectionObserver (highly optimized, lag-free)
-    const sections = document.querySelectorAll('section');
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+            closeMobileNav();
+        }
+    });
+
+    // Active nav link highlighting with IntersectionObserver
+    const sections = document.querySelectorAll('section[id]');
     const navItems = document.querySelectorAll('.nav-link');
-    
-    const observerOptions = {
-        root: null,
-        rootMargin: '-20% 0px -60% 0px',
-        threshold: 0
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
+
+    const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const id = entry.target.getAttribute('id');
@@ -357,13 +344,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
-    }, observerOptions);
-    
-    sections.forEach(section => {
-        observer.observe(section);
+    }, {
+        root: null,
+        rootMargin: '-25% 0px -55% 0px',
+        threshold: 0
     });
 
-    // 7. Lightbox / Modal Popups for Projects & Certificates
+    sections.forEach(section => sectionObserver.observe(section));
+
+    // ── 6. Dark / Light Mode Toggle ─────────────────────────────────────
+    const themeBtn = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('theme');
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+
+    if (savedTheme === 'light' || (!savedTheme && prefersLight)) {
+        document.body.classList.add('light-mode');
+    }
+
+    themeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        localStorage.setItem('theme',
+            document.body.classList.contains('light-mode') ? 'light' : 'dark'
+        );
+    });
+
+    // ── 7. Lightbox Modal ───────────────────────────────────────────────
     const modal = document.getElementById('lightbox-modal');
     const modalClose = document.querySelector('.lightbox-close');
     const modalImg = document.getElementById('lightbox-img');
@@ -373,8 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalTech = document.getElementById('lightbox-tech');
     const modalLink = document.getElementById('lightbox-link');
     const modalGithub = document.getElementById('lightbox-github');
-    
-    // Data structures holding project descriptions and data
+
     const projectsData = {
         "limo-agent": {
             title: "LIMO AGENT | AI Assistant",
@@ -422,7 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
             github: "https://github.com/alfa546/Vet-management-system-desktop-application"
         }
     };
-    
+
     const certificatesData = {
         "ux-ui": {
             title: "Interaction Design and UX/UI Principles",
@@ -467,23 +471,21 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "Focused module analyzing AI-generated resources, biases, logical structures, verifying data integrity, and leveraging AI tools efficiently in business settings."
         }
     };
-    
+
     // Open project lightbox
     document.querySelectorAll('.project-card').forEach(card => {
         card.addEventListener('click', (e) => {
-            // If click was on external icons inside overlay, don't open modal
             if (e.target.closest('.project-icon-link')) return;
-            
+
             const projId = card.getAttribute('data-project');
             const data = projectsData[projId];
             if (!data) return;
-            
+
             modalImg.src = data.image;
             modalSubtitle.textContent = data.subtitle;
             modalTitle.textContent = data.title;
             modalDesc.textContent = data.desc;
-            
-            // Build tech tags
+
             modalTech.innerHTML = '';
             data.tech.forEach(t => {
                 const tag = document.createElement('span');
@@ -491,315 +493,277 @@ document.addEventListener('DOMContentLoaded', () => {
                 tag.textContent = t;
                 modalTech.appendChild(tag);
             });
-            
-            // Setup Links
+
             modalLink.style.display = data.link === '#' ? 'none' : 'inline-flex';
             modalLink.href = data.link;
             modalGithub.href = data.github;
-            
+            modalGithub.style.display = 'inline-flex';
+
             modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Stop background scroll
+            document.body.style.overflow = 'hidden';
         });
     });
-    
+
     // Open certificate lightbox
     document.querySelectorAll('.cert-card').forEach(card => {
         card.addEventListener('click', () => {
             const certId = card.getAttribute('data-cert');
             const data = certificatesData[certId];
             if (!data) return;
-            
+
             modalImg.src = data.image;
             modalSubtitle.textContent = data.issuer;
             modalTitle.textContent = data.title;
             modalDesc.textContent = data.desc;
-            
-            // Clear tech tags and links (not applicable for certificates)
+
             modalTech.innerHTML = '';
             const dateTag = document.createElement('span');
             dateTag.className = 'tech-tag';
             dateTag.textContent = data.date;
             modalTech.appendChild(dateTag);
-            
+
             modalLink.style.display = 'none';
             modalGithub.style.display = 'none';
-            
+
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
     });
-    
-    // Close Modal
+
+    // Close modal
     function closeModal() {
         modal.classList.remove('active');
         document.body.style.overflow = '';
-        // Restore default layout structures
         setTimeout(() => {
             modalGithub.style.display = 'inline-flex';
         }, 300);
     }
-    
+
     modalClose.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
     });
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
     });
 
-    // 8. Dark / Light Mode Toggle
-    const themeBtn = document.querySelector('.theme-toggle-btn');
-    
-    // Check local storage or system preferences
-    const savedTheme = localStorage.getItem('theme');
-    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-    
-    if (savedTheme === 'light' || (!savedTheme && prefersLight)) {
-        document.body.classList.add('light-mode');
-    }
-    
-    themeBtn.addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
-        
-        // Save choice
-        if (document.body.classList.contains('light-mode')) {
-            localStorage.setItem('theme', 'light');
-        } else {
-            localStorage.setItem('theme', 'dark');
-        }
-    });
-
-    // 9. Contact Form Submissions & Validations
+    // ── 8. Contact Form ─────────────────────────────────────────────────
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
-    
+
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             const name = document.getElementById('form-name').value.trim();
             const email = document.getElementById('form-email').value.trim();
             const message = document.getElementById('form-msg').value.trim();
-            
+
             if (!name || !email || !message) {
                 formStatus.className = 'form-status error';
                 formStatus.textContent = 'Please fill out all fields before submitting.';
                 return;
             }
-            
+
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
                 formStatus.className = 'form-status error';
                 formStatus.textContent = 'Please enter a valid email address.';
                 return;
             }
-            
-            // Success Mocking
+
             formStatus.className = 'form-status success';
             formStatus.textContent = 'Sending message...';
-            
+
             setTimeout(() => {
-                formStatus.textContent = 'Thank you, Nouman! Your message has been sent successfully.';
+                formStatus.textContent = 'Thank you! Your message has been sent successfully.';
                 contactForm.reset();
-                
-                // Trigger canvas-confetti if available
+
                 if (window.confetti) {
                     window.confetti({
-                        particleCount: 80,
-                        spread: 60,
+                        particleCount: 60,
+                        spread: 55,
                         origin: { y: 0.8 },
-                        colors: ['#6366f1', '#06b6d4', '#4f46e5']
+                        colors: ['#6366f1', '#06b6d4', '#8b5cf6']
                     });
                 }
-            }, 1500);
+            }, 1200);
         });
     }
 
-    // 10. GSAP Scroll Trigger & Entry Animations
+    // ── 9. GSAP Scroll Animations ───────────────────────────────────────
     if (window.gsap && window.ScrollTrigger) {
         gsap.registerPlugin(ScrollTrigger);
-        
-        // Initial Entry Animations
+
+        // Hero intro sequence
         const introTl = gsap.timeline();
-        
+
         introTl.from('header', {
-            y: -100,
-            opacity: 0,
-            duration: 1,
-            ease: 'power4.out'
-        })
-        .from('.hero-subtitle', {
-            x: -50,
+            y: -80,
             opacity: 0,
             duration: 0.8,
+            ease: 'power4.out'
+        })
+        .from('.hero-badge', {
+            y: 20,
+            opacity: 0,
+            duration: 0.6,
             ease: 'power3.out'
-        }, '-=0.5')
+        }, '-=0.4')
         .from('.hero-title', {
             y: 40,
             opacity: 0,
-            duration: 0.8,
+            duration: 0.7,
             ease: 'power3.out'
-        }, '-=0.6')
+        }, '-=0.4')
         .from('.hero-taglines', {
             opacity: 0,
-            duration: 0.6
-        }, '-=0.4')
+            duration: 0.5
+        }, '-=0.3')
         .from('.hero-buttons .btn', {
             y: 20,
             opacity: 0,
-            stagger: 0.2,
-            duration: 0.6,
+            stagger: 0.15,
+            duration: 0.5,
             ease: 'power2.out'
-        }, '-=0.4')
+        }, '-=0.3')
         .from('.scroll-indicator', {
             opacity: 0,
             y: -10,
-            duration: 0.5
-        }, '-=0.2');
-        
-        // Scroll Trigger Animations for sections
-        // General fade-up title triggers
-        gsap.utils.toArray('.section-header').forEach(header => {
-            gsap.from(header, {
-                scrollTrigger: {
-                    trigger: header,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none'
-                },
+            duration: 0.4
+        }, '-=0.1');
+
+        // Section headers
+        gsap.utils.toArray('.section-header').forEach(h => {
+            gsap.from(h, {
+                scrollTrigger: { trigger: h, start: 'top 88%', toggleActions: 'play none none none' },
                 opacity: 0,
-                y: 30,
-                duration: 0.8,
+                y: 25,
+                duration: 0.7,
                 ease: 'power2.out'
             });
         });
-        
-        // About Image reveal
+
+        // About
         gsap.from('.about-image-wrapper', {
-            scrollTrigger: {
-                trigger: '.about-grid',
-                start: 'top 80%'
-            },
+            scrollTrigger: { trigger: '.about-grid', start: 'top 82%' },
             opacity: 0,
-            scale: 0.9,
-            duration: 1,
+            scale: 0.92,
+            duration: 0.9,
             ease: 'power3.out'
         });
-        
-        // About details fade-in
+
         gsap.from('.about-details > *', {
-            scrollTrigger: {
-                trigger: '.about-grid',
-                start: 'top 75%'
-            },
+            scrollTrigger: { trigger: '.about-grid', start: 'top 78%' },
             opacity: 0,
-            x: 50,
-            stagger: 0.2,
-            duration: 0.8,
+            x: 40,
+            stagger: 0.15,
+            duration: 0.7,
             ease: 'power2.out'
         });
-        
-        // Skill cards trigger with fill indicators
-        gsap.from('.skills-category', {
+        // Skills Category & Chips Animation
+        const skillsTimeline = gsap.timeline({
             scrollTrigger: {
                 trigger: '.skills-grid',
-                start: 'top 80%'
-            },
-            opacity: 0,
-            y: 40,
-            stagger: 0.2,
-            duration: 0.8,
-            ease: 'power2.out',
-            onComplete: () => {
-                // Trigger skill bar animation once cards show up
-                document.querySelectorAll('.skill-bar-fill').forEach(bar => {
-                    const pct = bar.getAttribute('data-percent');
-                    bar.style.width = pct;
-                });
+                start: 'top 85%',
+                toggleActions: 'play none none none'
             }
         });
-        
-        // Project card list stagger
-        gsap.from('.project-card', {
-            scrollTrigger: {
-                trigger: '.projects-grid',
-                start: 'top 80%'
-            },
+
+        skillsTimeline.from('.skills-category', {
             opacity: 0,
-            y: 50,
-            stagger: 0.2,
-            duration: 0.8,
-            ease: 'power3.out'
-        });
-        
-        // Certificate card grid stagger
-        gsap.from('.cert-card', {
-            scrollTrigger: {
-                trigger: '.certificates-grid',
-                start: 'top 80%'
-            },
+            y: 35,
+            stagger: 0.15,
+            duration: 0.6,
+            ease: 'power2.out'
+        })
+        .from('.skill-chip', {
+            opacity: 0,
+            scale: 0.8,
+            stagger: 0.02,
+            duration: 0.35,
+            ease: 'back.out(1.5)'
+        }, '-=0.3');
+
+        // Projects
+        gsap.from('.project-card', {
+            scrollTrigger: { trigger: '.projects-grid', start: 'top 82%' },
             opacity: 0,
             y: 40,
             stagger: 0.15,
-            duration: 0.8,
+            duration: 0.7,
             ease: 'power3.out'
         });
-        
-        // Timeline animations
-        gsap.utils.toArray('.timeline-item').forEach((item, index) => {
+
+        // Certificates
+        gsap.from('.cert-card', {
+            scrollTrigger: { trigger: '.certificates-grid', start: 'top 82%' },
+            opacity: 0,
+            y: 30,
+            stagger: 0.1,
+            duration: 0.6,
+            ease: 'power3.out'
+        });
+
+        // Timeline
+        gsap.utils.toArray('.timeline-item').forEach((item, idx) => {
             const card = item.querySelector('.timeline-card');
             const dot = item.querySelector('.timeline-dot');
-            const xVal = index % 2 === 0 ? -60 : 60;
-            
+            const xDir = idx % 2 === 0 ? -50 : 50;
+
             gsap.from(card, {
-                scrollTrigger: {
-                    trigger: item,
-                    start: 'top 85%'
-                },
+                scrollTrigger: { trigger: item, start: 'top 88%' },
                 opacity: 0,
-                x: xVal,
-                duration: 0.8,
+                x: window.innerWidth < 768 ? 30 : xDir,
+                duration: 0.7,
                 ease: 'power2.out'
             });
-            
+
             gsap.from(dot, {
-                scrollTrigger: {
-                    trigger: item,
-                    start: 'top 85%'
-                },
+                scrollTrigger: { trigger: item, start: 'top 88%' },
                 scale: 0,
                 opacity: 0,
-                duration: 0.6,
+                duration: 0.5,
                 ease: 'back.out(2)'
             });
         });
-        
-        // Contact details and form triggers
+
+        // Contact
         gsap.from('.contact-info > *', {
-            scrollTrigger: {
-                trigger: '.contact-wrapper',
-                start: 'top 80%'
-            },
+            scrollTrigger: { trigger: '.contact-wrapper', start: 'top 82%' },
             opacity: 0,
-            x: -30,
-            stagger: 0.2,
-            duration: 0.8,
+            x: -25,
+            stagger: 0.12,
+            duration: 0.7,
             ease: 'power2.out'
         });
-        
+
         gsap.from('.contact-form', {
-            scrollTrigger: {
-                trigger: '.contact-wrapper',
-                start: 'top 80%'
-            },
+            scrollTrigger: { trigger: '.contact-wrapper', start: 'top 82%' },
             opacity: 0,
-            x: 30,
-            duration: 0.8,
+            x: 25,
+            duration: 0.7,
             ease: 'power2.out'
         });
+
     } else {
-        // Fallback animations trigger if GSAP CDN fails or blocks
-        document.querySelectorAll('.skill-bar-fill').forEach(bar => {
-            const pct = bar.getAttribute('data-percent');
-            bar.style.width = pct;
-        });
+        // Fallback: CSS reveal animations using IntersectionObserver
+        const revealElements = document.querySelectorAll(
+            '.section-header, .about-image-wrapper, .about-details, ' +
+            '.skills-category, .project-card, .cert-card, .timeline-card, ' +
+            '.contact-info, .contact-form'
+        );
+
+        revealElements.forEach(el => el.classList.add('reveal'));
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
     }
 });
