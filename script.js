@@ -180,7 +180,9 @@ document.addEventListener('DOMContentLoaded', () => {
             meshGroup.rotation.y = elapsedTime * 0.15 + mouseX * 0.8;
             meshGroup.rotation.x = elapsedTime * 0.1 + mouseY * 0.8;
 
-            // Subtle floating motion
+            // Subtle floating motion and desktop layout offset
+            const isDesktop = window.innerWidth > 992;
+            meshGroup.position.x = isDesktop ? 0.8 : 0;
             meshGroup.position.y = Math.sin(elapsedTime) * 0.15;
 
             renderer.render(scene, camera);

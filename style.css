@@ -462,11 +462,12 @@ body.light-mode .theme-toggle-btn .sun-icon {
 }
 
 .hero-title {
-    font-size: clamp(3rem, 8vw, 6.5rem);
-    line-height: 0.95;
+    font-size: clamp(2.5rem, 7vw, 5.2rem);
+    line-height: 1.05;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
-    word-break: break-word;
+    word-break: normal;
+    overflow-wrap: break-word;
 }
 
 .gradient-text {
