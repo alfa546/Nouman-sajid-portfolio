@@ -369,6 +369,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalGithub = document.getElementById('lightbox-github');
 
     const projectsData = {
+        "think-space": {
+            title: "ThinkSpace",
+            subtitle: "Full-Stack Python & Django Application (2026)",
+            image: "./Projects/thinkspace.png",
+            desc: "ThinkSpace is a full-stack publishing and collaborative blogging platform built for developers, thinkers, and creators to share articles and tech perspectives. The application is powered by a robust Python backend built on the Django and Flask frameworks, featuring custom API integrations and SQLAlchemy database ORM structures for secure, high-performance data processing.",
+            tech: ["Python", "Django", "Flask", "SQLAlchemy", "API", "HTML5", "CSS3", "JavaScript"],
+            link: "https://think-space.dev",
+            github: "https://github.com/alfa546"
+        },
         "limo-agent": {
             title: "LIMO AGENT | AI Assistant",
             subtitle: "Artificial Intelligence Project (2026)",
