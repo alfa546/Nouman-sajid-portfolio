@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PREMIUM PORTFOLIO — JAVASCRIPT v2.0
+   CYBER-BRUTALIST PORTFOLIO — JAVASCRIPT v3.0
    Author: Nouman Sajid
    ========================================================================== */
 
@@ -10,31 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
         window.lucide.createIcons();
     }
 
-    // ── 2. Canvas Starfield Background ──────────────────────────────────
+    // ── 2. Neo-Brutalist Vector Background (Highly Optimized) ───────────
     const canvas = document.getElementById('canvas-background');
     const ctx = canvas.getContext('2d');
-
-    let stars = [];
-    let shootingStars = [];
-    let starCount = 100;
-    let maxShootingStars = 4;
-    let framesSinceLastSpawn = 0;
-    let nextSpawnDelay = Math.random() * 120 + 90;
+    let bgElements = [];
+    let bgElementCount = 35;
 
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
-        if (window.innerWidth < 768) {
-            starCount = 40;
-            maxShootingStars = 2;
-        } else if (window.innerWidth < 1024) {
-            starCount = 70;
-            maxShootingStars = 3;
-        } else {
-            starCount = 100;
-            maxShootingStars = 4;
-        }
+        bgElementCount = window.innerWidth < 768 ? 15 : 35;
     }
     resizeCanvas();
 
@@ -43,187 +28,191 @@ document.addEventListener('DOMContentLoaded', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             resizeCanvas();
-            initStars();
+            initBgElements();
         }, 200);
     });
 
-    class Star {
+    class BrutalistBgElement {
         constructor() {
             this.reset();
-            this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
+            this.x = Math.random() * canvas.width;
         }
 
         reset() {
             this.x = Math.random() * canvas.width;
-            this.y = 0;
-            this.radius = Math.random() * 1.2 + 0.4;
-            this.baseOpacity = Math.random() * 0.4 + 0.2;
-            this.opacity = this.baseOpacity;
-            this.twinkleSpeed = Math.random() * 0.02 + 0.008;
-            this.twinklePhase = Math.random() * Math.PI * 2;
-            this.vx = -(Math.random() * 0.03 + 0.01);
-            this.vy = Math.random() * 0.03 + 0.01;
-            this.colorType = Math.floor(Math.random() * 3);
+            this.y = -30;
+            this.size = Math.random() * 10 + 5;
+            this.speed = Math.random() * 0.4 + 0.15;
+            this.type = Math.random() > 0.5 ? 'cross' : 'square';
+            this.color = Math.random() > 0.5 ? 'rgba(204, 255, 0, 0.12)' : 'rgba(0, 240, 255, 0.1)';
+            this.rotation = Math.random() * Math.PI;
+            this.rotSpeed = (Math.random() - 0.5) * 0.01;
         }
 
         update() {
-            this.x += this.vx;
-            this.y += this.vy;
-            this.twinklePhase += this.twinkleSpeed;
-            this.opacity = this.baseOpacity + Math.sin(this.twinklePhase) * 0.2;
-            this.opacity = Math.max(0.05, Math.min(0.9, this.opacity));
-
-            if (this.x < 0) this.x = canvas.width;
-            if (this.y > canvas.height) {
-                this.y = 0;
-                this.x = Math.random() * canvas.width;
+            this.y += this.speed;
+            this.rotation += this.rotSpeed;
+            if (this.y > canvas.height + 30) {
+                this.reset();
             }
         }
 
         draw() {
             const isLight = document.body.classList.contains('light-mode');
-            let color;
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotation);
+            ctx.strokeStyle = isLight 
+                ? this.color.replace('0.12', '0.2').replace('0.1', '0.18') 
+                : this.color;
+            ctx.lineWidth = 2;
 
-            if (isLight) {
-                if (this.colorType === 0) color = `rgba(79, 70, 229, ${this.opacity * 0.6})`;
-                else if (this.colorType === 1) color = `rgba(14, 165, 233, ${this.opacity * 0.6})`;
-                else color = `rgba(139, 92, 246, ${this.opacity * 0.6})`;
+            if (this.type === 'square') {
+                ctx.strokeRect(-this.size / 2, -this.size / 2, this.size, this.size);
             } else {
-                if (this.colorType === 0) color = `rgba(255, 255, 255, ${this.opacity})`;
-                else if (this.colorType === 1) color = `rgba(165, 243, 252, ${this.opacity * 0.85})`;
-                else color = `rgba(196, 181, 253, ${this.opacity * 0.85})`;
-            }
-
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = color;
-            ctx.fill();
-        }
-    }
-
-    class ShootingStar {
-        constructor() {
-            this.reset();
-        }
-
-        reset() {
-            if (Math.random() < 0.6) {
-                this.x = Math.random() * (canvas.width + 200) - 100;
-                this.y = -40;
-            } else {
-                this.x = canvas.width + 40;
-                this.y = Math.random() * (canvas.height * 0.7);
-            }
-
-            const speed = Math.random() * 6 + 8;
-            const angle = (Math.PI / 6) + Math.random() * (Math.PI / 6);
-
-            this.vx = -Math.cos(angle) * speed;
-            this.vy = Math.sin(angle) * speed;
-            this.trailFactor = Math.random() * 6 + 6;
-            this.width = Math.random() * 1.2 + 0.8;
-            this.opacity = 1.0;
-            this.fadeSpeed = Math.random() * 0.006 + 0.004;
-            this.active = true;
-        }
-
-        update() {
-            this.x += this.vx;
-            this.y += this.vy;
-            this.opacity -= this.fadeSpeed;
-
-            if (this.opacity <= 0 || this.x < -200 || this.y > canvas.height + 200) {
-                this.active = false;
-            }
-        }
-
-        draw() {
-            if (!this.active) return;
-
-            const isLight = document.body.classList.contains('light-mode');
-            const tailX = this.x - this.vx * this.trailFactor;
-            const tailY = this.y - this.vy * this.trailFactor;
-
-            const grad = ctx.createLinearGradient(this.x, this.y, tailX, tailY);
-
-            if (isLight) {
-                grad.addColorStop(0, `rgba(79, 70, 229, ${this.opacity})`);
-                grad.addColorStop(0.3, `rgba(14, 165, 233, ${this.opacity * 0.5})`);
-                grad.addColorStop(1, `rgba(139, 92, 246, 0)`);
-            } else {
-                grad.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
-                grad.addColorStop(0.3, `rgba(6, 182, 212, ${this.opacity * 0.7})`);
-                grad.addColorStop(1, `rgba(99, 102, 241, 0)`);
-            }
-
-            ctx.strokeStyle = grad;
-            ctx.lineWidth = this.width;
-            ctx.lineCap = 'round';
-            ctx.beginPath();
-            ctx.moveTo(this.x, this.y);
-            ctx.lineTo(tailX, tailY);
-            ctx.stroke();
-
-            if (!isLight) {
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.width, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-                ctx.fill();
+                ctx.moveTo(-this.size / 2, 0);
+                ctx.lineTo(this.size / 2, 0);
+                ctx.moveTo(0, -this.size / 2);
+                ctx.lineTo(0, this.size / 2);
+                ctx.stroke();
             }
+            ctx.restore();
         }
     }
 
-    function initStars() {
-        stars = [];
-        for (let i = 0; i < starCount; i++) {
-            stars.push(new Star());
+    function initBgElements() {
+        bgElements = [];
+        for (let i = 0; i < bgElementCount; i++) {
+            bgElements.push(new BrutalistBgElement());
         }
-        shootingStars = [];
-        framesSinceLastSpawn = 0;
     }
-    initStars();
+    initBgElements();
 
     let isTabActive = true;
     document.addEventListener('visibilitychange', () => {
         isTabActive = !document.hidden;
     });
 
-    function animateStars() {
+    function animateBg() {
         if (!isTabActive) {
-            requestAnimationFrame(animateStars);
+            requestAnimationFrame(animateBg);
             return;
         }
-
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        for (const star of stars) {
-            star.update();
-            star.draw();
+        for (const el of bgElements) {
+            el.update();
+            el.draw();
         }
-
-        for (let i = shootingStars.length - 1; i >= 0; i--) {
-            const ss = shootingStars[i];
-            ss.update();
-            if (!ss.active) {
-                shootingStars.splice(i, 1);
-            } else {
-                ss.draw();
-            }
-        }
-
-        framesSinceLastSpawn++;
-        if (shootingStars.length < maxShootingStars && framesSinceLastSpawn >= nextSpawnDelay) {
-            shootingStars.push(new ShootingStar());
-            framesSinceLastSpawn = 0;
-            nextSpawnDelay = Math.random() * 120 + 90;
-        }
-
-        requestAnimationFrame(animateStars);
+        requestAnimationFrame(animateBg);
     }
-    animateStars();
+    animateBg();
 
-    // ── 3. Typing Animation ─────────────────────────────────────────────
+    // ── 3. Three.js Interactive 3D Hero Animation ──────────────────────
+    const container3d = document.getElementById('hero-3d-container');
+    if (container3d && window.THREE) {
+        const scene = new THREE.Scene();
+        
+        // Camera setup
+        const camera = new THREE.PerspectiveCamera(
+            45, 
+            container3d.clientWidth / container3d.clientHeight, 
+            0.1, 
+            100
+        );
+        camera.position.z = 7;
+
+        // Renderer
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(container3d.clientWidth, container3d.clientHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container3d.appendChild(renderer.domElement);
+
+        // Geometries
+        const outerGeom = new THREE.IcosahedronGeometry(2, 1);
+        const outerMat = new THREE.MeshBasicMaterial({
+            color: 0xccff00, // Volt Green
+            wireframe: true,
+            transparent: true,
+            opacity: 0.8
+        });
+        const outerMesh = new THREE.Mesh(outerGeom, outerMat);
+
+        const innerGeom = new THREE.TorusKnotGeometry(0.8, 0.25, 100, 16);
+        const innerMat = new THREE.MeshBasicMaterial({
+            color: 0x00f0ff, // Cyber Cyan
+            wireframe: true,
+            transparent: true,
+            opacity: 0.6
+        });
+        const innerMesh = new THREE.Mesh(innerGeom, innerMat);
+
+        const meshGroup = new THREE.Group();
+        meshGroup.add(outerMesh);
+        meshGroup.add(innerMesh);
+        scene.add(meshGroup);
+
+        // Interaction state
+        let targetX = 0;
+        let targetY = 0;
+        let mouseX = 0;
+        let mouseY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            // Normalized mouse position (-1 to 1)
+            targetX = (e.clientX - window.innerWidth / 2) * 0.001;
+            targetY = (e.clientY - window.innerHeight / 2) * 0.001;
+        });
+
+        // 3D Animation Loop
+        const clock = new THREE.Clock();
+        function animate3d() {
+            requestAnimationFrame(animate3d);
+            
+            const elapsedTime = clock.getElapsedTime();
+
+            // Smooth interpolation (lerp)
+            mouseX += (targetX - mouseX) * 0.05;
+            mouseY += (targetY - mouseY) * 0.05;
+
+            // Rotation
+            meshGroup.rotation.y = elapsedTime * 0.15 + mouseX * 0.8;
+            meshGroup.rotation.x = elapsedTime * 0.1 + mouseY * 0.8;
+
+            // Subtle floating motion
+            meshGroup.position.y = Math.sin(elapsedTime) * 0.15;
+
+            renderer.render(scene, camera);
+        }
+        animate3d();
+
+        // Responsive resize handling
+        window.addEventListener('resize', () => {
+            const width = container3d.clientWidth;
+            const height = container3d.clientHeight;
+            
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+            
+            renderer.setSize(width, height);
+        });
+
+        // Update colors based on light mode
+        const observer = new MutationObserver(() => {
+            const isLight = document.body.classList.contains('light-mode');
+            if (isLight) {
+                outerMat.color.setHex(0xff0055); // Pink in light mode
+                innerMat.color.setHex(0x000000); // Black torus in light mode
+            } else {
+                outerMat.color.setHex(0xccff00); // Volt Green in dark mode
+                innerMat.color.setHex(0x00f0ff); // Cyber Cyan in dark mode
+            }
+        });
+        observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    }
+
+    // ── 4. Typing Animation ─────────────────────────────────────────────
     const taglineSpan = document.getElementById('rotating-text');
     const taglines = [
         "AI & ML Specialist",
@@ -262,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     setTimeout(typeEffect, 800);
 
-    // ── 4. Header Scroll & Back-to-Top ──────────────────────────────────
+    // ── 5. Header Scroll & Back-to-Top ──────────────────────────────────
     const header = document.querySelector('header');
     const backToTop = document.querySelector('.back-to-top');
 
@@ -280,9 +269,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (backToTop) {
                     if (scrollY > 400) {
-                        backToTop.classList.add('visible');
+                        backToTop.classList.add('active');
                     } else {
-                        backToTop.classList.remove('visible');
+                        backToTop.classList.remove('active');
                     }
                 }
 
@@ -292,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
-    // ── 5. Mobile Navigation ────────────────────────────────────────────
+    // ── 6. Mobile Navigation ────────────────────────────────────────────
     const mobileToggle = document.getElementById('mobile-toggle');
     const navLinks = document.getElementById('nav-links');
 
@@ -352,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(section => sectionObserver.observe(section));
 
-    // ── 6. Dark / Light Mode Toggle ─────────────────────────────────────
+    // ── 7. Dark / Light Mode Toggle ─────────────────────────────────────
     const themeBtn = document.getElementById('theme-toggle');
     const savedTheme = localStorage.getItem('theme');
     const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
@@ -368,7 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     });
 
-    // ── 7. Lightbox Modal ───────────────────────────────────────────────
+    // ── 8. Lightbox Modal & Data ────────────────────────────────────────
     const modal = document.getElementById('lightbox-modal');
     const modalClose = document.querySelector('.lightbox-close');
     const modalImg = document.getElementById('lightbox-img');
@@ -547,7 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
     });
 
-    // ── 8. Contact Form ─────────────────────────────────────────────────
+    // ── 9. Contact Form ─────────────────────────────────────────────────
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
 
@@ -580,17 +569,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (window.confetti) {
                     window.confetti({
-                        particleCount: 60,
-                        spread: 55,
+                        particleCount: 80,
+                        spread: 60,
                         origin: { y: 0.8 },
-                        colors: ['#6366f1', '#06b6d4', '#8b5cf6']
+                        colors: ['#ccff00', '#00f0ff', '#ff0055']
                     });
                 }
             }, 1200);
         });
     }
 
-    // ── 9. GSAP Scroll Animations ───────────────────────────────────────
+    // ── 10. GSAP Scroll Animations ──────────────────────────────────────
     if (window.gsap && window.ScrollTrigger) {
         gsap.registerPlugin(ScrollTrigger);
 
@@ -598,172 +587,142 @@ document.addEventListener('DOMContentLoaded', () => {
         const introTl = gsap.timeline();
 
         introTl.from('header', {
-            y: -80,
-            opacity: 0,
-            duration: 0.8,
-            ease: 'power4.out'
+            y: -100,
+            duration: 0.6,
+            ease: 'power3.out'
         })
         .from('.hero-badge', {
-            y: 20,
+            scale: 0,
+            rotation: -15,
+            duration: 0.5,
+            ease: 'back.out(2)'
+        }, '-=0.2')
+        .from('.hero-title', {
+            y: 50,
             opacity: 0,
             duration: 0.6,
             ease: 'power3.out'
-        }, '-=0.4')
-        .from('.hero-title', {
-            y: 40,
-            opacity: 0,
-            duration: 0.7,
-            ease: 'power3.out'
-        }, '-=0.4')
+        }, '-=0.2')
         .from('.hero-taglines', {
             opacity: 0,
-            duration: 0.5
-        }, '-=0.3')
-        .from('.hero-buttons .btn', {
-            y: 20,
-            opacity: 0,
-            stagger: 0.15,
-            duration: 0.5,
+            scale: 0.95,
+            duration: 0.4,
             ease: 'power2.out'
-        }, '-=0.3')
+        }, '-=0.2')
+        .from('.hero-buttons .btn', {
+            y: 30,
+            opacity: 0,
+            stagger: 0.1,
+            duration: 0.5,
+            ease: 'back.out(1.5)'
+        }, '-=0.2')
         .from('.scroll-indicator', {
             opacity: 0,
             y: -10,
             duration: 0.4
         }, '-=0.1');
 
-        // Section headers
-        gsap.utils.toArray('.section-header').forEach(h => {
-            gsap.from(h, {
-                scrollTrigger: { trigger: h, start: 'top 88%', toggleActions: 'play none none none' },
+        // Section Titles Brutalist Intro
+        gsap.utils.toArray('.section-title').forEach(title => {
+            gsap.from(title, {
+                scrollTrigger: {
+                    trigger: title,
+                    start: 'top 90%',
+                    toggleActions: 'play none none none'
+                },
+                scale: 0.85,
+                rotation: 5,
                 opacity: 0,
-                y: 25,
-                duration: 0.7,
-                ease: 'power2.out'
+                duration: 0.5,
+                ease: 'back.out(1.8)'
             });
         });
 
-        // About
+        // About Grid Intro
         gsap.from('.about-image-wrapper', {
-            scrollTrigger: { trigger: '.about-grid', start: 'top 82%' },
+            scrollTrigger: { trigger: '.about-grid', start: 'top 85%' },
             opacity: 0,
-            scale: 0.92,
-            duration: 0.9,
+            x: -40,
+            duration: 0.7,
             ease: 'power3.out'
         });
 
         gsap.from('.about-details > *', {
-            scrollTrigger: { trigger: '.about-grid', start: 'top 78%' },
+            scrollTrigger: { trigger: '.about-grid', start: 'top 80%' },
             opacity: 0,
             x: 40,
-            stagger: 0.15,
-            duration: 0.7,
-            ease: 'power2.out'
-        });
-        // Skills Category & Chips Animation
-        const skillsTimeline = gsap.timeline({
-            scrollTrigger: {
-                trigger: '.skills-grid',
-                start: 'top 85%',
-                toggleActions: 'play none none none'
-            }
-        });
-
-        skillsTimeline.from('.skills-category', {
-            opacity: 0,
-            y: 35,
-            stagger: 0.15,
-            duration: 0.6,
-            ease: 'power2.out'
-        })
-        .from('.skill-chip', {
-            opacity: 0,
-            scale: 0.8,
-            stagger: 0.02,
-            duration: 0.35,
-            ease: 'back.out(1.5)'
-        }, '-=0.3');
-
-        // Projects
-        gsap.from('.project-card', {
-            scrollTrigger: { trigger: '.projects-grid', start: 'top 82%' },
-            opacity: 0,
-            y: 40,
-            stagger: 0.15,
-            duration: 0.7,
-            ease: 'power3.out'
-        });
-
-        // Certificates
-        gsap.from('.cert-card', {
-            scrollTrigger: { trigger: '.certificates-grid', start: 'top 82%' },
-            opacity: 0,
-            y: 30,
             stagger: 0.1,
             duration: 0.6,
+            ease: 'power2.out'
+        });
+
+        // Skills Grid Cards
+        gsap.from('.skills-category', {
+            scrollTrigger: { trigger: '.skills-grid', start: 'top 85%' },
+            opacity: 0,
+            y: 50,
+            stagger: 0.12,
+            duration: 0.6,
             ease: 'power3.out'
         });
 
-        // Timeline
-        gsap.utils.toArray('.timeline-item').forEach((item, idx) => {
+        // Projects Cards
+        gsap.from('.project-card', {
+            scrollTrigger: { trigger: '.projects-grid', start: 'top 85%' },
+            opacity: 0,
+            y: 60,
+            stagger: 0.15,
+            duration: 0.7,
+            ease: 'power3.out'
+        });
+
+        // Certificates Cards
+        gsap.from('.cert-card', {
+            scrollTrigger: { trigger: '.certificates-grid', start: 'top 85%' },
+            opacity: 0,
+            y: 50,
+            stagger: 0.12,
+            duration: 0.6,
+            ease: 'power3.out'
+        });
+
+        // Education / Experience Timeline Items
+        gsap.utils.toArray('.timeline-item').forEach((item) => {
             const card = item.querySelector('.timeline-card');
             const dot = item.querySelector('.timeline-dot');
-            const xDir = idx % 2 === 0 ? -50 : 50;
 
             gsap.from(card, {
-                scrollTrigger: { trigger: item, start: 'top 88%' },
+                scrollTrigger: { trigger: item, start: 'top 90%' },
                 opacity: 0,
-                x: window.innerWidth < 768 ? 30 : xDir,
-                duration: 0.7,
+                x: -30,
+                duration: 0.6,
                 ease: 'power2.out'
             });
 
             gsap.from(dot, {
-                scrollTrigger: { trigger: item, start: 'top 88%' },
+                scrollTrigger: { trigger: item, start: 'top 90%' },
                 scale: 0,
-                opacity: 0,
-                duration: 0.5,
+                duration: 0.4,
                 ease: 'back.out(2)'
             });
         });
 
-        // Contact
+        // Contact Section wrapper
         gsap.from('.contact-info > *', {
-            scrollTrigger: { trigger: '.contact-wrapper', start: 'top 82%' },
+            scrollTrigger: { trigger: '.contact-wrapper', start: 'top 85%' },
             opacity: 0,
-            x: -25,
-            stagger: 0.12,
-            duration: 0.7,
+            x: -30,
+            stagger: 0.1,
+            duration: 0.6,
             ease: 'power2.out'
         });
 
         gsap.from('.contact-form', {
-            scrollTrigger: { trigger: '.contact-wrapper', start: 'top 82%' },
+            scrollTrigger: { trigger: '.contact-wrapper', start: 'top 80%' },
             opacity: 0,
-            x: 25,
-            duration: 0.7,
-            ease: 'power2.out'
+            y: 40,
+            duration: 0.6,
+            ease: 'power3.out'
         });
-
-    } else {
-        // Fallback: CSS reveal animations using IntersectionObserver
-        const revealElements = document.querySelectorAll(
-            '.section-header, .about-image-wrapper, .about-details, ' +
-            '.skills-category, .project-card, .cert-card, .timeline-card, ' +
-            '.contact-info, .contact-form'
-        );
-
-        revealElements.forEach(el => el.classList.add('reveal'));
-
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-        revealElements.forEach(el => revealObserver.observe(el));
     }
 });

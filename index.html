@@ -32,8 +32,6 @@
 
     <!-- Background elements -->
     <canvas id="canvas-background"></canvas>
-    <div class="mesh-glow"></div>
-    <div class="mesh-glow-2"></div>
 
     <!-- ═══════════════════════════════════════════════════════════════════
          NAVIGATION HEADER
@@ -74,6 +72,7 @@
          HERO SECTION
          ═══════════════════════════════════════════════════════════════════ -->
     <section id="hero" class="hero">
+        <div id="hero-3d-container"></div>
         <div class="container hero-content">
             <div class="hero-badge">
                 <span>Available for Projects</span>
@@ -98,6 +97,14 @@
             <span>Scroll</span>
         </div>
     </section>
+
+    <!-- Scrolling Marquee Tape -->
+    <div class="marquee-ribbon">
+        <div class="marquee-content">
+            <span>AI SPECIALIST • MACHINE LEARNING ENGINEER • FULL-STACK DEVELOPER • CREATIVE DESIGNER • WEB DESIGN EXPERT • CYBER SECURITY ENTHUSIAST • </span>
+            <span>AI SPECIALIST • MACHINE LEARNING ENGINEER • FULL-STACK DEVELOPER • CREATIVE DESIGNER • WEB DESIGN EXPERT • CYBER SECURITY ENTHUSIAST • </span>
+        </div>
+    </div>
 
     <!-- ═══════════════════════════════════════════════════════════════════
          ABOUT SECTION
@@ -725,7 +732,8 @@
         <i data-lucide="arrow-up"></i>
     </a>
 
-    <!-- Core CDN Libraries: GSAP, ScrollTrigger, Lucide, Confetti -->
+    <!-- Core CDN Libraries: Three.js, GSAP, ScrollTrigger, Lucide, Confetti -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
