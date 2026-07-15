@@ -1502,9 +1502,253 @@ footer {
 }
 
 @media (max-width: 768px) {
+    :root {
+        --section-gap: 4.5rem;
+        --header-height: 70px;
+    }
+
+    .container {
+        padding: 0 1.25rem;
+    }
+
+    .section-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+        font-size: clamp(2rem, 5vw, 2.5rem);
+        padding: 0.4rem 1rem;
+        transform: rotate(-1deg);
+        margin-bottom: 1rem;
+    }
+
+    /* Navigation Menu Fixes */
+    .nav-links {
+        top: var(--header-height);
+        height: calc(100vh - var(--header-height));
+        padding: 2rem 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+        width: 100%;
+        text-align: center;
+        padding: 0.8rem;
+        border: 2px solid var(--border-color);
+        background-color: var(--bg-secondary);
+        box-shadow: 4px 4px 0px #000;
+    }
+
+    /* Hero Section fixes */
+    .hero {
+        padding-top: var(--header-height);
+        padding-bottom: 4rem;
+    }
+
+    .hero-content {
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-badge {
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: clamp(1.8rem, 6.5vw, 2.8rem);
+        margin-bottom: 1.25rem;
+    }
+
+    .hero-taglines {
+        font-size: clamp(1rem, 4vw, 1.3rem);
+        margin-bottom: 2rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* About Section */
+    .about-details h3 {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .about-details p {
+        font-size: 0.95rem;
+        text-align: justify;
+    }
+
+    .about-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+        margin-top: 2rem;
+    }
+
+    .stat-num {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+
+    .stat-label {
+        font-size: 0.65rem;
+    }
+
+    /* Grid layout limits */
+    .skills-grid, .certificates-grid {
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 2rem;
+    }
+
+    /* Timeline fixes */
+    .timeline-container {
+        padding-left: 1.5rem;
+    }
+
+    .timeline-dot {
+        left: calc(-1.5rem - 6px);
+        width: 16px;
+        height: 16px;
+        top: 1.8rem;
+    }
+
+    .timeline-card {
+        padding: 1.25rem;
+    }
+
+    .timeline-title {
+        font-size: 1.2rem;
+    }
+
+    .timeline-org {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .timeline-details li {
+        font-size: 0.85rem;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Contact & Form */
+    .contact-wrapper {
+        gap: 2rem;
+    }
+
+    .contact-info-title {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .contact-info-desc {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .contact-details {
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+    }
+
+    .contact-detail-item {
+        gap: 1rem;
+    }
+
+    .contact-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .contact-val {
+        font-size: 0.95rem;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .contact-form {
+        padding: 1.25rem;
+    }
+
+    /* Footer container */
     .footer-container {
         flex-direction: column;
         text-align: center;
         align-items: center;
+        gap: 1.5rem;
+    }
+
+    .footer-nav {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .stat-item {
+        padding: 1.25rem;
+    }
+
+    .skills-grid, .certificates-grid, .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    /* Lightbox Modal refinements */
+    .lightbox-modal {
+        padding: 0.5rem;
+    }
+
+    .lightbox-content {
+        max-height: 95vh;
+    }
+
+    .lightbox-media {
+        height: 200px;
+    }
+
+    .lightbox-info {
+        padding: 1.25rem;
+    }
+
+    .lightbox-title {
+        font-size: 1.5rem;
+    }
+
+    .lightbox-desc {
+        font-size: 0.85rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .lightbox-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .lightbox-actions .btn {
+        width: 100%;
+        justify-content: center;
     }
 }
