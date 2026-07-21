@@ -4,6 +4,16 @@ A modern, interactive **3D developer portfolio website** built with **React**, *
 
 ---
 
+## 📸 Screen Shots
+
+### Desktop View
+![Desktop View](screenshots/desktop.png)
+
+### Mobile View (Loader & Navigation)
+![Mobile View](screenshots/mobile.png)
+
+---
+
 ## 👨‍💻 Developer Profile
 
 - **Name:** Nouman Sajid
