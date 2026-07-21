@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import "./styles/TechStackNew.css";
 
 interface TechItem {
@@ -72,19 +73,29 @@ const techStack: TechItem[][] = [
 ];
 
 const TechStackNew = () => {
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth > 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="techstack-new">
       {/* Video Background */}
-      <div className="techstack-video-container">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="techstack-video"
-        >
-          <source src="/video/video.webm" type="video/webm" />
-        </video>
+      <div className="techstack-video-container" style={!isDesktop ? { backgroundColor: "#000" } : {}}>
+        {isDesktop && (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="techstack-video"
+          >
+            <source src="/video/video.webm" type="video/webm" />
+          </video>
+        )}
         {/* Dark Overlay */}
         <div className="techstack-overlay"></div>
       </div>
