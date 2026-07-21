@@ -37,8 +37,8 @@ body {
   overflow: hidden;
 }
 
-/* Allow scrolling on mobile */
-@media only screen and (max-width: 768px) {
+/* Allow scrolling on mobile and tablet */
+@media only screen and (max-width: 1024px) {
   body {
     overflow-x: hidden !important;
     overflow-y: auto !important;
@@ -58,6 +58,11 @@ body {
     position: relative !important;
     height: auto !important;
     overflow: visible !important;
+  }
+
+  /* Center character-split text on mobile/tablet to avoid cutoffs */
+  .split-h2 {
+    justify-content: center !important;
   }
 }
 

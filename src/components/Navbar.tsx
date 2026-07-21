@@ -10,57 +10,71 @@ export let lenis: Lenis | null = null;
 
 const Navbar = () => {
   useEffect(() => {
-    // Initialize Lenis smooth scroll
-    lenis = new Lenis({
-      duration: 1.7,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
-      smoothWheel: true,
-      wheelMultiplier: 1.7,
-      touchMultiplier: 2,
-      infinite: false,
-    });
+    const isDesktop = window.innerWidth > 1024;
+    let rafId: number;
 
-    // Start paused
-    lenis.stop();
+    if (isDesktop) {
+      // Initialize Lenis smooth scroll only on desktop
+      lenis = new Lenis({
+        duration: 1.7,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: "vertical",
+        gestureOrientation: "vertical",
+        smoothWheel: true,
+        wheelMultiplier: 1.7,
+        touchMultiplier: 2,
+        infinite: false,
+      });
 
-    // Handle smooth scroll animation frame
-    function raf(time: number) {
-      lenis?.raf(time);
-      requestAnimationFrame(raf);
+      // Start paused
+      lenis.stop();
+
+      // Handle smooth scroll animation frame
+      const raf = (time: number) => {
+        lenis?.raf(time);
+        rafId = requestAnimationFrame(raf);
+      };
+      rafId = requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
 
     // Handle navigation links
-    let links = document.querySelectorAll(".header ul a");
-    links.forEach((elem) => {
-      let element = elem as HTMLAnchorElement;
-      element.addEventListener("click", (e) => {
-        if (window.innerWidth > 1024) {
-          e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
-          if (section && lenis) {
-            const target = document.querySelector(section) as HTMLElement;
-            if (target) {
-              lenis.scrollTo(target, {
-                offset: 0,
-                duration: 1.5,
-              });
-            }
+    const links = document.querySelectorAll(".header ul a");
+    const handleClick = (e: Event) => {
+      if (window.innerWidth > 1024) {
+        e.preventDefault();
+        const elem = e.currentTarget as HTMLAnchorElement;
+        const section = elem.getAttribute("data-href");
+        if (section && lenis) {
+          const target = document.querySelector(section) as HTMLElement;
+          if (target) {
+            lenis.scrollTo(target, {
+              offset: 0,
+              duration: 1.5,
+            });
           }
         }
-      });
+      }
+    };
+
+    links.forEach((elem) => {
+      elem.addEventListener("click", handleClick);
     });
 
-    // Handle resize
-    window.addEventListener("resize", () => {
+    const handleResize = () => {
       lenis?.resize();
-    });
+    };
+    window.addEventListener("resize", handleResize);
 
     return () => {
+      if (isDesktop) {
+        cancelAnimationFrame(rafId);
+      }
       lenis?.destroy();
+      lenis = null;
+      links.forEach((elem) => {
+        elem.removeEventListener("click", handleClick);
+      });
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
   return (
