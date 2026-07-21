@@ -1,5 +1,6 @@
 import { useState, useEffect, FormEvent } from "react";
 import { config } from "../../config";
+import { getFallbackImage } from "../../utils/projectImages";
 import "./MobilePortfolio.css";
 
 const MobilePortfolio = () => {
@@ -246,9 +247,13 @@ const MobilePortfolio = () => {
           {config.projects.map((project) => (
             <div key={project.id} className="mobile-project-card">
               <div className="project-img-wrapper">
-                <img src={project.image} alt={project.title} onError={(e) => {
-                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500";
-                }} />
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = getFallbackImage(project.id);
+                  }}
+                />
               </div>
               <div className="project-content">
                 <h3>{project.title}</h3>

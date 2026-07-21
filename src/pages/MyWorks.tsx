@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { config } from "../config";
+import { getFallbackImage } from "../utils/projectImages";
 import "./MyWorks.css";
 
 const MyWorks = () => {
@@ -20,7 +21,13 @@ const MyWorks = () => {
           <div className="myworks-card" key={project.id} data-cursor="disable">
             <div className="myworks-card-number">0{index + 1}</div>
             <div className="myworks-card-image">
-              <img src={project.image} alt={project.title} />
+              <img
+                src={project.image}
+                alt={project.title}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = getFallbackImage(project.id);
+                }}
+              />
             </div>
             <div className="myworks-card-info">
               <h3>{project.title}</h3>
