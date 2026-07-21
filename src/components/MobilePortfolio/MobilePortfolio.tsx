@@ -129,15 +129,15 @@ const MobilePortfolio = () => {
       <div id="loading-screen">
         <div className="loading-content">
           <div className="main-icon-container animate-fall">
-            <span className="code-icon">{"</>"}</span>
+            <div className="code-icon">{"</>"}</div>
           </div>
           <h1 className="loading-title animate-fall-delay1">NOUMAN PORTFOLIO</h1>
-          <div className="sub-icons animate-fall-delay2">
-            <span className="icon-badge">Python</span>
-            <span className="icon-badge">AI/ML</span>
-            <span className="icon-badge">React</span>
+          <h2 className="designer-tag animate-fall-delay2">Developed by Nouman</h2>
+          <div className="sub-icons animate-fall-delay3">
+            <div className="icon-badge">Python</div>
+            <div className="icon-badge">AI/ML</div>
+            <div className="icon-badge">React</div>
           </div>
-          <h2 className="designer-tag animate-fall-delay3">Developed by Nouman</h2>
         </div>
       </div>
     );

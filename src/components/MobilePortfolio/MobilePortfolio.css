@@ -51,6 +51,12 @@
   font-weight: bold;
   font-size: 32px;
   color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
 }
 
 .loading-title {
@@ -58,15 +64,23 @@
   font-weight: 700;
   font-size: 20px;
   letter-spacing: 4px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   text-transform: uppercase;
+}
+
+.designer-tag {
+  font-size: 13px;
+  font-weight: 400;
+  color: #888888;
+  margin-bottom: 25px;
 }
 
 .sub-icons {
   display: flex;
   gap: 12px;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 25px;
 }
 
 .icon-badge {
@@ -76,12 +90,7 @@
   border-radius: 20px;
   font-size: 12px;
   font-weight: 500;
-}
-
-.designer-tag {
-  font-size: 13px;
-  font-weight: 400;
-  color: #888888;
+  display: inline-block;
 }
 
 /* Animation utilities for loader */
