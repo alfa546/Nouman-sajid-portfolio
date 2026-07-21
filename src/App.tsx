@@ -11,7 +11,7 @@ const Play = lazy(() => import("./pages/Play"));
 import { LoadingProvider } from "./context/LoadingProvider";
 
 const App = () => {
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
+  const [isDesktop, setIsDesktop] = useState(() => typeof window !== "undefined" && window.innerWidth > 1024);
 
   useEffect(() => {
     const handleResize = () => setIsDesktop(window.innerWidth > 1024);

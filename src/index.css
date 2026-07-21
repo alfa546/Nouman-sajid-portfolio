@@ -40,22 +40,24 @@ body {
 /* Allow scrolling on mobile */
 @media only screen and (max-width: 768px) {
   body {
-    overflow: auto !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
     height: auto !important;
     min-height: 100vh !important;
-    touch-action: manipulation;
+    touch-action: pan-y !important;
   }
 
   html {
     overflow-x: hidden !important;
     overflow-y: auto !important;
-    touch-action: manipulation;
+    touch-action: pan-y !important;
   }
 
   /* Ensure no fixed elements block scrolling */
   .container-main {
-    position: static !important;
+    position: relative !important;
     height: auto !important;
+    overflow: visible !important;
   }
 }
 
