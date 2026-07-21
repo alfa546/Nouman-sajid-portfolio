@@ -6,7 +6,9 @@
 /* Remove mobile photo and ensure 3D character is always hidden on mobile */
 @media only screen and (max-width: 768px) {
   .character-model {
-    display: none !important;
+    display: block !important;
+    height: 55vh !important;
+    bottom: 0 !important;
   }
 
   .landing-section,

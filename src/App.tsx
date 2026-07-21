@@ -28,11 +28,9 @@ const App = () => {
             <LoadingProvider>
               <Suspense>
                 <MainContainer>
-                  {isDesktop && (
-                    <Suspense>
-                      <CharacterModel />
-                    </Suspense>
-                  )}
+                  <Suspense>
+                    <CharacterModel />
+                  </Suspense>
                 </MainContainer>
               </Suspense>
             </LoadingProvider>

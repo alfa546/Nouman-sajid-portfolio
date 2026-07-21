@@ -36,7 +36,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       <Cursor />
       <Navbar />
       <SocialIcons />
-      {isDesktopView && !isMobile && children}
+      {children}
       <div className="container-main">
         <Landing />
         <About />
