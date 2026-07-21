@@ -1,41 +1,99 @@
-# Nouman Sajid - Professional AI & Full-Stack Portfolio
+# 🚀 3D Developer Portfolio Website (React + TypeScript + Three.js)
 
-An ultra-modern, interactive, and high-performance personal portfolio website built for Nouman Sajid, highlighting expertise in Artificial Intelligence, Machine Learning, and Full-Stack Development. Designed with creative agency aesthetics, interactive canvas math meshes, GSAP scroll dynamics, and responsive templates.
+[![3D portfolio preview (click to watch video)](./Screenshot_2026-04-08_22-10-00.png)](./screen-capture%20(13).webm)
 
-## 🚀 Features
+A modern, high-performance **3D developer portfolio website** built with **React**, **TypeScript**, **Three.js**, **GSAP**, and **WebGL**.
 
-- **Aesthetic Dark Theme & Light Theme Toggle**: Seamless transition using CSS variables and local storage caching.
-- **Dynamic Mouse Cursor**: Custom circular pointer with lag tracking (lerp interpolation) and magnetic scale-up indicators on interactive links.
-- **High-Performance Canvas Background**: Interactive floating particle system that reacts to mouse coordinates via proximity gravity pull.
-- **GSAP & ScrollTrigger Integrations**: Staggered navigation fades, sliding about layers, card grids fade-up, and timeline expansions.
-- **Responsive Lightbox Modal**: View high-quality project overlays, tech tags, descriptions, and certificate zoomings directly without exiting.
-- **Client Validation Forms**: Beautiful floating contact inputs, secure field validation, and success animation (via Canvas Confetti).
-- **SEO & Mobile Friendly**: Semantic HTML structures, OG tags for cards, lazy loading image optimization, and full-device grids.
+If you’re a developer looking for a **portfolio template** that feels premium, interactive, and memorable—this repo is for you.
 
-## 🛠️ Stack & Libraries
+> Live preview: https://www.redoyanulhaque.me/
 
-- **Markup & Layout**: HTML5, Vanilla CSS3 (Custom Grid, Glassmorphism, CSS Variable themes)
-- **Logics**: Vanilla JS (ES6)
-- **Animations**: [GSAP 3](https://gsap.com/) & [ScrollTrigger](https://gsap.com/docs/v3/Plugins/ScrollTrigger/)
-- **Icons**: [Lucide Icons](https://lucide.dev/)
-- **Special Effects**: [Canvas Confetti](https://github.com/catdad/canvas-confetti)
+---
 
-## 📁 Repository Structure
+## ✨ Highlights
 
+- **3D / WebGL experience** powered by **Three.js**
+- Smooth animations with **GSAP**
+- Modern **React + TypeScript** codebase
+- Fast, responsive UI (desktop + mobile)
+- Designed for developers, engineers, programmers, and creators
+
+---
+
+## 🧰 Tech Stack
+
+- **React**
+- **TypeScript**
+- **Three.js / WebGL**
+- **GSAP**
+- **HTML / CSS / JavaScript**
+
+---
+
+## 🚀 Getting Started
+
+### 1) Clone
+
+```bash
+git clone https://github.com/red1-for-hek/portfolio-website.git
+cd portfolio-website
 ```
-├── .vscode/               # Editor settings for local server
-├── CV/                    # Resume directory containing Nouman_Sajid_Resume.pdf
-├── Projects/              # Images showcasing completed works
-├── certificates/          # Credential scans
-├── Picture.png            # Main professional headshot
-├── index.html             # Entry point document
-├── style.css              # Styling rules & variables
-└── script.js              # Interactivity & animation scripts
+
+### 2) Install
+
+```bash
+npm install
 ```
 
-## 💻 Local Preview
+### 3) Run locally
 
-1. Make sure you have the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension installed in VS Code.
-2. Open the directory `Nouman-sajid-portfolio` in VS Code.
-3. Click **Go Live** on the bottom status bar, or right-click `index.html` and select **Open with Live Server**.
-4. The site will run locally at `http://127.0.0.1:5502/` (or port specified in settings).
+```bash
+npm run dev
+```
+
+### 4) Build
+
+```bash
+npm run build
+```
+
+---
+
+## 🧩 Customize (Quick Guide)
+
+Typical things you’ll want to update:
+
+- **Your name + hero section text**
+- **Projects list**
+- **Social links** (GitHub, LinkedIn, email)
+- **SEO meta title/description**
+
+---
+
+## ⭐ Support
+
+If you found this useful:
+
+- Please **star** the repository (it helps a lot)
+- Share it with a friend who needs a portfolio template
+- Sponsor via the **Sponsor** button on GitHub (if available in your region)
+
+---
+
+## 🤝 Connect
+
+- LinkedIn: https://www.linkedin.com/in/red1-for-hek/
+
+---
+
+## 🏷️ Recommended GitHub Topics (add in repo settings)
+
+Add these topics to improve GitHub search visibility:
+
+`portfolio` `developer-portfolio` `portfolio-website` `portfolio-template` `3d-portfolio` `react` `typescript` `threejs` `webgl` `gsap` `frontend` `vite`
+
+---
+
+## 🪪 License
+
+This project is open source and available under the **MIT License**. See [LICENSE](LICENSE).
