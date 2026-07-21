@@ -1,32 +1,33 @@
 # 🚀 3D Developer Portfolio Website (React + TypeScript + Three.js)
 
-[![3D portfolio preview (click to watch video)](./Screenshot_2026-04-08_22-10-00.png)](./screen-capture%20(13).webm)
+A modern, interactive **3D developer portfolio website** built with **React**, **TypeScript**, **Three.js**, **GSAP**, and **WebGL**.
 
-A modern, high-performance **3D developer portfolio website** built with **React**, **TypeScript**, **Three.js**, **GSAP**, and **WebGL**.
+---
 
-If you’re a developer looking for a **portfolio template** that feels premium, interactive, and memorable—this repo is for you.
+## 👨‍💻 Developer Profile
 
-> Live preview: https://www.redoyanulhaque.me/
+- **Name:** Nouman Sajid
+- **Title:** AI & ML Specialist | Full-Stack Developer
+- **Education:** Computer Science Student at National Textile University
+- **Focus:** Artificial Intelligence, Machine Learning & Modern Web Applications
 
 ---
 
 ## ✨ Highlights
 
-- **3D / WebGL experience** powered by **Three.js**
-- Smooth animations with **GSAP**
-- Modern **React + TypeScript** codebase
-- Fast, responsive UI (desktop + mobile)
-- Designed for developers, engineers, programmers, and creators
+- **3D / WebGL experience** powered by **Three.js** & **React Three Fiber**
+- Smooth animations & scroll triggers with **GSAP**
+- Modern, clean, and responsive **React + TypeScript** codebase
+- Fast performance & interactive UI built for desktop and mobile
 
 ---
 
 ## 🧰 Tech Stack
 
-- **React**
-- **TypeScript**
-- **Three.js / WebGL**
-- **GSAP**
-- **HTML / CSS / JavaScript**
+- **Frontend:** React, TypeScript, Vite, HTML5, CSS3, Tailwind CSS
+- **3D & Animation:** Three.js, React Three Fiber, GSAP
+- **AI & ML / Backend:** Python, Scikit-learn, Flask, Next.js
+- **Database & Tools:** SQL, Git & GitHub, Figma
 
 ---
 
@@ -35,23 +36,23 @@ If you’re a developer looking for a **portfolio template** that feels premium,
 ### 1) Clone
 
 ```bash
-git clone https://github.com/red1-for-hek/portfolio-website.git
-cd portfolio-website
+git clone https://github.com/alfa546/Nouman-sajid-portfolio.git
+cd Nouman-sajid-portfolio
 ```
 
-### 2) Install
+### 2) Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 3) Run locally
+### 3) Run Locally
 
 ```bash
 npm run dev
 ```
 
-### 4) Build
+### 4) Build for Production
 
 ```bash
 npm run build
@@ -59,41 +60,14 @@ npm run build
 
 ---
 
-## 🧩 Customize (Quick Guide)
+## 🤝 Connect & Socials
 
-Typical things you’ll want to update:
-
-- **Your name + hero section text**
-- **Projects list**
-- **Social links** (GitHub, LinkedIn, email)
-- **SEO meta title/description**
-
----
-
-## ⭐ Support
-
-If you found this useful:
-
-- Please **star** the repository (it helps a lot)
-- Share it with a friend who needs a portfolio template
-- Sponsor via the **Sponsor** button on GitHub (if available in your region)
-
----
-
-## 🤝 Connect
-
-- LinkedIn: https://www.linkedin.com/in/red1-for-hek/
-
----
-
-## 🏷️ Recommended GitHub Topics (add in repo settings)
-
-Add these topics to improve GitHub search visibility:
-
-`portfolio` `developer-portfolio` `portfolio-website` `portfolio-template` `3d-portfolio` `react` `typescript` `threejs` `webgl` `gsap` `frontend` `vite`
+- **GitHub:** [alfa546](https://github.com/alfa546)
+- **LinkedIn:** [Nouman Sajid](https://www.linkedin.com/in/nouman-sajid-7199803a5)
+- **Email:** noumansajid623@gmail.com
 
 ---
 
 ## 🪪 License
 
-This project is open source and available under the **MIT License**. See [LICENSE](LICENSE).
+This project is open source and available under the **MIT License**.
