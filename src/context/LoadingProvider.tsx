@@ -31,6 +31,8 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     // Auto-start animations on mobile since there's no 3D model
     if (window.innerWidth <= 768) {
+      document.body.style.overflow = "auto";
+      document.body.style.overflowY = "auto";
       import("../components/utils/initialFX").then((module) => {
         if (module.initialFX) {
           setTimeout(() => {
