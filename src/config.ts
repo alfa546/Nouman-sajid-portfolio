@@ -108,9 +108,9 @@ export const config = {
         email: "noumansajid623@gmail.com",
         github: "https://github.com/alfa546",
         linkedin: "https://www.linkedin.com/in/nouman-sajid-7199803a5",
-        twitter: "",
-        facebook: "",
-        instagram: ""
+        twitter: "https://x.com/NoumanSajid1234",
+        facebook: "https://www.facebook.com/share/1ECk95LzaZ/",
+        instagram: "https://www.instagram.com/its_nouman_jutt?igsh=aGs5eHUxeDR2Nzlh"
     },
     skills: {
         develop: {
