@@ -70,6 +70,7 @@ export const config = {
             category: "AI Assistant",
             technologies: "Python, Veo 3.1 Lite, Webhooks",
             image: "/Projects/Limo agent.png",
+            github: "https://github.com/alfa546/LIMO_AGENT.git",
             description: "Intelligent chatbot interface integrating Google Veo 3.1 Lite for professional-grade AI video generation from text prompts, featuring async backend polling."
         },
         {
@@ -88,6 +89,7 @@ export const config = {
             category: "AI / ML",
             technologies: "Flask, Scikit-learn, Claude API",
             image: "/Projects/diabetes_prediction.png",
+            github: "https://github.com/alfa546/Diabetes-Prediction-Web.git",
             description: "An ML-driven web app utilizing a Random Forest model. Predicts risks with high accuracy, offering bilingual support and customized tips via Claude."
         },
         {
@@ -96,6 +98,7 @@ export const config = {
             category: "Algorithms / Mapping",
             technologies: "Python, Tkinter, Folium",
             image: "/Projects/AI maze solver - Location finder.png",
+            github: "https://github.com/alfa546/AI_Maze_Solver-Location-Finder.git",
             description: "Visualizes BFS and DFS pathfinding algorithm steps on custom grids, integrated with OpenStreetMap mapping coordinates using NumPy and Folium."
         },
         {
