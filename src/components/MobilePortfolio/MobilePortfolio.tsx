@@ -265,7 +265,12 @@ const MobilePortfolio = () => {
                   ))}
                 </div>
                 <div className="project-card-actions">
-                  <a href={config.contact.github} className="project-link-btn" target="_blank" rel="noreferrer">
+                  {project.link && (
+                    <a href={project.link} className="project-link-btn" target="_blank" rel="noreferrer">
+                      Live
+                    </a>
+                  )}
+                  <a href={project.github || config.contact.github} className="project-link-btn" target="_blank" rel="noreferrer">
                     Code
                   </a>
                 </div>

@@ -61,6 +61,7 @@ export const config = {
             category: "Full Stack / Web",
             technologies: "Python, Django, Flask, SQLAlchemy",
             image: "/Projects/thinkspace.png",
+            link: "https://think-space.dev",
             description: "A premium collaborative writing platform where developers and creators share ideas, articles, and perspectives on AI and modern technologies."
         },
         {
@@ -77,6 +78,8 @@ export const config = {
             category: "Full Stack / Web",
             technologies: "Next.js, React, Tailwind",
             image: "/Projects/Pak job portal.png",
+            link: "https://pakjobportal.vercel.app",
+            github: "https://github.com/alfa546/Pak-job-portal.git",
             description: "A modern recruitment platform built with Next.js and React. Offers job posting, applications mapping, and responsive interfaces for candidates."
         },
         {
