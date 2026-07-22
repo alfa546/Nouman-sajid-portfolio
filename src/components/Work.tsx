@@ -78,6 +78,28 @@ const Work = () => {
                 </div>
                 <h4>Tools and features</h4>
                 <p>{project.technologies}</p>
+                <div className="work-actions" style={{ display: 'flex', gap: '12px', marginTop: '15px' }}>
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="work-btn live-btn"
+                      data-cursor="disable"
+                    >
+                      Live Demo ↗
+                    </a>
+                  )}
+                  <a
+                    href={project.github || config.contact.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="work-btn code-btn"
+                    data-cursor="disable"
+                  >
+                    Code ↗
+                  </a>
+                </div>
               </div>
               <WorkImage id={project.id} image={project.image} alt={project.title} link={project.link} />
             </div>
