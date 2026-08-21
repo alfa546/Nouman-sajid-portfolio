@@ -1,16 +1,6 @@
-# 🚀 3D Developer Portfolio Website (React + TypeScript + Three.js)
+# 🚀 Developer Portfolio Website (React + TypeScript)
 
-A modern, interactive **developer portfolio website** built with **React**, **TypeScript**, **Three.js**, **GSAP**, and **WebGL**.
-
----
-
-## 📸 Screen Shots
-
-### Desktop View
-![Desktop View](screenshots/desktop.png)
-
-### Mobile View (Loader & Navigation)
-![Mobile View](screenshots/mobile.png)
+A modern, interactive **developer portfolio website** built with **React**, **TypeScript**, **GSAP**, and **Tailwind CSS**.
 
 ---
 
@@ -25,7 +15,6 @@ A modern, interactive **developer portfolio website** built with **React**, **Ty
 
 ## ✨ Highlights
 
-- **3D / WebGL experience** powered by **Three.js** & **React Three Fiber**
 - Smooth animations & scroll triggers with **GSAP**
 - Modern, clean, and responsive **React + TypeScript** codebase
 - Fast performance & interactive UI built for desktop and mobile
