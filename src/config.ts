@@ -108,12 +108,21 @@ export const config = {
             technologies: "HTML/CSS, JavaScript, SQLite",
             image: "/Projects/Vet management system.png",
             description: "Practice portal for veterinary clinics to schedule client appointments, update animal clinical files, record vaccines, and generate billing reports."
+        },
+        {
+            id: 7,
+            title: "Auto-Apply AI",
+            category: "AI Automation / Full-Stack",
+            technologies: "Python, FastAPI, Next.js, Playwright, PostgreSQL",
+            image: "/Projects/auto-apply-ai.png",
+            github: "https://github.com/alfa546/Auto-Apply-AI.git",
+            description: "An autonomous multi-agent AI workspace that automates job hunting with native PDF parsing, ATS scoring, multi-engine job scraping, Playwright form-filling, and automated Gmail OAuth2 dispatch."
         }
     ],
     contact: {
         email: "noumansajid623@gmail.com",
         github: "https://github.com/alfa546",
-        linkedin: "https://www.linkedin.com/in/nouman-sajid-7199803a5",
+        linkedin: "https://www.linkedin.com/in/muhammad-nouman-sajid-92343842b",
         twitter: "https://x.com/NoumanSajid1234",
         facebook: "https://www.facebook.com/share/1ECk95LzaZ/",
         instagram: "https://www.instagram.com/its_nouman_jutt?igsh=aGs5eHUxeDR2Nzlh"
