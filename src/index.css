@@ -34,11 +34,12 @@ h6 {
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-/* Allow scrolling on mobile and tablet */
-@media only screen and (max-width: 1024px) {
+/* Allow scrolling on all screen sizes */
+@media screen and (max-width: 1024px) {
   body {
     overflow-x: hidden !important;
     overflow-y: auto !important;
