@@ -66,15 +66,6 @@ export const config = {
         },
         {
             id: 2,
-            title: "LIMO AGENT | AI Assistant",
-            category: "AI Assistant",
-            technologies: "Python, Veo 3.1 Lite, Webhooks",
-            image: "/Projects/Limo agent.png",
-            github: "https://github.com/alfa546/LIMO_AGENT.git",
-            description: "Intelligent chatbot interface integrating Google Veo 3.1 Lite for professional-grade AI video generation from text prompts, featuring async backend polling."
-        },
-        {
-            id: 3,
             title: "Pak Job Portal",
             category: "Full Stack / Web",
             technologies: "Next.js, React, Tailwind",
@@ -84,7 +75,7 @@ export const config = {
             description: "A modern recruitment platform built with Next.js and React. Offers job posting, applications mapping, and responsive interfaces for candidates."
         },
         {
-            id: 4,
+            id: 3,
             title: "Diabetes Prediction Web",
             category: "AI / ML",
             technologies: "Flask, Scikit-learn, Claude API",
@@ -93,16 +84,7 @@ export const config = {
             description: "An ML-driven web app utilizing a Random Forest model. Predicts risks with high accuracy, offering bilingual support and customized tips via Claude."
         },
         {
-            id: 5,
-            title: "AI Maze Solver - Location Finder",
-            category: "Algorithms / Mapping",
-            technologies: "Python, Tkinter, Folium",
-            image: "/Projects/AI maze solver - Location finder.png",
-            github: "https://github.com/alfa546/AI_Maze_Solver-Location-Finder.git",
-            description: "Visualizes BFS and DFS pathfinding algorithm steps on custom grids, integrated with OpenStreetMap mapping coordinates using NumPy and Folium."
-        },
-        {
-            id: 6,
+            id: 4,
             title: "Vet Management System",
             category: "Desktop Application",
             technologies: "HTML/CSS, JavaScript, SQLite",
@@ -110,7 +92,7 @@ export const config = {
             description: "Practice portal for veterinary clinics to schedule client appointments, update animal clinical files, record vaccines, and generate billing reports."
         },
         {
-            id: 7,
+            id: 5,
             title: "Auto-Apply AI",
             category: "AI Automation / Full-Stack",
             technologies: "Python, FastAPI, Next.js, Playwright, PostgreSQL",

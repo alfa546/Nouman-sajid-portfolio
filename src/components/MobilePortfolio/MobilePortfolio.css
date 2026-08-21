@@ -604,3 +604,116 @@
   color: #777777;
   margin: 0;
 }
+
+/* ==========================================================
+   RESPONSIVE / DESKTOP ENHANCEMENTS
+   The mobile portfolio now renders on ALL screens, so these
+   rules keep it clean and professional on tablets & PCs.
+   ========================================================== */
+
+/* --- Tablets & small laptops --- */
+@media (min-width: 768px) {
+  .mobile-home-section,
+  .mobile-about-section,
+  .mobile-projects-section,
+  .mobile-services-section,
+  .mobile-contact-section {
+    padding: 60px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-text h1 {
+    font-size: 44px;
+  }
+
+  .typewriter-container {
+    font-size: 28px;
+    height: 38px;
+  }
+
+  .description-para {
+    font-size: 16px;
+    max-width: 640px;
+  }
+
+  .button-group {
+    flex-direction: row;
+    max-width: 400px;
+  }
+
+  .follow-socials {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+
+  .info-cards {
+    flex-direction: row;
+  }
+
+  .info-cards .about-card {
+    flex: 1;
+  }
+
+  .projects-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .mobile-project-card {
+    flex: 1 1 calc(50% - 25px);
+    min-width: 260px;
+  }
+
+  .project-img-wrapper {
+    height: 200px;
+  }
+
+  .services-grid {
+    flex-direction: row;
+  }
+
+  .mobile-service-card {
+    flex: 1;
+  }
+
+  .contact-container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .contact-details-box,
+  .mobile-contact-form {
+    flex: 1;
+  }
+}
+
+/* --- Desktop / wide screens --- */
+@media (min-width: 1025px) {
+  .mobile-nav-list {
+    justify-content: center;
+    gap: 20px;
+    width: auto;
+  }
+
+  .mobile-nav {
+    justify-content: center;
+  }
+
+  .mobile-project-card {
+    flex: 1 1 calc(33.333% - 25px);
+    min-width: 280px;
+  }
+
+  .hero-text h1 {
+    font-size: 52px;
+  }
+
+  .typewriter-container {
+    font-size: 32px;
+  }
+}
