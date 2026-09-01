@@ -8,7 +8,7 @@ export const config = {
     social: {
         github: "alfa546",
         email: "noumansajid623@gmail.com",
-        location: "Faisalabad, Pakistan"
+        location: "Okara, Pakistan"
     },
     about: {
         title: "About Me",
@@ -16,23 +16,34 @@ export const config = {
     },
     experiences: [
         {
-            position: "Specialized Python & AI Freelancer",
-            company: "Remote Client Engagements",
-            period: "2025 - Present",
-            location: "Faisalabad, Pakistan",
-            description: "Developing professional-grade Python applications and custom automation logic. Integrating machine learning pipelines with frontend Flask dashboards.",
+            position: "Full Stack Developer",
+            company: "Efahida",
+            period: "July 2026 - Sept 2026",
+            location: "Remote",
+            description: "Architected full-stack web applications, ensuring seamless frontend-to-backend database integration. Optimized system performance and deployed scalable solutions to meet strict business requirements.",
             responsibilities: [
-                "Developing professional-grade Python applications and custom automation logic",
-                "Integrating machine learning pipelines (Scikit-learn, Random Forest) with frontend Flask dashboards",
-                "Building scalable scraper/API handlers with asynchronous web structures"
+                "Architected full-stack web applications, ensuring seamless frontend-to-backend database integration",
+                "Optimized system performance and deployed scalable solutions to meet strict business requirements"
             ],
-            technologies: ["Python", "Scikit-learn", "Random Forest", "Flask", "Automation"]
+            technologies: ["Full-Stack", "Frontend", "Backend", "Database"]
+        },
+        {
+            position: "Frontend AI Engineer",
+            company: "Fly rank AI",
+            period: "June 2026 - Aug 2026",
+            location: "Remote",
+            description: "Implemented responsive frontend interfaces seamlessly integrated with advanced artificial intelligence features. Collaborated on AI-driven tools to enhance user interaction and streamline data presentation workflows.",
+            responsibilities: [
+                "Implemented responsive frontend interfaces seamlessly integrated with advanced artificial intelligence features",
+                "Collaborated on AI-driven tools to enhance user interaction and streamline data presentation workflows"
+            ],
+            technologies: ["Frontend", "AI Integration", "React", "Next.js"]
         },
         {
             position: "Bachelor of Science in Computer Science",
             company: "National Textile University",
             period: "2024 - 2028",
-            location: "Faisalabad, Pakistan",
+            location: "Okara, Pakistan",
             description: "Specialization: Artificial Intelligence & Machine Learning. Core coursework: Data Structures and Algorithms, Object-Oriented Programming, Python Programming, Artificial Intelligence.",
             responsibilities: [
                 "Studying core computer science concepts",
@@ -40,65 +51,44 @@ export const config = {
                 "Learning OOP and DSA"
             ],
             technologies: ["DSA", "OOP", "Python", "Artificial Intelligence"]
-        },
-        {
-            position: "Bootcamps & Professional Certifications",
-            company: "IBM, Coursera, UET & HP",
-            period: "2025",
-            location: "Remote / Pakistan",
-            description: "Acquired 4 Coursera certificates on Full-stack web technologies and Ethical Hacking methods. Completed University of Engineering & Technology (UET) Bootcamp on optimization algorithms and physical prototype building.",
-            responsibilities: [
-                "Acquired 4 Coursera certificates on Full-stack web technologies and Ethical Hacking methods",
-                "Completed University of Engineering & Technology (UET) Bootcamp on optimization algorithms and physical prototype building"
-            ],
-            technologies: ["Full-stack Web", "Ethical Hacking", "Algorithms"]
         }
     ],
     projects: [
         {
             id: 1,
-            title: "ThinkSpace",
-            category: "Full Stack / Web",
-            technologies: "Python, Django, Flask, SQLAlchemy",
+            title: "Think-Space.dev",
+            category: "Full-Stack Web Development",
+            technologies: "React, Next.js, Backend",
             image: "/Projects/thinkspace.png",
             link: "https://think-space.dev",
-            description: "A premium collaborative writing platform where developers and creators share ideas, articles, and perspectives on AI and modern technologies."
+            description: "Architected a modern, dynamic blogging platform dedicated to publishing insightful articles, technical guides, and shared knowledge. Implemented robust content management features, including category filtering, author profiles, and read-time estimations."
         },
         {
             id: 2,
-            title: "Pak Job Portal",
-            category: "Full Stack / Web",
-            technologies: "Next.js, React, Tailwind",
-            image: "/Projects/Pak job portal.png",
-            link: "https://pakjobportal.vercel.app",
-            github: "https://github.com/alfa546/Pak-job-portal.git",
-            description: "A modern recruitment platform built with Next.js and React. Offers job posting, applications mapping, and responsive interfaces for candidates."
+            title: "Auto-Apply-AI",
+            category: "AI Automation Script",
+            technologies: "Python, AI Agent",
+            image: "/Projects/auto-apply-ai.png",
+            github: "https://github.com/alfa546",
+            description: "Developed a Python-based AI agent to automate the job application process via intelligent form parsing. Engineered dynamic workflows to interface with job portals and match complex application criteria efficiently."
         },
         {
             id: 3,
-            title: "Diabetes Prediction Web",
-            category: "AI / ML",
-            technologies: "Flask, Scikit-learn, Claude API",
-            image: "/Projects/diabetes_prediction.png",
-            github: "https://github.com/alfa546/Diabetes-Prediction-Web.git",
-            description: "An ML-driven web app utilizing a Random Forest model. Predicts risks with high accuracy, offering bilingual support and customized tips via Claude."
+            title: "LIMO AGENT",
+            category: "AI Chatbot & Video Generation",
+            technologies: "Python, Google Veo 3.1 Lite",
+            image: "/Projects/Limo agent.png",
+            github: "https://github.com/alfa546",
+            description: "Integrated Google Veo 3.1 Lite for professional-grade AI video generation within a Python environment. Built an intelligent chatbot with advanced conversational capabilities and optimized backend polling mechanisms."
         },
         {
             id: 4,
-            title: "Vet Management System",
-            category: "Desktop Application",
-            technologies: "HTML/CSS, JavaScript, SQLite",
-            image: "/Projects/Vet management system.png",
-            description: "Practice portal for veterinary clinics to schedule client appointments, update animal clinical files, record vaccines, and generate billing reports."
-        },
-        {
-            id: 5,
-            title: "Auto-Apply AI",
-            category: "AI Automation / Full-Stack",
-            technologies: "Python, FastAPI, Next.js, Playwright, PostgreSQL",
-            image: "/Projects/auto-apply-ai.png",
-            github: "https://github.com/alfa546/Auto-Apply-AI.git",
-            description: "An autonomous multi-agent AI workspace that automates job hunting with native PDF parsing, ATS scoring, multi-engine job scraping, Playwright form-filling, and automated Gmail OAuth2 dispatch."
+            title: "Pak Job Portal",
+            category: "Full-Stack Platform",
+            technologies: "Next.js, React, Tailwind",
+            image: "/Projects/Pak job portal.png",
+            github: "https://github.com/alfa546",
+            description: "Built a modern recruitment platform using Next.js and React, featuring responsive design for job seekers. Connected frontend with a secure database for real-time job listings and user authentication."
         }
     ],
     contact: {
@@ -114,13 +104,13 @@ export const config = {
             title: "AI & ML Specialist",
             description: "Building intelligent systems & AI solutions",
             details: "Specializing in Artificial Intelligence and Machine Learning. Transforming mathematical models into intelligent digital solutions.",
-            tools: ["Python", "C++", "C#", "Scikit-learn", "NumPy", "Flask", "Tkinter", "Folium", "DSA", "OOP"]
+            tools: ["Python", "C++", "C#", "Scikit-learn", "NumPy", "Flask", "Tkinter", "LangChain", "LangGraph", "RAG", "Docker", "Kali Linux"]
         },
         design: {
             title: "FULL-STACK",
             description: "Modern web development & scalable applications",
             details: "Building clean, high-performance, and responsive web applications with smooth user experiences.",
-            tools: ["Next.js", "React", "JavaScript", "HTML5", "CSS3", "SQL", "Tailwind", "UI/UX Design", "Figma", "Git & GitHub"]
+            tools: ["Next.js", "React", "JavaScript", "HTML5", "CSS3", "SQL", "Tailwind", "UI/UX Design", "Figma", "Git", "Supabase", "Vercel", "DigitalOcean"]
         }
     }
 };
