@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { FaGithub, FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { config } from "../config";
 import { getFallbackImage } from "../utils/projectImages";
 import "./MyWorks.css";
@@ -42,7 +43,7 @@ const MyWorks = () => {
                     rel="noreferrer"
                     className="work-btn live-btn"
                   >
-                    Live Demo ↗
+                    Live Demo <FaArrowUpRightFromSquare style={{ fontSize: "12px", marginLeft: "5px" }} />
                   </a>
                 )}
                 <a
@@ -51,7 +52,7 @@ const MyWorks = () => {
                   rel="noreferrer"
                   className="work-btn code-btn"
                 >
-                  Code ↗
+                  Code <FaGithub style={{ fontSize: "14px", marginLeft: "5px" }} />
                 </a>
               </div>
             </div>

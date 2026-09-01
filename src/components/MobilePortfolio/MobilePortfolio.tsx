@@ -1,4 +1,12 @@
 import { useState, useEffect, FormEvent } from "react";
+import { 
+  FaGithub, 
+  FaLinkedin, 
+  FaEnvelope, 
+  FaXTwitter, 
+  FaInstagram, 
+  FaArrowUpRightFromSquare 
+} from "react-icons/fa6";
 import { config } from "../../config";
 import { getFallbackImage } from "../../utils/projectImages";
 import "./MobilePortfolio.css";
@@ -193,14 +201,62 @@ const MobilePortfolio = () => {
             <span className="follow-label">Follow me:</span>
             <ul className="social-links-list">
               <li>
-                <a href={config.contact.github} target="_blank" rel="noreferrer">GitHub</a>
+                <a 
+                  href={config.contact.github} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="social-btn github"
+                >
+                  <FaGithub className="social-btn-icon" />
+                  <span className="social-btn-text">GitHub</span>
+                </a>
               </li>
               <li>
-                <a href={config.contact.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+                <a 
+                  href={config.contact.linkedin} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="social-btn linkedin"
+                >
+                  <FaLinkedin className="social-btn-icon" />
+                  <span className="social-btn-text">LinkedIn</span>
+                </a>
               </li>
               <li>
-                <a href={`mailto:${config.contact.email}`}>Email</a>
+                <a 
+                  href={`mailto:${config.contact.email}`} 
+                  className="social-btn email"
+                >
+                  <FaEnvelope className="social-btn-icon" />
+                  <span className="social-btn-text">Email</span>
+                </a>
               </li>
+              {config.contact.twitter && (
+                <li>
+                  <a 
+                    href={config.contact.twitter} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="social-btn twitter"
+                  >
+                    <FaXTwitter className="social-btn-icon" />
+                    <span className="social-btn-text">Twitter</span>
+                  </a>
+                </li>
+              )}
+              {config.contact.instagram && (
+                <li>
+                  <a 
+                    href={config.contact.instagram} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="social-btn instagram"
+                  >
+                    <FaInstagram className="social-btn-icon" />
+                    <span className="social-btn-text">Instagram</span>
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>
@@ -267,11 +323,11 @@ const MobilePortfolio = () => {
                 <div className="project-card-actions">
                   {project.link && (
                     <a href={project.link} className="project-link-btn" target="_blank" rel="noreferrer">
-                      Live
+                      <FaArrowUpRightFromSquare style={{ fontSize: "11px", marginRight: "5px" }} /> Live
                     </a>
                   )}
                   <a href={project.github || config.contact.github} className="project-link-btn" target="_blank" rel="noreferrer">
-                    Code
+                    <FaGithub style={{ fontSize: "13px", marginRight: "5px" }} /> Code
                   </a>
                 </div>
               </div>
@@ -321,11 +377,35 @@ const MobilePortfolio = () => {
             <p>Have an exciting project or idea? Feel free to reach out. I am available for opportunities and freelance work.</p>
             <div className="contact-item">
               <span className="contact-label">Email:</span>
-              <a href={`mailto:${config.contact.email}`} className="contact-value">{config.contact.email}</a>
+              <a href={`mailto:${config.contact.email}`} className="contact-value">
+                <FaEnvelope style={{ marginRight: "6px", verticalAlign: "middle" }} />
+                {config.contact.email}
+              </a>
             </div>
             <div className="contact-item">
               <span className="contact-label">Location:</span>
-              <span className="contact-value">{config.social.location}</span>
+              <span className="contact-value">📍 {config.social.location}</span>
+            </div>
+            <div className="contact-item">
+              <span className="contact-label">Profiles:</span>
+              <div className="contact-social-icons">
+                <a href={config.contact.github} target="_blank" rel="noreferrer" className="contact-social-btn github" title="GitHub">
+                  <FaGithub />
+                </a>
+                <a href={config.contact.linkedin} target="_blank" rel="noreferrer" className="contact-social-btn linkedin" title="LinkedIn">
+                  <FaLinkedin />
+                </a>
+                {config.contact.twitter && (
+                  <a href={config.contact.twitter} target="_blank" rel="noreferrer" className="contact-social-btn twitter" title="Twitter">
+                    <FaXTwitter />
+                  </a>
+                )}
+                {config.contact.instagram && (
+                  <a href={config.contact.instagram} target="_blank" rel="noreferrer" className="contact-social-btn instagram" title="Instagram">
+                    <FaInstagram />
+                  </a>
+                )}
+              </div>
             </div>
           </div>
           <form className="mobile-contact-form" onSubmit={handleFormSubmit}>
