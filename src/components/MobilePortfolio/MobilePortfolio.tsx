@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa6";
 import { config } from "../../config";
 import { getFallbackImage } from "../../utils/projectImages";
+import { GitHubCalendar } from "react-github-calendar";
 import "./MobilePortfolio.css";
 
 const MobilePortfolio = () => {
@@ -333,6 +334,22 @@ const MobilePortfolio = () => {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* GITHUB CONTRIBUTIONS SECTION */}
+      <section className="mobile-github-section" id="github">
+        <p className="section-subtitle">GITHUB</p>
+        <h2 className="section-title">Contributions</h2>
+        <hr className="section-divider" />
+        <div className="github-calendar-container">
+          <GitHubCalendar
+            username="alfa546"
+            colorScheme="dark"
+            blockSize={12}
+            blockMargin={4}
+            fontSize={14}
+          />
         </div>
       </section>
 
