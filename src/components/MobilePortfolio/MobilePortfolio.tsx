@@ -194,7 +194,7 @@ const MobilePortfolio = () => {
           </div>
           <div className="button-group">
             <a href="mailto:noumansajid623@gmail.com" className="btn-hire">Hire Me</a>
-            <a href="/CV/Nouman_Sajid_Resume.pdf" className="btn-cv" target="_blank" rel="noreferrer">View CV</a>
+            <a href="/CV/Nouman_Sajid_Resume.pdf?v=2" className="btn-cv" target="_blank" rel="noreferrer">View CV</a>
           </div>
           <hr className="divider" />
           <div className="follow-socials">
