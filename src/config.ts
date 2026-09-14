@@ -89,6 +89,15 @@ export const config = {
             image: "/Projects/Pak job portal.png",
             github: "https://github.com/alfa546",
             description: "Built a modern recruitment platform using Next.js and React, featuring responsive design for job seekers. Connected frontend with a secure database for real-time job listings and user authentication."
+        },
+        {
+            id: 5,
+            title: "Crawler",
+            category: "SEO Tool",
+            technologies: "JavaScript",
+            image: "/Projects/crawler.png",
+            github: "https://github.com/alfa546/Crawler",
+            description: "An enterprise-grade, open-source technical SEO crawler and live ranking platform. Built as a limitless, privacy-first alternative to paid SEO tools, offering deep on-page auditing, JavaScript rendering, and bulk CSV/Excel exports directly from your local machine."
         }
     ],
     contact: {
