@@ -1,7 +1,5 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
 import "./App.css";
 
 const MobilePortfolio = lazy(() => import("./components/MobilePortfolio/MobilePortfolio"));
@@ -52,8 +50,6 @@ const App = () => {
           }
         />
       </Routes>
-      <Analytics />
-      <SpeedInsights />
     </BrowserRouter>
   );
 };

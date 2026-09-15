@@ -340,16 +340,42 @@ const MobilePortfolio = () => {
       {/* GITHUB CONTRIBUTIONS SECTION */}
       <section className="mobile-github-section" id="github">
         <p className="section-subtitle">GITHUB</p>
-        <h2 className="section-title">Contributions</h2>
+        <h2 className="section-title">Stats & Achievements</h2>
         <hr className="section-divider" />
-        <div className="github-calendar-container">
-          <GitHubCalendar
-            username="alfa546"
-            colorScheme="dark"
-            blockSize={12}
-            blockMargin={4}
-            fontSize={14}
-          />
+        
+        <div className="github-stats-container">
+          <div className="github-badges-row">
+             <img 
+               src="https://github-readme-stats.vercel.app/api?username=alfa546&show_icons=true&theme=transparent&hide_border=true&title_color=c2a4ff&text_color=eae5ec&icon_color=c2a4ff" 
+               alt="GitHub Stats" 
+               className="github-stat-img"
+             />
+             <img 
+               src="https://github-readme-stats.vercel.app/api/top-langs/?username=alfa546&layout=compact&theme=transparent&hide_border=true&title_color=c2a4ff&text_color=eae5ec" 
+               alt="Top Languages" 
+               className="github-stat-img"
+             />
+          </div>
+          
+          <div className="github-trophies-row">
+            <h3 className="sub-heading-stats">Trophies</h3>
+            <img 
+              src="https://github-profile-trophy.vercel.app/?username=alfa546&theme=dracula&no-frame=true&no-bg=true&margin-w=15" 
+              alt="GitHub Trophies" 
+              className="github-trophy-img"
+            />
+          </div>
+
+          <h3 className="sub-heading-stats">Contribution Graph</h3>
+          <div className="github-calendar-container">
+            <GitHubCalendar
+              username="alfa546"
+              colorScheme="dark"
+              blockSize={12}
+              blockMargin={4}
+              fontSize={14}
+            />
+          </div>
         </div>
       </section>
 
