@@ -276,17 +276,27 @@ const MobilePortfolio = () => {
             By bridging Python-based ML engineering with React frontend development, I build clean, high-performance web applications with smooth user experiences.
           </p>
           <div className="info-cards">
-            <div className="about-card">
-              <h3>🛠️ Core Skills</h3>
-              <p>{config.skills.develop.tools.slice(0, 5).join(", ")}, {config.skills.design.tools.slice(0, 5).join(", ")}</p>
+            <div className="about-card full-width-card">
+              <h3>{config.skills.develop.title}</h3>
+              <p className="about-card-desc">{config.skills.develop.description}</p>
+              <div className="skill-pills">
+                {config.skills.develop.tools.map((tool, idx) => (
+                  <span key={idx} className="skill-pill">{tool}</span>
+                ))}
+              </div>
             </div>
-            <div className="about-card">
+            <div className="about-card full-width-card">
+              <h3>{config.skills.design.title}</h3>
+              <p className="about-card-desc">{config.skills.design.description}</p>
+              <div className="skill-pills">
+                {config.skills.design.tools.map((tool, idx) => (
+                  <span key={idx} className="skill-pill">{tool}</span>
+                ))}
+              </div>
+            </div>
+            <div className="about-card full-width-card">
               <h3>🎓 Education</h3>
-              <p>BS Computer Science, NTU (2024-2028)</p>
-            </div>
-            <div className="about-card">
-              <h3>📂 Projects</h3>
-              <p>Developed more than {config.projects.length} AI & Web systems</p>
+              <p className="about-card-desc">BS Computer Science, NTU (2024-2028)</p>
             </div>
           </div>
         </div>

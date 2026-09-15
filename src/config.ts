@@ -110,16 +110,16 @@ export const config = {
     },
     skills: {
         develop: {
-            title: "AI & ML Specialist",
+            title: "AGENTIC AI & BACKEND",
             description: "Building intelligent systems & AI solutions",
-            details: "Specializing in Artificial Intelligence and Machine Learning. Transforming mathematical models into intelligent digital solutions.",
-            tools: ["Python", "C++", "C#", "Scikit-learn", "NumPy", "Flask", "Tkinter", "LangChain", "LangGraph", "RAG", "Docker", "Kali Linux"]
+            details: "Specializing in Agentic Workflows, AI Orchestration, and robust backend services. Transforming concepts into intelligent digital solutions.",
+            tools: ["Python", "LangChain", "LangGraph", "RAG", "Scikit-learn", "NumPy", "C++", "C#", "Flask"]
         },
         design: {
-            title: "FULL-STACK",
-            description: "Modern web development & scalable applications",
-            details: "Building clean, high-performance, and responsive web applications with smooth user experiences.",
-            tools: ["Next.js", "React", "JavaScript", "HTML5", "CSS3", "SQL", "Tailwind", "UI/UX Design", "Figma", "Git", "Supabase", "Vercel", "DigitalOcean"]
+            title: "FULL-STACK & DEVOPS",
+            description: "Modern web development & scalable infrastructure",
+            details: "Building clean, high-performance web applications with robust CI/CD, containerization, and modern deployment strategies.",
+            tools: ["React", "Next.js", "TypeScript", "JavaScript", "Docker", "Linux", "GitHub", "SQL", "Tailwind", "Git"]
         }
     }
 };

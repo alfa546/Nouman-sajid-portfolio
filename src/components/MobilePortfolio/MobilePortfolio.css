@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Raleway:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 #main-mobile-portfolio {
-  background-color: #0b080c;
-  color: #eae5ec;
-  font-family: "Raleway", sans-serif;
+  background-color: #09090b;
+  color: #fafafa;
+  font-family: "Plus Jakarta Sans", sans-serif;
   min-height: 100vh;
   width: 100vw;
   overflow-x: hidden;
@@ -155,7 +155,7 @@
 .mobile-nav-list li button {
   background: transparent;
   border: none;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 500;
   font-size: 13px;
   color: rgba(255, 255, 255, 0.5);
@@ -184,11 +184,11 @@
 }
 
 .section-subtitle {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 2px;
-  color: #c2a4ff;
+  color: #a1a1aa;
   margin-bottom: 8px;
   text-transform: uppercase;
 }
@@ -196,17 +196,18 @@
 .section-title {
   font-family: "Playfair Display", serif;
   font-size: 32px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.3;
   color: #ffffff;
   margin: 0 0 15px 0;
+  letter-spacing: -0.5px;
 }
 
 .section-divider {
   border: none;
   height: 2px;
   width: 60px;
-  background-color: #c2a4ff;
+  background-color: #fafafa;
   margin: 0 0 35px 0;
 }
 
@@ -214,8 +215,9 @@
 .status-badge {
   display: inline-flex;
   align-items: center;
-  background-color: rgba(46, 204, 113, 0.1);
-  color: #27ae60;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fafafa;
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 12px;
@@ -233,17 +235,18 @@
 }
 
 .hero-text h1 {
-  font-family: "Montserrat", sans-serif;
-  font-size: 32px;
-  font-weight: 700;
+  font-family: "Playfair Display", serif;
+  font-size: 38px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
   margin: 0 0 10px 0;
 }
 
 .typewriter-container {
-  font-family: "Playfair Display", serif;
-  font-size: 22px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 20px;
   font-weight: 500;
-  color: #c2a4ff;
+  color: #a1a1aa;
   margin: 0 0 20px 0;
   height: 30px;
 }
@@ -277,8 +280,8 @@
 }
 
 .btn-hire {
-  background-color: #eae5ec;
-  color: #0b080c;
+  background-color: #fafafa;
+  color: #09090b;
   padding: 14px 28px;
   text-decoration: none;
   text-align: center;
@@ -290,12 +293,12 @@
 
 .btn-hire:hover {
   transform: translateY(-2px);
-  background-color: #ffffff;
+  background-color: #e4e4e7;
 }
 
 .btn-cv {
   background-color: transparent;
-  color: #eae5ec;
+  color: #fafafa;
   padding: 12px 28px;
   text-decoration: none;
   text-align: center;
@@ -471,7 +474,7 @@
 
 /* About Section */
 .about-details p {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 25px;
@@ -484,32 +487,52 @@
   margin-top: 25px;
 }
 
+.full-width-card {
+  width: 100%;
+}
+
 .about-card {
-  background-color: rgba(255, 255, 255, 0.02);
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: #18181b;
+  padding: 32px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .about-card:hover {
-  background-color: rgba(255, 255, 255, 0.04);
+  background-color: #27272a;
   transform: translateY(-2px);
 }
 
 .about-card h3 {
-  font-family: "Montserrat", sans-serif;
-  font-size: 15px;
-  margin: 0 0 8px 0;
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  margin: 0 0 12px 0;
   color: #ffffff;
 }
 
-.about-card p {
-  font-size: 14px;
+.about-card p.about-card-desc {
+  font-size: 15px;
   color: rgba(255, 255, 255, 0.6);
-  margin: 0;
+  margin: 0 0 20px 0;
   line-height: 1.6;
+}
+
+.skill-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-pill {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #fafafa;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Projects Section */
@@ -527,10 +550,10 @@
 }
 
 .mobile-project-card {
-  background-color: rgba(255, 255, 255, 0.02);
-  border-radius: 16px;
+  background-color: #18181b;
+  border-radius: 20px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
@@ -558,25 +581,25 @@
 }
 
 .project-content {
-  padding: 24px;
+  padding: 32px;
 }
 
 .project-content h3 {
-  font-family: "Montserrat", sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  margin: 0 0 8px 0;
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
   color: #ffffff;
 }
 
 .project-category {
   font-size: 11px;
   text-transform: uppercase;
-  color: #c2a4ff;
+  color: #a1a1aa;
   letter-spacing: 1.5px;
   font-weight: 600;
   display: inline-block;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .project-content p {
@@ -594,13 +617,13 @@
 }
 
 .tech-tag {
-  background-color: rgba(194, 164, 255, 0.1);
-  padding: 6px 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 6px 14px;
   border-radius: 20px;
   font-size: 11px;
-  color: #c2a4ff;
+  color: #d4d4d8;
   font-weight: 500;
-  border: 1px solid rgba(194, 164, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .project-card-actions {
@@ -637,10 +660,10 @@
 }
 
 .mobile-service-card {
-  background-color: rgba(255, 255, 255, 0.02);
-  padding: 30px 24px;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: #18181b;
+  padding: 40px 32px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   text-align: center;
   transition: transform 0.3s ease;
@@ -648,7 +671,7 @@
 
 .mobile-service-card:hover {
   transform: translateY(-4px);
-  background-color: rgba(255, 255, 255, 0.04);
+  background-color: #27272a;
 }
 
 .service-icon {
@@ -657,17 +680,18 @@
   align-items: center;
   width: 64px;
   height: 64px;
-  background-color: rgba(194, 164, 255, 0.1);
-  color: #c2a4ff;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fafafa;
   border-radius: 16px;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 24px auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mobile-service-card h3 {
-  font-family: "Montserrat", sans-serif;
-  font-size: 18px;
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
   margin: 0 0 12px 0;
-  font-weight: 700;
+  font-weight: 600;
   color: #ffffff;
 }
 
@@ -686,29 +710,29 @@
 }
 
 .contact-details-box h3 {
-  font-family: "Montserrat", sans-serif;
-  font-size: 20px;
-  margin: 0 0 10px 0;
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  margin: 0 0 12px 0;
   color: #ffffff;
 }
 
 .contact-details-box p {
-  font-size: 15px;
+  font-size: 16px;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.7;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .contact-item {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .contact-label {
   font-size: 11px;
   text-transform: uppercase;
-  color: #c2a4ff;
+  color: #a1a1aa;
   letter-spacing: 1.5px;
   font-weight: 600;
   margin-bottom: 6px;
@@ -723,10 +747,10 @@
 }
 
 .mobile-contact-form {
-  background-color: rgba(255, 255, 255, 0.02);
-  padding: 30px;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: #18181b;
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
@@ -737,43 +761,43 @@
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 14px 16px;
-  border-radius: 8px;
+  padding: 16px;
+  border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.03);
   color: #ffffff;
   font-family: inherit;
-  font-size: 14px;
+  font-size: 15px;
   transition: all 0.3s;
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-  border-color: #c2a4ff;
-  background-color: rgba(0, 0, 0, 0.4);
+  border-color: #fafafa;
+  background-color: rgba(255, 255, 255, 0.05);
   outline: none;
 }
 
 .btn-send {
-  background-color: #eae5ec;
-  color: #0b080c;
+  background-color: #fafafa;
+  color: #09090b;
   border: none;
   width: 100%;
-  padding: 14px;
+  padding: 16px;
   border-radius: 30px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15px;
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .btn-send:hover {
-  background-color: #ffffff;
+  background-color: #e4e4e7;
   transform: translateY(-2px);
 }
 
