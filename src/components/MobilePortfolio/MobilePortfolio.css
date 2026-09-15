@@ -678,87 +678,6 @@
   margin: 0;
 }
 
-/* GitHub Calendar Section */
-.mobile-github-section {
-  width: 100%;
-}
-
-.github-stats-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.github-badges-row {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
-}
-
-.github-stat-img {
-  width: 100%;
-  max-width: 450px;
-  border-radius: 8px;
-  border: 1px solid #30363d;
-  background-color: #0d1117;
-  padding: 10px;
-}
-
-.github-trophies-row {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.sub-heading-stats {
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  margin: 15px 0 10px 0;
-  color: #1a1a1a;
-  text-align: center;
-}
-
-.github-trophy-img {
-  width: 100%;
-  max-width: 800px;
-  overflow: hidden;
-}
-
-.github-calendar-container {
-  background-color: #0d1117; /* GitHub dark theme background */
-  color: #c9d1d9;
-  border-radius: 8px;
-  border: 1px solid #30363d;
-  padding: 20px;
-  margin-top: 5px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  /* hide scrollbar for webkit but still keep it functional */
-  -webkit-overflow-scrolling: touch;
-}
-
-.github-calendar-container::-webkit-scrollbar {
-  height: 8px;
-}
-.github-calendar-container::-webkit-scrollbar-track {
-  background: #0d1117;
-  border-radius: 4px;
-}
-.github-calendar-container::-webkit-scrollbar-thumb {
-  background: #30363d;
-  border-radius: 4px;
-}
-
-/* Make sure the text in the calendar respects the dark theme */
-.github-calendar-container svg {
-  min-width: 700px; /* Force minimum width to allow scrolling on mobile */
-}
-
 /* Contact Section */
 .contact-container {
   display: flex;
@@ -948,16 +867,6 @@
 
   .services-grid {
     flex-direction: row;
-  }
-
-  .github-badges-row {
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  .github-stat-img {
-    flex: 1;
-    max-width: 400px;
   }
 
   .mobile-service-card {

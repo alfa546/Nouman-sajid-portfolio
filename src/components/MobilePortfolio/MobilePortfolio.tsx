@@ -10,7 +10,6 @@ import {
 import { Brain, MonitorSmartphone, Terminal } from "lucide-react";
 import { config } from "../../config";
 import { getFallbackImage } from "../../utils/projectImages";
-import { GitHubCalendar } from "react-github-calendar";
 import "./MobilePortfolio.css";
 
 const MobilePortfolio = () => {
@@ -20,8 +19,8 @@ const MobilePortfolio = () => {
 
   // Typewriter roles
   const roles = [
-    "AI & ML Specialist",
     "Full-Stack Developer",
+    "Agentic AI Engineer",
     "Python Engineer",
     "NTU Student"
   ];
@@ -338,26 +337,6 @@ const MobilePortfolio = () => {
         </div>
       </section>
 
-      {/* GITHUB CONTRIBUTIONS SECTION */}
-      <section className="mobile-github-section" id="github">
-        <div className="section-header">
-          <p className="section-subtitle">GITHUB</p>
-          <h2 className="section-title">Contributions</h2>
-          <hr className="section-divider" />
-        </div>
-        <div className="github-calendar-wrapper">
-          <div className="github-calendar-container">
-            <GitHubCalendar
-              username="alfa546"
-              colorScheme="dark"
-              blockSize={12}
-              blockMargin={4}
-              fontSize={14}
-            />
-          </div>
-        </div>
-      </section>
-
       {/* SERVICES SECTION */}
       <section className="mobile-services-section" id="services">
         <div className="section-header">
@@ -368,14 +347,14 @@ const MobilePortfolio = () => {
         <div className="services-grid">
           <div className="mobile-service-card">
             <div className="service-icon"><Brain size={36} strokeWidth={1.5} /></div>
-            <h3>AI & ML Integration</h3>
+            <h3>Agentic AI Engineer</h3>
             <p>
-              Integrating modern AI pipelines and prediction models (Scikit-learn, Random Forest) with clean web dashboards.
+              Designing intelligent, autonomous agents and orchestrating LLM workflows using advanced prompt engineering and tool usage.
             </p>
           </div>
           <div className="mobile-service-card">
             <div className="service-icon"><MonitorSmartphone size={36} strokeWidth={1.5} /></div>
-            <h3>Web Development</h3>
+            <h3>Full-Stack Development</h3>
             <p>
               Building responsive, high-performance, and pixel-perfect applications using React, Next.js, and modern CSS.
             </p>
