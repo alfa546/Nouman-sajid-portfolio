@@ -7,6 +7,7 @@ import {
   FaInstagram, 
   FaArrowUpRightFromSquare 
 } from "react-icons/fa6";
+import { Brain, MonitorSmartphone, Terminal } from "lucide-react";
 import { config } from "../../config";
 import { getFallbackImage } from "../../utils/projectImages";
 import { GitHubCalendar } from "react-github-calendar";
@@ -339,34 +340,12 @@ const MobilePortfolio = () => {
 
       {/* GITHUB CONTRIBUTIONS SECTION */}
       <section className="mobile-github-section" id="github">
-        <p className="section-subtitle">GITHUB</p>
-        <h2 className="section-title">Stats & Achievements</h2>
-        <hr className="section-divider" />
-        
-        <div className="github-stats-container">
-          <div className="github-badges-row">
-             <img 
-               src="https://github-readme-stats.vercel.app/api?username=alfa546&show_icons=true&theme=transparent&hide_border=true&title_color=c2a4ff&text_color=eae5ec&icon_color=c2a4ff" 
-               alt="GitHub Stats" 
-               className="github-stat-img"
-             />
-             <img 
-               src="https://github-readme-stats.vercel.app/api/top-langs/?username=alfa546&layout=compact&theme=transparent&hide_border=true&title_color=c2a4ff&text_color=eae5ec" 
-               alt="Top Languages" 
-               className="github-stat-img"
-             />
-          </div>
-          
-          <div className="github-trophies-row">
-            <h3 className="sub-heading-stats">Trophies</h3>
-            <img 
-              src="https://github-profile-trophy.vercel.app/?username=alfa546&theme=dracula&no-frame=true&no-bg=true&margin-w=15" 
-              alt="GitHub Trophies" 
-              className="github-trophy-img"
-            />
-          </div>
-
-          <h3 className="sub-heading-stats">Contribution Graph</h3>
+        <div className="section-header">
+          <p className="section-subtitle">GITHUB</p>
+          <h2 className="section-title">Contributions</h2>
+          <hr className="section-divider" />
+        </div>
+        <div className="github-calendar-wrapper">
           <div className="github-calendar-container">
             <GitHubCalendar
               username="alfa546"
@@ -381,26 +360,28 @@ const MobilePortfolio = () => {
 
       {/* SERVICES SECTION */}
       <section className="mobile-services-section" id="services">
-        <p className="section-subtitle">SERVICES</p>
-        <h2 className="section-title">My Expertises</h2>
-        <hr className="section-divider" />
+        <div className="section-header">
+          <p className="section-subtitle">SERVICES</p>
+          <h2 className="section-title">My Expertise</h2>
+          <hr className="section-divider" />
+        </div>
         <div className="services-grid">
           <div className="mobile-service-card">
-            <span className="service-icon">🤖</span>
+            <div className="service-icon"><Brain size={36} strokeWidth={1.5} /></div>
             <h3>AI & ML Integration</h3>
             <p>
               Integrating modern AI pipelines and prediction models (Scikit-learn, Random Forest) with clean web dashboards.
             </p>
           </div>
           <div className="mobile-service-card">
-            <span className="service-icon">💻</span>
+            <div className="service-icon"><MonitorSmartphone size={36} strokeWidth={1.5} /></div>
             <h3>Web Development</h3>
             <p>
               Building responsive, high-performance, and pixel-perfect applications using React, Next.js, and modern CSS.
             </p>
           </div>
           <div className="mobile-service-card">
-            <span className="service-icon">⚙️</span>
+            <div className="service-icon"><Terminal size={36} strokeWidth={1.5} /></div>
             <h3>Automation & Scripting</h3>
             <p>
               Writing advanced Python scripts, scrapers, API pipelines, and GUI applications to automate workflows.
