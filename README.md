@@ -4,10 +4,10 @@ A modern, interactive **developer portfolio website** built with **React**, **Ty
 
 ---
 
-## 👨‍💻 Developer Profile
+## 👨‍💻 Developer Profile 
 
 - **Name:** Nouman Sajid
-- **Title:** Full-Stack Developer
+- **Title:** Full-Stack Developer / AI Engineer
 - **Education:** Computer Science Student at National Textile University
 - **Focus:** Artificial Intelligence, Machine Learning & Modern Web Applications
 
