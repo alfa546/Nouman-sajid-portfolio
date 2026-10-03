@@ -4,7 +4,7 @@ export class TextSplitter {
   words: Element[] = [];
   lines: Element[] = [];
   elements: Element[] = [];
-  selector: string | Function;
+  selector: string | ((...args: unknown[]) => unknown);
   private originalHTML: Map<Element, string> = new Map();
 
   constructor(target: string | Element | NodeListOf<Element> | Element[], vars?: { type?: string; linesClass?: string }) {
@@ -100,7 +100,7 @@ export class TextSplitter {
       if (items.length === 0) return;
 
       let currentLine: Element[] = [];
-      let lines: Element[][] = [];
+      const lines: Element[][] = [];
       let currentTop = 0;
 
       items.forEach((item) => {

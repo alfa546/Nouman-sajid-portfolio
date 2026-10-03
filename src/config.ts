@@ -2,8 +2,8 @@ export const config = {
     developer: {
         name: "Nouman",
         fullName: "Nouman Sajid",
-        title: "AI & ML Specialist | Full-Stack Developer",
-        description: "Computer Science student at National Textile University specializing in Artificial Intelligence, Machine Learning, and Full-Stack development. Transforming mathematical models into intelligent digital solutions."
+        title: "Full-Stack Developer | Agentic AI Engineer",
+        description: "Computer Science student at National Textile University specializing in Full-Stack development and Agentic AI. Transforming modern concepts into intelligent digital solutions."
     },
     social: {
         github: "alfa546",
@@ -12,7 +12,7 @@ export const config = {
     },
     about: {
         title: "About Me",
-        description: "I am a Computer Science student at National Textile University (graduating in 2028), specializing in Artificial Intelligence and Machine Learning. I focus on transforming mathematical models into intelligent digital solutions. By bridging Python-based ML engineering with Next.js/React frontend development, I build clean, high-performance, and responsive web applications with smooth user experiences."
+        description: "I am a Computer Science student at National Textile University (graduating in 2028), specializing in Full-Stack Development and Agentic AI. By bridging Python-based engineering with Next.js/React frontend development, I build clean, high-performance, and responsive web applications with smooth user experiences."
     },
     experiences: [
         {
@@ -44,13 +44,13 @@ export const config = {
             company: "National Textile University",
             period: "2024 - 2028",
             location: "Okara, Pakistan",
-            description: "Specialization: Artificial Intelligence & Machine Learning. Core coursework: Data Structures and Algorithms, Object-Oriented Programming, Python Programming, Artificial Intelligence.",
+            description: "Specialization: Full-Stack Development & Agentic AI. Core coursework: Data Structures and Algorithms, Object-Oriented Programming, Python Programming, Database Management.",
             responsibilities: [
                 "Studying core computer science concepts",
-                "Specializing in AI and Machine Learning",
+                "Specializing in Full-Stack & Agentic AI",
                 "Learning OOP and DSA"
             ],
-            technologies: ["DSA", "OOP", "Python", "Artificial Intelligence"]
+            technologies: ["DSA", "OOP", "Python", "Full-Stack"]
         }
     ],
     projects: [

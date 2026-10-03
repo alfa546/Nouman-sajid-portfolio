@@ -35,9 +35,10 @@ const MobilePortfolio = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 1500);
     return () => clearTimeout(timer);
   }, []);
+
   // Typewriter Effect
   useEffect(() => {
     if (loading) return;
@@ -45,7 +46,7 @@ const MobilePortfolio = () => {
     let currentRoleIndex = 0;
     let currentCharIndex = 0;
     let isDeleting = false;
-    let timerId: any;
+    let timerId: ReturnType<typeof setTimeout>;
 
     const tick = () => {
       if (!isMounted) return;
@@ -144,8 +145,8 @@ const MobilePortfolio = () => {
           <h2 className="designer-tag animate-fall-delay2">Developed by Nouman</h2>
           <div className="sub-icons animate-fall-delay3">
             <div className="icon-badge">Python</div>
-            <div className="icon-badge">AI/ML</div>
-            <div className="icon-badge">React</div>
+            <div className="icon-badge">Full-Stack</div>
+            <div className="icon-badge">Agentic AI</div>
           </div>
         </div>
       </div>
@@ -270,10 +271,10 @@ const MobilePortfolio = () => {
         <hr className="section-divider" />
         <div className="about-details">
           <p>
-            I am a Computer Science student at National Textile University (graduating in 2028), specializing in Artificial Intelligence and Machine Learning.
+            I am a Computer Science student at National Textile University (graduating in 2028), specializing in Full-Stack Development and Agentic AI.
           </p>
           <p>
-            By bridging Python-based ML engineering with React frontend development, I build clean, high-performance web applications with smooth user experiences.
+            By bridging Python-based engineering with React frontend development, I build clean, high-performance web applications with smooth user experiences.
           </p>
           <div className="info-cards">
             <div className="about-card full-width-card">
