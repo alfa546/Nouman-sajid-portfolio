@@ -4,12 +4,11 @@ import {
   FaLinkedin, 
   FaEnvelope, 
   FaXTwitter, 
-  FaInstagram, 
-  FaArrowUpRightFromSquare 
+  FaInstagram 
 } from "react-icons/fa6";
 import { Brain, MonitorSmartphone, Terminal } from "lucide-react";
 import { config } from "../../config";
-import { getFallbackImage } from "../../utils/projectImages";
+import ProjectGallery from "../ProjectGallery/ProjectGallery";
 import "./MobilePortfolio.css";
 
 const MobilePortfolio = () => {
@@ -311,41 +310,7 @@ const MobilePortfolio = () => {
         <p className="projects-intro-desc">
           A showcase of my recent projects demonstrating expertise in full-stack development, modern frameworks, and artificial intelligence.
         </p>
-        <div className="projects-grid">
-          {config.projects.map((project) => (
-            <div key={project.id} className="mobile-project-card">
-              <div className="project-img-wrapper">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = getFallbackImage(project.id);
-                  }}
-                />
-              </div>
-              <div className="project-content">
-                <h3>{project.title}</h3>
-                <span className="project-category">{project.category}</span>
-                <p>{project.description}</p>
-                <div className="project-tech-tags">
-                  {project.technologies.split(",").map((tech, idx) => (
-                    <span key={idx} className="tech-tag">{tech.trim()}</span>
-                  ))}
-                </div>
-                <div className="project-card-actions">
-                  {project.link && (
-                    <a href={project.link} className="project-link-btn" target="_blank" rel="noreferrer">
-                      <FaArrowUpRightFromSquare style={{ fontSize: "11px", marginRight: "5px" }} /> Live
-                    </a>
-                  )}
-                  <a href={project.github || config.contact.github} className="project-link-btn" target="_blank" rel="noreferrer">
-                    <FaGithub style={{ fontSize: "13px", marginRight: "5px" }} /> Code
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <ProjectGallery />
       </section>
 
       {/* SERVICES SECTION */}
