@@ -1,4 +1,4 @@
-# 🚀 Nouman Sajid — Portfolio Website (React + TypeScript)
+# Nouman Sajid — Portfolio Website (React + TypeScript)
 
 A modern, high-performance personal portfolio website built with **React**, **TypeScript**, and **Vite**, showcasing expertise in **Full-Stack Web Development** and **Agentic AI Engineering**.
 
