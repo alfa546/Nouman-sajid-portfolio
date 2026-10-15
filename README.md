@@ -7,7 +7,7 @@ A modern, high-performance personal portfolio website built with **React**, **Ty
 ## 👨‍💻 Developer Profile
 
 - **Name:** Muhammad Nouman Sajid
-- **Title:** Full-Stack Developer & Agentic AI Engineer
+- **Title:** Full-Stack Developer & Agentic AI developer
 - **Education:** BS Computer Science, National Textile University (2024 – 2028)
 - **Location:** Okara, Pakistan (Available for Global Remote & Freelance Roles)
 - **Specialization:** Autonomous Agentic Workflows (LangChain, LangGraph), High-Performance Web Applications (React, Next.js, TypeScript), and Scalable Backend Architectures.
