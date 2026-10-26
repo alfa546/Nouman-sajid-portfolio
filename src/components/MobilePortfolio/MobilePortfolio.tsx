@@ -11,18 +11,17 @@ import { config } from "../../config";
 import ProjectGallery from "../ProjectGallery/ProjectGallery";
 import "./MobilePortfolio.css";
 
+const ROLES = [
+  "Full-Stack Developer",
+  "Agentic AI Engineer",
+  "Python Engineer",
+  "NTU Student"
+];
+
 const MobilePortfolio = () => {
   const [activeSection, setActiveSection] = useState<string>("home");
   const [typedText, setTypedText] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
-
-  // Typewriter roles
-  const roles = [
-    "Full-Stack Developer",
-    "Agentic AI Engineer",
-    "Python Engineer",
-    "NTU Student"
-  ];
 
   // Form state
   const [name, setName] = useState("");
@@ -49,7 +48,7 @@ const MobilePortfolio = () => {
 
     const tick = () => {
       if (!isMounted) return;
-      const currentRole = roles[currentRoleIndex];
+      const currentRole = ROLES[currentRoleIndex];
 
       if (isDeleting) {
         currentCharIndex--;
@@ -69,7 +68,7 @@ const MobilePortfolio = () => {
         isDeleting = true;
       } else if (isDeleting && currentCharIndex === 0) {
         isDeleting = false;
-        currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+        currentRoleIndex = (currentRoleIndex + 1) % ROLES.length;
         delay = 500;
       }
 
