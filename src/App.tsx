@@ -17,16 +17,11 @@ const App = () => {
               fallback={
                 <div
                   style={{
-                    background: "#0b080c",
+                    background: "#050508",
                     height: "100vh",
-                    color: "white",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
+                    width: "100vw",
                   }}
-                >
-                  Loading...
-                </div>
+                />
               }
             >
               <MobilePortfolio />

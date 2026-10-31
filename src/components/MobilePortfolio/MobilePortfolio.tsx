@@ -1,4 +1,4 @@
-import { useState, useEffect, FormEvent } from "react";
+import { useState, useEffect, useRef, FormEvent } from "react";
 import { 
   FaGithub, 
   FaLinkedin, 
@@ -18,10 +18,21 @@ const ROLES = [
   "NTU Student"
 ];
 
+const LOADER_STAGES = [
+  "INITIALIZING QUANTUM CORE",
+  "SYNCHRONIZING PYTHON & AI AGENTS",
+  "COMPILING FULL-STACK ARCHITECTURE",
+  "LAUNCHING NOUMAN PORTFOLIO"
+];
+
 const MobilePortfolio = () => {
   const [activeSection, setActiveSection] = useState<string>("home");
   const [typedText, setTypedText] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
+  const [loaderExiting, setLoaderExiting] = useState<boolean>(false);
+  const [progress, setProgress] = useState<number>(0);
+  const [scrambledTitle, setScrambledTitle] = useState<string>("NOUMAN PORTFOLIO");
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   // Form state
   const [name, setName] = useState("");
@@ -29,13 +40,131 @@ const MobilePortfolio = () => {
   const [message, setMessage] = useState("");
   const [formSent, setFormSent] = useState(false);
 
-  // Loading screen timer
+  // High-frame-rate 3D Warp & Neural Particle Canvas + Progress Choreography
   useEffect(() => {
-    const timer = setTimeout(() => {
+    if (!loading) return;
+
+    let animationFrameId: number;
+    let startTime: number | null = null;
+    const duration = 2900; // 2.9s smooth build-up + 0.75s cinematic exit
+    const targetTitle = "NOUMAN PORTFOLIO";
+    const glyphs = "01</>A∑∆Ω#X*+";
+
+    // Canvas setup for 3D warp starfield & neural energy lines
+    const canvas = canvasRef.current;
+    const ctx = canvas ? canvas.getContext("2d") : null;
+    let width = (canvas && (canvas.width = window.innerWidth)) || window.innerWidth;
+    let height = (canvas && (canvas.height = window.innerHeight)) || window.innerHeight;
+
+    const handleResize = () => {
+      if (!canvas) return;
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+    window.addEventListener("resize", handleResize);
+
+    interface Star {
+      x: number;
+      y: number;
+      z: number;
+      pz: number;
+      color: string;
+    }
+
+    const colors = ["#c084fc", "#38bdf8", "#f472b6", "#818cf8", "#34d399"];
+    const stars: Star[] = Array.from({ length: 140 }, () => ({
+      x: (Math.random() - 0.5) * width * 2,
+      y: (Math.random() - 0.5) * height * 2,
+      z: Math.random() * width,
+      pz: 0,
+      color: colors[Math.floor(Math.random() * colors.length)]
+    }));
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const rawRatio = Math.min(elapsed / duration, 1);
+      // Smooth cubic ease-in-out curve with dramatic acceleration at the end
+      const eased =
+        rawRatio < 0.5
+          ? 4 * rawRatio * rawRatio * rawRatio
+          : 1 - Math.pow(-2 * rawRatio + 2, 3) / 2;
+
+      const currentProgress = Math.min(100, Math.floor(eased * 100));
+      setProgress(currentProgress);
+
+      // Cryptographic text decode effect for title
+      const revealCount = Math.floor(rawRatio * 1.25 * targetTitle.length);
+      const nextTitle = targetTitle
+        .split("")
+        .map((ch, idx) => {
+          if (ch === " ") return " ";
+          if (idx < revealCount) return ch;
+          return glyphs[Math.floor((timestamp / 40 + idx * 7) % glyphs.length)];
+        })
+        .join("");
+      setScrambledTitle(nextTitle);
+
+      // Render 3D Warp Field on Canvas
+      if (ctx && canvas) {
+        ctx.fillStyle = "rgba(5, 5, 8, 0.28)";
+        ctx.fillRect(0, 0, width, height);
+
+        const cx = width / 2;
+        const cy = height / 2;
+        // Warp speed accelerates exponentially as progress nears 100%
+        const speed = 6 + eased * 38 + (rawRatio > 0.88 ? (rawRatio - 0.88) * 180 : 0);
+
+        for (let i = 0; i < stars.length; i++) {
+          const s = stars[i];
+          s.pz = s.z;
+          s.z -= speed;
+
+          if (s.z <= 1) {
+            s.z = width;
+            s.pz = width;
+            s.x = (Math.random() - 0.5) * width * 2;
+            s.y = (Math.random() - 0.5) * height * 2;
+          }
+
+          const sx = cx + (s.x / s.z) * (width * 0.55);
+          const sy = cy + (s.y / s.z) * (width * 0.55);
+          const px = cx + (s.x / s.pz) * (width * 0.55);
+          const py = cy + (s.y / s.pz) * (width * 0.55);
+
+          const alpha = Math.min(1, (1 - s.z / width) * 1.2);
+          ctx.beginPath();
+          ctx.moveTo(px, py);
+          ctx.lineTo(sx, sy);
+          ctx.strokeStyle = s.color;
+          ctx.globalAlpha = alpha;
+          ctx.lineWidth = Math.max(0.8, (1 - s.z / width) * 2.8);
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+      }
+
+      if (rawRatio < 1) {
+        animationFrameId = requestAnimationFrame(animate);
+      } else {
+        setProgress(100);
+        setScrambledTitle(targetTitle);
+        setLoaderExiting(true);
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(animate);
+
+    const finishTimer = setTimeout(() => {
       setLoading(false);
-    }, 1500);
-    return () => clearTimeout(timer);
-  }, []);
+    }, duration + 780);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      clearTimeout(finishTimer);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [loading]);
 
   // Typewriter Effect
   useEffect(() => {
@@ -132,27 +261,122 @@ const MobilePortfolio = () => {
     }
   };
 
-  if (loading) {
-    return (
-      <div id="loading-screen">
-        <div className="loading-content">
-          <div className="main-icon-container animate-fall">
-            <div className="code-icon">{"</>"}</div>
-          </div>
-          <h1 className="loading-title animate-fall-delay1">NOUMAN PORTFOLIO</h1>
-          <h2 className="designer-tag animate-fall-delay2">Developed by Nouman</h2>
-          <div className="sub-icons animate-fall-delay3">
-            <div className="icon-badge">Python</div>
-            <div className="icon-badge">Full-Stack</div>
-            <div className="icon-badge">Agentic AI</div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const stageIndex = Math.min(
+    LOADER_STAGES.length - 1,
+    Math.floor((progress / 100) * LOADER_STAGES.length)
+  );
 
   return (
     <div id="main-mobile-portfolio">
+      {loading && (
+        <div
+          id="loading-screen"
+          className={loaderExiting ? "loader-exit-active" : ""}
+          aria-label="Loading Nouman Portfolio"
+        >
+          {/* Shutter panels for cinematic split reveal */}
+          <div className="loader-shutter loader-shutter-top" />
+          <div className="loader-shutter loader-shutter-bottom" />
+
+          {/* 60fps 3D Starfield Warp Canvas */}
+          <canvas ref={canvasRef} className="loader-warp-canvas" />
+
+          {/* Ambient aurora & cyber grid */}
+          <div className="loader-cyber-grid" />
+          <div className="loader-aurora-glow" />
+
+          <div className={`loading-content ${loaderExiting ? "content-hyperjump" : ""}`}>
+            {/* 3D Gyroscopic Quantum Core */}
+            <div className="quantum-core-stage">
+              <div className="quantum-shockwave" />
+              <div className="quantum-shockwave shockwave-delay" />
+              <div className="gyro-ring gyro-ring-1" />
+              <div className="gyro-ring gyro-ring-2" />
+              <div className="gyro-ring gyro-ring-3" />
+
+              {/* SVG Precision Progress Ring */}
+              <svg className="quantum-svg-ring" viewBox="0 0 140 140">
+                <defs>
+                  <linearGradient id="quantumGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#c084fc" />
+                    <stop offset="50%" stopColor="#38bdf8" />
+                    <stop offset="100%" stopColor="#f472b6" />
+                  </linearGradient>
+                </defs>
+                <circle
+                  className="quantum-ring-track"
+                  cx="70"
+                  cy="70"
+                  r="58"
+                />
+                <circle
+                  className="quantum-ring-progress"
+                  cx="70"
+                  cy="70"
+                  r="58"
+                  style={{
+                    strokeDashoffset: 364.4 - (364.4 * progress) / 100
+                  }}
+                />
+              </svg>
+
+              {/* Glowing Center Emblem */}
+              <div className="main-icon-container">
+                <div className="core-inner-plasma" />
+                <div className="code-icon">{"</>"}</div>
+              </div>
+            </div>
+
+            {/* Live Big Telemetry Counter */}
+            <div className="loader-counter-wrap">
+              <span className="loader-counter-num">
+                {String(progress).padStart(2, "0")}
+              </span>
+              <span className="loader-counter-pct">%</span>
+            </div>
+
+            {/* Cryptographic Decode Title */}
+            <h1 className="loading-title" data-text={scrambledTitle}>
+              {scrambledTitle}
+            </h1>
+
+            <h2 className="designer-tag">
+              <span className="designer-tag-dot" />
+              Developed by Nouman
+            </h2>
+
+            {/* Laser Progress Track */}
+            <div className="loader-laser-bar">
+              <div
+                className="loader-laser-fill"
+                style={{ width: `${progress}%` }}
+              >
+                <span className="loader-laser-spark" />
+              </div>
+            </div>
+
+            <div className="loader-telemetry-status">
+              {LOADER_STAGES[stageIndex]}
+            </div>
+
+            {/* Igniting Skill Badges */}
+            <div className="sub-icons">
+              <div className={`icon-badge ${progress >= 20 ? "badge-ignited" : ""}`}>
+                <span className="badge-pulse-dot" />
+                Python
+              </div>
+              <div className={`icon-badge ${progress >= 52 ? "badge-ignited" : ""}`}>
+                <span className="badge-pulse-dot" />
+                Full-Stack
+              </div>
+              <div className={`icon-badge ${progress >= 82 ? "badge-ignited" : ""}`}>
+                <span className="badge-pulse-dot" />
+                Agentic AI
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <header className="mobile-header">
         <nav className="mobile-nav">
           <ul className="mobile-nav-list">
