@@ -1,1 +1,0 @@
-{"root":["./src/App.tsx","./src/config.ts","./src/main.tsx","./src/vite-env.d.ts","./src/components/MobilePortfolio/MobilePortfolio.tsx","./src/data/boneData.ts","./src/pages/MyWorks.tsx","./src/pages/Play.tsx","./src/utils/projectImages.ts","./src/utils/redoxchessEngine.ts","./src/utils/textSplitter.ts"],"version":"5.6.2"}
