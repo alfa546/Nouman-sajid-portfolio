@@ -1,52 +1,39 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import "./App.css";
 
-const MobilePortfolio = lazy(() => import("./components/MobilePortfolio/MobilePortfolio"));
+const Portfolio = lazy(() => import("./pages/Portfolio"));
 const MyWorks = lazy(() => import("./pages/MyWorks"));
 const Play = lazy(() => import("./pages/Play"));
 
-const App = () => {
+export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Suspense
-              fallback={
-                <div
-                  style={{
-                    background: "#050508",
-                    height: "100vh",
-                    width: "100vw",
-                  }}
-                />
-              }
-            >
-              <MobilePortfolio />
-            </Suspense>
-          }
-        />
-        <Route
-          path="/myworks"
-          element={
-            <Suspense fallback={<div>Loading...</div>}>
-              <MyWorks />
-            </Suspense>
-          }
-        />
-        <Route
-          path="/play"
-          element={
-            <Suspense fallback={<div>Loading...</div>}>
-              <Play />
-            </Suspense>
-          }
-        />
-      </Routes>
+      <Suspense
+        fallback={
+          <div className="route-loading" role="status">
+            Loading portfolio…
+          </div>
+        }
+      >
+        <Routes>
+          <Route path="/" element={<Portfolio />} />
+          <Route path="/myworks" element={<MyWorks />} />
+          <Route path="/play" element={<Play />} />
+          <Route
+            path="*"
+            element={
+              <main className="route-not-found wrap">
+                <p className="eyebrow">404 / PATH NOT FOUND</p>
+                <h1>A little off the grid.</h1>
+                <Link className="button button-primary" to="/">
+                  Return to portfolio →
+                </Link>
+              </main>
+            }
+          />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
-};
-
-export default App;
+}

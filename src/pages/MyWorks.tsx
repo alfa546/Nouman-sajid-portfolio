@@ -1,66 +1,55 @@
+import { useEffect } from "react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { FaGithub, FaArrowUpRightFromSquare } from "react-icons/fa6";
+import { SiteFooter, SiteHeader } from "../components/SiteChrome";
+import ProjectGallery from "../components/ProjectGallery/ProjectGallery";
 import { config } from "../config";
-import { getFallbackImage } from "../utils/projectImages";
-import "./MyWorks.css";
 
-const MyWorks = () => {
+export default function MyWorks() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
-    <div className="myworks-page">
-      <div className="myworks-header">
-        <Link to="/" className="back-button" data-cursor="disable">
-          ← Back to Home
+    <div className="cyber-portfolio archive-page" id="top">
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
+      <SiteHeader />
+      <main className="wrap archive-main" id="main-content">
+        <Link className="text-link archive-back" to="/">
+          <ArrowLeft size={15} /> Back to home
         </Link>
-        <h1>
-          All <span>Works</span>
-        </h1>
-        <p>A collection of all my projects and creations</p>
-      </div>
-
-      <div className="myworks-grid">
-        {config.projects.map((project, index) => (
-          <div className="myworks-card" key={project.id} data-cursor="disable">
-            <div className="myworks-card-number">0{index + 1}</div>
-            <div className="myworks-card-image">
-              <img
-                src={project.image}
-                alt={project.title}
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = getFallbackImage(project.id);
-                }}
-              />
-            </div>
-            <div className="myworks-card-info">
-              <h3>{project.title}</h3>
-              <p className="myworks-card-category">{project.category}</p>
-              <p className="myworks-card-description">{project.description}</p>
-              <p className="myworks-card-tech">{project.technologies}</p>
-              <div className="myworks-card-actions" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
-                {project.link && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="work-btn live-btn"
-                  >
-                    Live Demo <FaArrowUpRightFromSquare style={{ fontSize: "12px", marginLeft: "5px" }} />
-                  </a>
-                )}
-                <a
-                  href={project.github || config.contact.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="work-btn code-btn"
-                >
-                  Code <FaGithub style={{ fontSize: "14px", marginLeft: "5px" }} />
-                </a>
-              </div>
-            </div>
+        <div className="section-index">
+          <span>
+            PROJECT DIRECTORY /{" "}
+            {String(config.projects.length).padStart(2, "0")} ENTRIES
+          </span>
+          <span>BUILD. SHIP. ITERATE.</span>
+        </div>
+        <div className="section-heading-row">
+          <div>
+            <p className="eyebrow">THE PROJECT ARCHIVE</p>
+            <h1>
+              Ideas into <em>execution.</em>
+            </h1>
+            <p className="section-description">
+              Web platforms, intelligent agents, and practical tools.
+              <br />
+              Explore the things I’ve been building.
+            </p>
           </div>
-        ))}
-      </div>
+          <a
+            className="text-link"
+            href={config.contact.github}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Find me on GitHub <ArrowUpRight size={16} />
+          </a>
+        </div>
+        <ProjectGallery />
+      </main>
+      <SiteFooter />
     </div>
   );
-};
-
-export default MyWorks;
+}
