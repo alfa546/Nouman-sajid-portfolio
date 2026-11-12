@@ -1,22 +1,16 @@
 :root {
-  font-family: "DM Sans", sans-serif;
-  color: #242622;
-  background: #f7f6f2;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #242424;
+  background: #fff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  --paper: #f7f6f2;
-  --ink: #242622;
-  --accent: #3854d6;
-  --muted: #75776f;
-  --line: #ddded6;
-  --serif: "Instrument Serif", Georgia, serif;
-  --mono: "IBM Plex Mono", monospace;
-  --backgroundColor: #f7f6f2;
-  --accentColor: #3854d6;
+  --accent: #333;
+  --accentColor: #333;
+  --backgroundColor: #fff;
+  --mono: ui-monospace, monospace;
   color-scheme: light;
-  scroll-behavior: smooth;
-  scroll-padding-top: 105px;
+  scroll-padding-top: 24px;
 }
 * {
   box-sizing: border-box;
@@ -31,21 +25,12 @@ textarea {
   font: inherit;
 }
 button,
-a,
-input,
-textarea {
+a {
+  touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
-button,
-a,
-summary {
-  touch-action: manipulation;
-}
-button,
-summary {
-  cursor: pointer;
-}
 button {
+  cursor: pointer;
   color: inherit;
 }
 a {
@@ -57,19 +42,18 @@ img {
   max-width: 100%;
 }
 ::selection {
-  color: white;
-  background: #3854d6;
+  color: #fff;
+  background: #454545;
 }
 :focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 5px;
+  outline: 2px solid #666;
+  outline-offset: 4px;
 }
 h1,
 h2,
 h3,
 h4,
-p,
-figure {
+p {
   margin: 0;
 }
 .sr-only {
@@ -81,17 +65,4 @@ figure {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }

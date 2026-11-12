@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { ArrowUpRight, Braces } from "lucide-react";
-import { FaGithub as Github } from "react-icons/fa6";
+import { ArrowUpRight } from "lucide-react";
 import { config } from "../../config";
 import "./ProjectGallery.css";
 
@@ -18,6 +17,13 @@ export interface ProjectGalleryProps {
   projects?: ProjectItem[];
   showFilters?: boolean;
 }
+const summaries: Record<number, string> = {
+  1: "A blogging platform for technical articles, with content management, categories, and author profiles.",
+  2: "A Python AI agent that parses forms and matches job application requirements.",
+  3: "A conversational AI agent with video generation powered by Google Veo.",
+  4: "A recruitment platform with job listings, authentication, and a responsive interface.",
+  5: "An open-source SEO crawler for on-page audits, JavaScript rendering, and data exports.",
+};
 const filters = ["All projects", "Full-Stack", "Agentic AI", "Tools"];
 function categoryMatches(project: ProjectItem, filter: string) {
   if (filter === "All projects") return true;
@@ -26,16 +32,11 @@ function categoryMatches(project: ProjectItem, filter: string) {
   if (filter === "Agentic AI") return /\bai\b/.test(category);
   return /tool|script|seo/.test(category);
 }
-function ProjectCard({
-  project,
-  index,
-}: {
-  project: ProjectItem;
-  index: number;
-}) {
+function ProjectCard({ project }: { project: ProjectItem }) {
   const [imageFailed, setImageFailed] = useState(false);
+  const hasSource = project.github && project.github !== config.contact.github;
   return (
-    <article className={`project-card project-${project.id}`}>
+    <article className="project-card">
       <a
         className="project-preview"
         href={project.link || project.github || config.contact.github}
@@ -43,56 +44,36 @@ function ProjectCard({
         rel="noreferrer"
         aria-label={`Explore ${project.title}${project.link ? " live website" : " on GitHub"}`}
       >
-        <div className="project-preview-top">
-          <span>PROJECT / {String(index + 1).padStart(2, "0")}</span>
-          <span>
-            {project.link ? "LIVE WEBSITE" : "GITHUB"}{" "}
-            <ArrowUpRight size={11} />
-          </span>
-        </div>
-        <div className="project-image-frame">
-          {imageFailed ? (
-            <div className="project-image-fallback">
-              <Braces size={40} />
-              <span>{project.title}</span>
-            </div>
-          ) : (
-            <img
-              src={project.image}
-              alt={`${project.title} interface preview`}
-              loading="lazy"
-              width={1000}
-              height={625}
-              onError={() => setImageFailed(true)}
-            />
-          )}
-        </div>
-        <span className="project-open" aria-hidden="true">
-          <ArrowUpRight size={22} />
-        </span>
+        {imageFailed ? (
+          <div className="project-image-fallback">{project.title}</div>
+        ) : (
+          <img
+            src={project.image}
+            alt={`${project.title} interface preview`}
+            loading="lazy"
+            width={1000}
+            height={625}
+            onError={() => setImageFailed(true)}
+          />
+        )}
       </a>
       <div className="project-card-content">
-        <div className="project-title-row">
-          <div>
-            <span className="project-category">{project.category}</span>
-            <h3>{project.title}</h3>
-          </div>
-          <a
-            href={project.github || config.contact.github}
-            target="_blank"
-            rel="noreferrer"
-            className="project-github icon-button"
-            aria-label={`${project.github && project.github !== config.contact.github ? project.title + " source code" : "Nouman's profile"} on GitHub`}
-          >
-            <Github size={18} />
-          </a>
-        </div>
-        <p>{project.description}</p>
-        <div className="tech-list">
-          {project.technologies.split(",").map((tech) => (
-            <span key={tech}>{tech.trim()}</span>
-          ))}
-        </div>
+        <h3>{project.title}</h3>
+        <p>{summaries[project.id] || project.description}</p>
+        <p className="project-technologies">{project.technologies}</p>
+        <a
+          className="project-link"
+          href={project.link || project.github || config.contact.github}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {project.link
+            ? "Visit website"
+            : hasSource
+              ? "View source"
+              : "GitHub profile"}
+          <ArrowUpRight size={14} />
+        </a>
       </div>
     </article>
   );
@@ -122,20 +103,17 @@ export default function ProjectGallery({
                 onClick={() => setFilter(item)}
               >
                 {item}
-                {item === "All projects" && (
-                  <span>{String(projects.length).padStart(2, "0")}</span>
-                )}
               </button>
             ))}
           </div>
           <span className="gallery-count" role="status">
-            {String(visible.length).padStart(2, "0")} PROJECTS
+            {visible.length} projects
           </span>
         </div>
       )}
       <div className="project-grid">
-        {visible.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
+        {visible.map((project) => (
+          <ProjectCard key={project.id} project={project} />
         ))}
       </div>
       {!visible.length && (

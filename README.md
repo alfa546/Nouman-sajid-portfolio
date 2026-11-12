@@ -1,6 +1,6 @@
 # Nouman Sajid — Portfolio Website (React + TypeScript)
 
-An editorial personal portfolio built with **React**, **TypeScript**, and **Vite**, showcasing **Full-Stack Web Development** and **Agentic AI Engineering**. Warm ivory, deep ink, and cobalt accents pair with expressive typography, generous whitespace, and an original animated ribbon illustration.
+A simple personal portfolio built with **React**, **TypeScript**, and **Vite**, showcasing **Full-Stack Web Development** and **Agentic AI Engineering**. The interface uses a white background, dark text, a readable system font, and a compact layout.
 
 ---
 
@@ -16,15 +16,15 @@ An editorial personal portfolio built with **React**, **TypeScript**, and **Vite
 
 ## ✨ Key Features
 
-- **Responsive interface:** A shared light navigation and visual system for the home page and project archive, with layouts for desktop, tablet, and mobile.
-- **Optional portfolio terminal:** Expand “For the curious minds” in About, or press `/` to reveal and focus it. Explore with `whoami`, `skills`, `projects`, `education`, `contact`, `help`, and `clear`. The shortcut is ignored while editing a form field. Commands only read local portfolio information.
-- **Project gallery:** Large, staggered image previews and an editorial final project row. Filter real projects by Full-Stack, Agentic AI, or Tools, with local screenshots, technology lists, and external links. Missing screenshots fall back to a local visual.
-- **Project archive (`/myworks`):** Browse all projects using the same filters and design system.
-- **Chess arena (`/play`):** The existing Chess.js and Redox engine experience in an ink-and-blue palette. Its optional conversational companion uses the server-side `/api/chat` endpoint and requires `GROQ_API_KEY` on the hosting platform.
-- **Contact:** Copy the email address or prepare a prefilled draft in your email application. The form does **not** send mail or report delivery; you send the draft in your mail app.
-- **Accessibility:** Skip links, visible keyboard focus, labelled inputs, announced interaction results, an Escape-dismissable mobile menu, reduced-motion support, and a motion pause control.
-- **Typography:** DM Sans, Instrument Serif, and IBM Plex Mono, served by Google Fonts with local system fallbacks.
-- **Fast entry:** The portfolio opens without a blocking intro animation; secondary routes load on demand.
+- **Simple home page:** A short introduction, four selected projects, About, skills, experience, and contact details in one readable column.
+- **Project previews:** Real local screenshots with concise summaries, technologies, and clearly labelled website or GitHub links. Unavailable images display the project name.
+- **Project archive (`/myworks`):** All five projects with Full-Stack, Agentic AI, and Tools filters.
+- **Direct contact:** Email links open your mail application. The copy button includes a fallback if clipboard access is unavailable.
+- **Résumé:** The existing PDF is linked directly from navigation.
+- **Responsive layout:** Two project columns on desktop and one on mobile. Navigation wraps on small screens without a hidden menu.
+- **Accessibility:** Semantic headings, skip links, visible keyboard focus, labelled controls, and announced copy results.
+- **Lightweight presentation:** System typography, static layouts, and no decorative artwork, terminal, animated backgrounds, or loading intro on the portfolio.
+- **Chess (`/play`):** The existing optional chess experience remains available from the footer. Its conversational companion requires a server-side `GROQ_API_KEY`.
 
 ---
 
