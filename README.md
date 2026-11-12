@@ -1,6 +1,6 @@
 # Nouman Sajid — Portfolio Website (React + TypeScript)
 
-A cybersecurity-inspired personal portfolio built with **React**, **TypeScript**, and **Vite**, showcasing **Full-Stack Web Development** and **Agentic AI Engineering**. A charcoal canvas, emerald accents, technical typography, and a custom animated orbital graphic bring the interface together.
+An editorial personal portfolio built with **React**, **TypeScript**, and **Vite**, showcasing **Full-Stack Web Development** and **Agentic AI Engineering**. Warm ivory, deep ink, and cobalt accents pair with expressive typography, generous whitespace, and an original animated ribbon illustration.
 
 ---
 
@@ -16,14 +16,14 @@ A cybersecurity-inspired personal portfolio built with **React**, **TypeScript**
 
 ## ✨ Key Features
 
-- **Responsive interface:** A shared navigation and visual system for the home page and project archive, with layouts for desktop, tablet, and mobile.
-- **Interactive portfolio terminal:** Explore with `whoami`, `skills`, `projects`, `education`, `contact`, `help`, and `clear`. Press `/` outside a form field to focus the terminal. Commands only read local portfolio information.
-- **Project gallery:** Filter real projects by Full-Stack, Agentic AI, or Tools, with local screenshots, technology lists, and external links. Missing screenshots fall back to a local visual.
+- **Responsive interface:** A shared light navigation and visual system for the home page and project archive, with layouts for desktop, tablet, and mobile.
+- **Optional portfolio terminal:** Expand “For the curious minds” in About, or press `/` to reveal and focus it. Explore with `whoami`, `skills`, `projects`, `education`, `contact`, `help`, and `clear`. The shortcut is ignored while editing a form field. Commands only read local portfolio information.
+- **Project gallery:** Large, staggered image previews and an editorial final project row. Filter real projects by Full-Stack, Agentic AI, or Tools, with local screenshots, technology lists, and external links. Missing screenshots fall back to a local visual.
 - **Project archive (`/myworks`):** Browse all projects using the same filters and design system.
-- **Chess arena (`/play`):** The existing Chess.js and Redox engine experience, styled to match the portfolio. Its optional conversational companion uses the server-side `/api/chat` endpoint and requires `GROQ_API_KEY` on the hosting platform.
+- **Chess arena (`/play`):** The existing Chess.js and Redox engine experience in an ink-and-blue palette. Its optional conversational companion uses the server-side `/api/chat` endpoint and requires `GROQ_API_KEY` on the hosting platform.
 - **Contact:** Copy the email address or prepare a prefilled draft in your email application. The form does **not** send mail or report delivery; you send the draft in your mail app.
 - **Accessibility:** Skip links, visible keyboard focus, labelled inputs, announced interaction results, an Escape-dismissable mobile menu, reduced-motion support, and a motion pause control.
-- **Typography:** Space Grotesk and IBM Plex Mono, served by Google Fonts with local system fallbacks.
+- **Typography:** DM Sans, Instrument Serif, and IBM Plex Mono, served by Google Fonts with local system fallbacks.
 - **Fast entry:** The portfolio opens without a blocking intro animation; secondary routes load on demand.
 
 ---

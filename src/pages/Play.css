@@ -22,8 +22,8 @@ body:has(.play-page) {
   left: -150px;
   width: 300px;
   height: 300px;
-  background-color: #a3f5b6;
-  box-shadow: inset -50px 40px 50px rgba(30, 90, 46, 0.6);
+  background-color: #afc0ff;
+  box-shadow: inset -50px 40px 50px rgba(45, 64, 132, 0.6);
   filter: blur(60px);
   border-radius: 50%;
   opacity: 0.6;
@@ -39,8 +39,8 @@ body:has(.play-page) {
   right: -100px;
   width: 250px;
   height: 250px;
-  background-color: #a3f5b6;
-  box-shadow: inset -30px 30px 40px rgba(30, 90, 46, 0.5);
+  background-color: #afc0ff;
+  box-shadow: inset -30px 30px 40px rgba(45, 64, 132, 0.5);
   filter: blur(70px);
   border-radius: 50%;
   opacity: 0.4;
@@ -88,7 +88,7 @@ body:has(.play-page) {
   font-size: 14px;
   transition: all 0.3s ease;
   padding: 8px 16px;
-  border: 1px solid rgba(163, 245, 182, 0.3);
+  border: 1px solid rgba(175, 192, 255, 0.3);
   border-radius: 20px;
 }
 
@@ -123,9 +123,9 @@ body:has(.play-page) {
   align-items: center;
   gap: 12px;
   padding: 8px 12px;
-  background: rgba(9, 18, 12, 0.8);
+  background: rgba(19, 22, 31, 0.8);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(163, 245, 182, 0.12);
+  border: 1px solid rgba(175, 192, 255, 0.12);
   border-radius: 8px;
   width: 100%;
   box-sizing: border-box;
@@ -169,9 +169,9 @@ body:has(.play-page) {
   align-items: center;
   gap: 10px;
   padding: 10px 14px;
-  background: rgba(9, 18, 12, 0.8);
+  background: rgba(19, 22, 31, 0.8);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(163, 245, 182, 0.15);
+  border: 1px solid rgba(175, 192, 255, 0.15);
   border-radius: 10px;
   width: 100%;
   box-sizing: border-box;
@@ -180,13 +180,13 @@ body:has(.play-page) {
 .player-avatar {
   width: 32px;
   height: 32px;
-  background: linear-gradient(135deg, rgba(163, 245, 182, 0.2), rgba(163, 245, 182, 0.1));
+  background: linear-gradient(135deg, rgba(175, 192, 255, 0.2), rgba(175, 192, 255, 0.1));
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
-  border: 1px solid rgba(163, 245, 182, 0.2);
+  border: 1px solid rgba(175, 192, 255, 0.2);
   overflow: hidden;
 }
 
@@ -220,7 +220,7 @@ body:has(.play-page) {
   gap: 2px;
   min-height: 28px;
   padding: 6px 8px;
-  background: rgba(9, 18, 12, 0.6);
+  background: rgba(19, 22, 31, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 8px;
   width: 100%;
@@ -242,14 +242,14 @@ body:has(.play-page) {
 .chess-board-wrapper {
   position: relative;
   padding: 10px;
-  background: linear-gradient(145deg, rgba(16, 29, 20, 0.95), rgba(9, 18, 12, 0.98));
+  background: linear-gradient(145deg, rgba(25, 31, 48, 0.95), rgba(19, 22, 31, 0.98));
   border-radius: 16px;
   box-shadow:
-    0 0 80px rgba(163, 245, 182, 0.12),
-    0 0 120px rgba(163, 245, 182, 0.08),
+    0 0 80px rgba(175, 192, 255, 0.12),
+    0 0 120px rgba(175, 192, 255, 0.08),
     0 25px 50px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(163, 245, 182, 0.25);
+  border: 1px solid rgba(175, 192, 255, 0.25);
   flex-shrink: 0;
 }
 
@@ -275,19 +275,19 @@ body:has(.play-page) {
 }
 
 .chess-square.light {
-  background-color: #bdd2b7;
+  background-color: #c2c9dc;
 }
 
 .chess-square.dark {
-  background-color: #47694f;
+  background-color: #566582;
 }
 
 .chess-square.selected {
-  background-color: rgba(163, 245, 182, 0.5) !important;
+  background-color: rgba(175, 192, 255, 0.5) !important;
 }
 
 .chess-square.last-move {
-  background-color: rgba(163, 245, 182, 0.3) !important;
+  background-color: rgba(175, 192, 255, 0.3) !important;
 }
 
 .chess-square.in-check {
@@ -315,12 +315,12 @@ body:has(.play-page) {
 
 .chess-square.light .coord-rank,
 .chess-square.light .coord-file {
-  color: #47694f;
+  color: #566582;
 }
 
 .chess-square.dark .coord-rank,
 .chess-square.dark .coord-file {
-  color: #bdd2b7;
+  color: #c2c9dc;
 }
 
 /* Chess Piece */
@@ -366,9 +366,9 @@ body:has(.play-page) {
 /* Game Status */
 .game-status {
   padding: 10px 14px;
-  background: rgba(9, 18, 12, 0.8);
+  background: rgba(19, 22, 31, 0.8);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(163, 245, 182, 0.15);
+  border: 1px solid rgba(175, 192, 255, 0.15);
   border-radius: 10px;
   text-align: center;
   width: 100%;
@@ -381,16 +381,16 @@ body:has(.play-page) {
 }
 
 .game-status span.check {
-  color: #a3f5b6;
+  color: #afc0ff;
   font-weight: 600;
 }
 
 /* Move History */
 .move-history {
   width: 100%;
-  background: rgba(9, 18, 12, 0.8);
+  background: rgba(19, 22, 31, 0.8);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(163, 245, 182, 0.15);
+  border: 1px solid rgba(175, 192, 255, 0.15);
   border-radius: 10px;
   overflow: hidden;
   flex-shrink: 0;
@@ -401,8 +401,8 @@ body:has(.play-page) {
   font-size: 12px;
   font-weight: 600;
   color: var(--accentColor);
-  background: rgba(163, 245, 182, 0.08);
-  border-bottom: 1px solid rgba(163, 245, 182, 0.1);
+  background: rgba(175, 192, 255, 0.08);
+  border-bottom: 1px solid rgba(175, 192, 255, 0.1);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -419,17 +419,17 @@ body:has(.play-page) {
 }
 
 .move-history-list::-webkit-scrollbar-track {
-  background: rgba(163, 245, 182, 0.05);
+  background: rgba(175, 192, 255, 0.05);
   border-radius: 3px;
 }
 
 .move-history-list::-webkit-scrollbar-thumb {
-  background: rgba(163, 245, 182, 0.25);
+  background: rgba(175, 192, 255, 0.25);
   border-radius: 3px;
 }
 
 .move-history-list::-webkit-scrollbar-thumb:hover {
-  background: rgba(163, 245, 182, 0.4);
+  background: rgba(175, 192, 255, 0.4);
 }
 
 .move-row {
@@ -466,16 +466,16 @@ body:has(.play-page) {
   font-size: 12px;
   font-weight: 500;
   color: #fff;
-  background: rgba(9, 18, 12, 0.8);
+  background: rgba(19, 22, 31, 0.8);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(163, 245, 182, 0.15);
+  border: 1px solid rgba(175, 192, 255, 0.15);
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .control-btn:hover {
-  background: rgba(163, 245, 182, 0.15);
+  background: rgba(175, 192, 255, 0.15);
   border-color: var(--accentColor);
 }
 
@@ -612,17 +612,17 @@ body:has(.play-page) {
   height: 580px;
   display: flex;
   flex-direction: column;
-  background: rgba(9, 18, 12, 0.9);
+  background: rgba(19, 22, 31, 0.9);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(163, 245, 182, 0.15);
+  border: 1px solid rgba(175, 192, 255, 0.15);
   border-radius: 12px;
   overflow: hidden;
 }
 
 .chat-header {
   padding: 14px 16px;
-  background: rgba(163, 245, 182, 0.08);
-  border-bottom: 1px solid rgba(163, 245, 182, 0.1);
+  background: rgba(175, 192, 255, 0.08);
+  border-bottom: 1px solid rgba(175, 192, 255, 0.1);
 }
 
 .chat-title {
@@ -647,11 +647,11 @@ body:has(.play-page) {
 }
 
 .chat-messages::-webkit-scrollbar-track {
-  background: rgba(163, 245, 182, 0.05);
+  background: rgba(175, 192, 255, 0.05);
 }
 
 .chat-messages::-webkit-scrollbar-thumb {
-  background: rgba(163, 245, 182, 0.2);
+  background: rgba(175, 192, 255, 0.2);
   border-radius: 3px;
 }
 
@@ -666,7 +666,7 @@ body:has(.play-page) {
 .chat-message.user {
   align-self: flex-end;
   background: var(--accentColor);
-  color: #0b160e;
+  color: #121826;
   border-bottom-right-radius: 4px;
 }
 
@@ -723,14 +723,14 @@ body:has(.play-page) {
   gap: 8px;
   padding: 12px;
   background: rgba(0, 0, 0, 0.3);
-  border-top: 1px solid rgba(163, 245, 182, 0.1);
+  border-top: 1px solid rgba(175, 192, 255, 0.1);
 }
 
 .chat-input {
   flex: 1;
   padding: 10px 14px;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(163, 245, 182, 0.15);
+  border: 1px solid rgba(175, 192, 255, 0.15);
   border-radius: 8px;
   color: #fff;
   font-size: 13px;
@@ -756,7 +756,7 @@ body:has(.play-page) {
   background: var(--accentColor);
   border: none;
   border-radius: 8px;
-  color: #0b160e;
+  color: #121826;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.2s;
@@ -764,7 +764,7 @@ body:has(.play-page) {
 
 .chat-send-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(163, 245, 182, 0.4);
+  box-shadow: 0 0 20px rgba(175, 192, 255, 0.4);
 }
 
 /* Responsive for chat */
@@ -793,6 +793,8 @@ body:has(.play-page) {
 }
 /* Keep the chess arena within the portfolio visual system. */
 .play-page::before, .play-page::after { display: none; }
-.play-page { background-image: linear-gradient(#a3f5b603 1px, transparent 1px), linear-gradient(90deg, #a3f5b603 1px, transparent 1px); background-size: 45px 45px; }
-.play-header h1 { font-family: "Space Grotesk", sans-serif; letter-spacing: -1.5px; font-weight: 500; }
+.play-page { background-image: linear-gradient(#afc0ff03 1px, transparent 1px), linear-gradient(90deg, #afc0ff03 1px, transparent 1px); background-size: 45px 45px; }
+.play-header h1 { font-family: "DM Sans", sans-serif; letter-spacing: -1.5px; font-weight: 500; }
 .play-page .back-button, .control-btn { border-radius: 0; }
+
+.play-page { --backgroundColor: #151922; --accentColor: #afc0ff; color: #e8edf9; color-scheme: dark; }

@@ -1,19 +1,22 @@
 :root {
-  font-family: "Space Grotesk", "Plus Jakarta Sans", sans-serif;
-  color: #e9eee8;
-  background: #090d0b;
+  font-family: "DM Sans", sans-serif;
+  color: #242622;
+  background: #f7f6f2;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  --backgroundColor: #090d0b;
-  --accentColor: #a3f5b6;
-  --accent: #a3f5b6;
-  --muted: #8c9b91;
-  --line: #243029;
+  --paper: #f7f6f2;
+  --ink: #242622;
+  --accent: #3854d6;
+  --muted: #75776f;
+  --line: #ddded6;
+  --serif: "Instrument Serif", Georgia, serif;
   --mono: "IBM Plex Mono", monospace;
-  color-scheme: dark;
+  --backgroundColor: #f7f6f2;
+  --accentColor: #3854d6;
+  color-scheme: light;
   scroll-behavior: smooth;
-  scroll-padding-top: 110px;
+  scroll-padding-top: 105px;
 }
 * {
   box-sizing: border-box;
@@ -34,27 +37,28 @@ textarea {
   -webkit-tap-highlight-color: transparent;
 }
 button,
-a {
+a,
+summary {
   touch-action: manipulation;
 }
-button {
+button,
+summary {
   cursor: pointer;
+}
+button {
   color: inherit;
 }
 a {
   color: inherit;
   text-decoration: none;
 }
-button:disabled {
-  cursor: default;
-}
 img {
   display: block;
   max-width: 100%;
 }
 ::selection {
-  color: #090d0b;
-  background: #a3f5b6;
+  color: white;
+  background: #3854d6;
 }
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -64,14 +68,9 @@ h1,
 h2,
 h3,
 h4,
-p {
+p,
+figure {
   margin: 0;
-}
-button,
-input,
-textarea,
-a {
-  outline-color: var(--accent);
 }
 .sr-only {
   position: absolute;

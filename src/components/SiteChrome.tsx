@@ -19,15 +19,17 @@ export function SiteHeader({ active = "" }: { active?: string }) {
         <Link
           className="brand"
           to="/"
-          onClick={() => window.scrollTo(0, 0)}
+          onClick={() => {
+            setOpen(false);
+            window.scrollTo(0, 0);
+          }}
           aria-label="Nouman Sajid home"
         >
           <span className="brand-mark">
             n<span>.</span>
           </span>
           <span>
-            nouman<span className="muted">.dev</span>
-            <small>DEVELOPER & AI ENGINEER</small>
+            Nouman Sajid<small>DEVELOPER & AI ENGINEER</small>
           </span>
         </Link>
         <button
@@ -46,11 +48,11 @@ export function SiteHeader({ active = "" }: { active?: string }) {
           aria-label="Main navigation"
         >
           {[
+            ["projects", "Work"],
             ["about", "About"],
-            ["projects", "Projects"],
             ["expertise", "Expertise"],
             ["contact", "Contact"],
-          ].map(([id, name], index) => (
+          ].map(([id, name]) => (
             <a
               key={id}
               href={location.pathname === "/" ? `#${id}` : `/#${id}`}
@@ -62,7 +64,7 @@ export function SiteHeader({ active = "" }: { active?: string }) {
               }
               onClick={() => setOpen(false)}
             >
-              <span>0{index + 1}</span> {name}
+              {name}
             </a>
           ))}
           <a
@@ -78,7 +80,6 @@ export function SiteHeader({ active = "" }: { active?: string }) {
     </header>
   );
 }
-
 export function SiteFooter() {
   return (
     <footer className="site-footer wrap">
@@ -86,22 +87,15 @@ export function SiteFooter() {
         className="footer-brand"
         to="/"
         onClick={() => window.scrollTo(0, 0)}
+        aria-label="Nouman Sajid home"
       >
-        n<span>.</span>
+        Nouman Sajid<span>© {new Date().getFullYear()}</span>
       </Link>
-      <p>
-        Thoughtfully built. Always evolving.
-        <small>© {new Date().getFullYear()} Nouman Sajid</small>
-      </p>
-      <div>
-        <a href={config.contact.github} target="_blank" rel="noreferrer">
-          GitHub <ArrowUpRight size={13} />
-        </a>
-        <a href={config.contact.linkedin} target="_blank" rel="noreferrer">
-          LinkedIn <ArrowUpRight size={13} />
-        </a>
-        <a href="#top">Back to top ↑</a>
-      </div>
+      <p>Made with care. Built with intention.</p>
+      <a href={config.contact.github} target="_blank" rel="noreferrer">
+        GitHub <ArrowUpRight size={14} />
+      </a>
+      <a href="#top">Back to top ↑</a>
     </footer>
   );
 }

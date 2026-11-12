@@ -10,7 +10,7 @@ export default function MyWorks() {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="cyber-portfolio archive-page" id="top">
+    <div className="portfolio archive-page" id="top">
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
@@ -24,13 +24,15 @@ export default function MyWorks() {
             PROJECT DIRECTORY /{" "}
             {String(config.projects.length).padStart(2, "0")} ENTRIES
           </span>
-          <span>BUILD. SHIP. ITERATE.</span>
+          <span>A COLLECTION OF THOUGHTFUL WORK</span>
         </div>
         <div className="section-heading-row">
           <div>
             <p className="eyebrow">THE PROJECT ARCHIVE</p>
             <h1>
-              Ideas into <em>execution.</em>
+              Good ideas.
+              <br />
+              <em>Well built.</em>
             </h1>
             <p className="section-description">
               Web platforms, intelligent agents, and practical tools.

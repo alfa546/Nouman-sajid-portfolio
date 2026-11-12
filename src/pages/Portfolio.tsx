@@ -5,18 +5,16 @@ import {
   ArrowDownToLine,
   ArrowRight,
   ArrowUpRight,
-  Braces,
   Check,
-  CheckCheck,
   Copy,
   Cpu,
   Globe2,
   Layers3,
   Mail,
   MapPin,
-  MoveUpRight,
   Pause,
   Play,
+  Plus,
   Terminal,
   Workflow,
 } from "lucide-react";
@@ -26,112 +24,118 @@ import { SiteFooter, SiteHeader } from "../components/SiteChrome";
 import PortfolioTerminal from "../components/PortfolioTerminal";
 import ProjectGallery from "../components/ProjectGallery/ProjectGallery";
 
-function OrbitalGraphic() {
+function SignatureArtwork() {
   return (
-    <div className="orbital" aria-hidden="true">
-      <div className="orbital-label orbital-label-top">
-        <span className="live-dot" /> ENGINEERING THE NEXT
+    <figure
+      className="signature-artwork"
+      aria-label="Abstract cobalt ribbon forming an infinity loop, a symbol of continuous learning"
+    >
+      <div className="artwork-top">
+        <span>THE ART OF BUILDING</span>
+        <span>NS — 01</span>
       </div>
-      <svg className="orbital-svg" viewBox="0 0 560 560" fill="none">
+      <svg
+        className="signature-svg"
+        viewBox="0 0 460 460"
+        fill="none"
+        aria-hidden="true"
+      >
         <defs>
-          <radialGradient id="orb-glow">
-            <stop stopColor="#84f5ae" stopOpacity=".16" />
-            <stop offset="1" stopColor="#76e9a4" stopOpacity="0" />
-          </radialGradient>
           <linearGradient
-            id="orb-stroke"
-            x1="100"
-            y1="80"
-            x2="460"
-            y2="470"
+            id="ribbon"
+            x1="90"
+            y1="135"
+            x2="358"
+            y2="317"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor="#b8ffbb" />
-            <stop offset=".5" stopColor="#56c888" stopOpacity=".25" />
-            <stop offset="1" stopColor="#91ffc4" />
+            <stop stopColor="#8b9dfc" />
+            <stop offset=".25" stopColor="#3f5fe3" />
+            <stop offset=".55" stopColor="#1838b6" />
+            <stop offset=".78" stopColor="#617ded" />
+            <stop offset="1" stopColor="#1e3ca9" />
           </linearGradient>
+          <linearGradient
+            id="ribbon-light"
+            x1="70"
+            y1="170"
+            x2="350"
+            y2="240"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#c5cdff" stopOpacity=".8" />
+            <stop offset=".6" stopColor="#a7b7ff" stopOpacity="0" />
+            <stop offset="1" stopColor="#b3c4ff" stopOpacity=".7" />
+          </linearGradient>
+          <filter
+            id="ribbon-shadow"
+            x="-50%"
+            y="-50%"
+            width="200%"
+            height="220%"
+          >
+            <feGaussianBlur stdDeviation="13" />
+          </filter>
         </defs>
-        <circle cx="280" cy="280" r="270" fill="url(#orb-glow)" />
-        <g stroke="#294236" strokeWidth=".7">
-          <path d="M280 15v530M15 280h530" strokeDasharray="3 7" />
-          <circle cx="280" cy="280" r="235" strokeDasharray="1 10" />
-          <circle cx="280" cy="280" r="205" />
-          <circle cx="280" cy="280" r="168" strokeDasharray="3 5" />
-          <path d="M95 95l370 370M95 465L465 95" strokeDasharray="2 9" />
-        </g>
-        <g className="orbit-rotation" stroke="url(#orb-stroke)">
-          <ellipse
-            cx="280"
-            cy="280"
-            rx="205"
-            ry="74"
-            transform="rotate(-32 280 280)"
-          />
-          <ellipse
-            cx="280"
-            cy="280"
-            rx="205"
-            ry="74"
-            transform="rotate(32 280 280)"
-          />
-          <ellipse cx="280" cy="280" rx="90" ry="205" />
-          <circle
-            cx="280"
-            cy="280"
-            r="205"
-            strokeDasharray="90 1198"
-            strokeWidth="3"
-          />
-          <circle cx="451" cy="167" r="5" fill="#a8ffbd" stroke="none" />
-          <circle cx="103" cy="383" r="4" fill="#a8ffbd" stroke="none" />
-        </g>
-        <g stroke="#558367" strokeWidth="1">
-          <path d="M63 170v-12h12M485 158h12v12M63 390v12h12M485 402h12v-12" />
-        </g>
-        <circle cx="280" cy="280" r="83" fill="#0a1711" stroke="#365a43" />
-        <circle
-          cx="280"
-          cy="280"
-          r="72"
-          stroke="#88eda5"
-          strokeOpacity=".2"
-          strokeDasharray="2 6"
+        <ellipse
+          cx="235"
+          cy="370"
+          rx="118"
+          ry="13"
+          fill="#1e2a69"
+          opacity=".13"
+          filter="url(#ribbon-shadow)"
         />
+        <g className="ribbon-float">
+          <g transform="rotate(-34 230 225)">
+            <path
+              d="M136 283C47 283 47 166 132 166C198 166 261 283 325 283C410 283 410 166 325 166C260 166 199 283 136 283Z"
+              stroke="#182c80"
+              strokeWidth="68"
+              transform="translate(0 7)"
+            />
+            <path
+              d="M136 283C47 283 47 166 132 166C198 166 261 283 325 283C410 283 410 166 325 166C260 166 199 283 136 283Z"
+              stroke="url(#ribbon)"
+              strokeWidth="66"
+            />
+            <path
+              d="M136 260C80 260 78 184 132 184C188 184 258 302 325 302C425 302 425 145 325 145"
+              stroke="url(#ribbon-light)"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M142 300C207 300 263 184 324 184"
+              stroke="#b7c5ff"
+              strokeOpacity=".5"
+              strokeWidth="1"
+            />
+          </g>
+        </g>
         <path
-          d="M248 309v-58h13l38 40v-40h13v58h-13l-38-40v40h-13Z"
-          fill="#c9fbd6"
+          d="M36 43h15M43.5 35.5v15M409 393h15M416.5 385.5v15"
+          stroke="#9b9d98"
+          strokeWidth=".8"
         />
-        <path d="M320 303h7v7h-7z" fill="#8cf2a7" />
-        <path d="M219 491h122M219 69h122" stroke="#34513f" />
-        <text
-          x="280"
-          y="55"
-          fill="#6c8d77"
-          fontSize="9"
-          textAnchor="middle"
-          fontFamily="monospace"
-          letterSpacing="3"
-        >
-          IDEA → SYSTEM → IMPACT
-        </text>
       </svg>
-      <div className="orbit-tag tag-ai">
-        <Cpu size={15} />
-        <span>
-          Agentic AI<small>INTELLIGENT BY DESIGN</small>
+      <figcaption>
+        <span className="artwork-caption">
+          Always curious.
+          <br />
+          <em>Never standing still.</em>
         </span>
-      </div>
-      <div className="orbit-tag tag-code">
-        <Braces size={15} />
-        <span>
-          Full-stack<small>BUILT TO CONNECT</small>
+        <span className="artwork-symbol" aria-hidden="true">
+          ↗
         </span>
+      </figcaption>
+      <div className="artwork-note">
+        <span className="note-dot" />
+        <div>
+          Currently exploring<small>Autonomous AI workflows</small>
+        </div>
+        <Cpu size={18} strokeWidth={1.3} />
       </div>
-      <div className="orbital-label orbital-label-bottom">
-        <span>01 / ALWAYS BUILDING</span>
-        <span>∞ POSSIBILITIES</span>
-      </div>
-    </div>
+    </figure>
   );
 }
 
@@ -156,108 +160,151 @@ function Contact() {
   }
   return (
     <section
-      className="contact-section section wrap"
+      className="contact-section"
       id="contact"
       aria-labelledby="contact-heading"
     >
-      <div className="section-index">
-        <span>04 / ESTABLISH CONNECTION</span>
-        <span className="live-status">
-          <i className="live-dot" /> OPEN TO OPPORTUNITIES
-        </span>
-      </div>
-      <div className="contact-grid">
-        <div>
-          <h2 id="contact-heading">
-            Great things start
-            <br />
-            with a <em>conversation.</em>
-          </h2>
-          <p className="section-description">
-            Have an ambitious idea, an interesting challenge, or a role in mind?
-            Let’s build something that matters.
-          </p>
-          <a className="contact-email" href={`mailto:${config.contact.email}`}>
-            {config.contact.email}
-            <ArrowUpRight size={22} />
-          </a>
-          <button className="copy-email" type="button" onClick={copyEmail}>
-            {copyStatus === "Email copied" ? (
-              <Check size={13} />
-            ) : (
-              <Copy size={13} />
-            )}{" "}
-            Copy email address
-          </button>
-          <p className="copy-status" role="status">
-            {copyStatus}
-          </p>
-          <div className="contact-socials">
-            <a href={config.contact.github} target="_blank" rel="noreferrer">
-              <Github size={17} /> GitHub <ArrowUpRight size={13} />
-            </a>
-            <a href={config.contact.linkedin} target="_blank" rel="noreferrer">
-              <Linkedin size={17} /> LinkedIn <ArrowUpRight size={13} />
-            </a>
-          </div>
+      <div className="wrap">
+        <div className="section-index">
+          <span>05 / SAY HELLO</span>
+          <span className="availability">
+            <i className="status-dot" /> Open to opportunities
+          </span>
         </div>
-        <form className="contact-form" onSubmit={prepareEmail}>
-          <div className="form-top">
-            <Mail size={16} />
-            <span>LET’S TALK ABOUT YOUR NEXT PROJECT</span>
+        <div className="contact-grid">
+          <div>
+            <h2 id="contact-heading">
+              Let’s make
+              <br />
+              <em>something good.</em>
+            </h2>
+            <p className="contact-description">
+              An interesting challenge. A new collaboration.
+              <br />
+              Or simply a good conversation. I’m all ears.
+            </p>
+            <a
+              className="contact-email"
+              href={`mailto:${config.contact.email}`}
+            >
+              {config.contact.email}
+              <ArrowUpRight size={24} />
+            </a>
+            <button className="copy-email" type="button" onClick={copyEmail}>
+              {copyStatus === "Email copied" ? (
+                <Check size={14} />
+              ) : (
+                <Copy size={14} />
+              )}{" "}
+              Copy email address
+            </button>
+            <p className="copy-status" role="status">
+              {copyStatus}
+            </p>
+            <div className="contact-socials">
+              <a href={config.contact.github} target="_blank" rel="noreferrer">
+                <Github size={17} /> GitHub <ArrowUpRight size={14} />
+              </a>
+              <a
+                href={config.contact.linkedin}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Linkedin size={17} /> LinkedIn <ArrowUpRight size={14} />
+              </a>
+            </div>
           </div>
-          <div className="form-row">
+          <form className="contact-form" onSubmit={prepareEmail}>
+            <div className="form-top">
+              <Mail size={17} />
+              <span>A little about your next big idea.</span>
+            </div>
+            <div className="form-row">
+              <label>
+                Your name
+                <input
+                  name="name"
+                  placeholder="Alex Morgan"
+                  autoComplete="name"
+                  required
+                  maxLength={100}
+                />
+              </label>
+              <label>
+                Email address
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="alex@company.com"
+                  autoComplete="email"
+                  required
+                  maxLength={254}
+                />
+              </label>
+            </div>
             <label>
-              Your name
-              <input
-                name="name"
-                placeholder="Alex Morgan"
-                autoComplete="name"
+              What do you have in mind?
+              <textarea
+                name="message"
+                placeholder="Tell me a little about your project or opportunity…"
+                rows={4}
                 required
-                maxLength={100}
+                maxLength={4000}
               />
             </label>
-            <label>
-              Email address
-              <input
-                name="email"
-                type="email"
-                placeholder="alex@company.com"
-                autoComplete="email"
-                required
-                maxLength={254}
-              />
-            </label>
-          </div>
-          <label>
-            What are you thinking?
-            <textarea
-              name="message"
-              placeholder="A little about your project, idea, or opportunity…"
-              rows={4}
-              required
-              maxLength={4000}
-            />
-          </label>
-          <button className="button button-primary" type="submit">
-            Let’s start a conversation <ArrowUpRight size={18} />
-          </button>
-          <p className="form-note" role="status">
-            {draftReady
-              ? "Your email draft is ready in your mail app. Send it there, or email me directly above."
-              : "Opens a draft in your email app. Your message stays with you until you send it."}
-          </p>
-        </form>
+            <button className="button button-primary" type="submit">
+              Start a conversation <ArrowUpRight size={19} />
+            </button>
+            <p className="form-note" role="status">
+              {draftReady
+                ? "Your draft is ready in your email app. Send it there, or use my email address above."
+                : "Opens a draft in your email app. You review and send it there."}
+            </p>
+          </form>
+        </div>
+        <div className="contact-signoff">
+          <span>GOOD PEOPLE. THOUGHTFUL WORK.</span>
+          <span>LET’S SEE WHAT WE CAN BUILD TOGETHER.</span>
+        </div>
       </div>
     </section>
   );
 }
 
+const expertise = [
+  {
+    icon: Layers3,
+    number: "01",
+    title: "Interfaces with intention.",
+    subtitle: "Full-stack engineering",
+    description:
+      "Responsive interfaces, thoughtful interactions, and the APIs and data that bring them to life.",
+    tools: ["React", "Next.js", "TypeScript", "JavaScript", "SQL", "Tailwind"],
+  },
+  {
+    icon: Workflow,
+    number: "02",
+    title: "Intelligence in action.",
+    subtitle: "Agentic AI & automation",
+    description:
+      "Connecting language models, tools, and knowledge into useful workflows that do more than just respond.",
+    tools: ["Python", "LangChain", "LangGraph", "RAG", "Flask", "Scikit-learn"],
+  },
+  {
+    icon: Globe2,
+    number: "03",
+    title: "Built for the real world.",
+    subtitle: "Infrastructure & delivery",
+    description:
+      "Practical foundations for shipping, maintaining, and evolving software with confidence.",
+    tools: ["Docker", "Linux", "Git", "GitHub", "Vercel", "REST APIs"],
+  },
+];
+
 export default function Portfolio() {
   const [active, setActive] = useState("");
   const [motionPaused, setMotionPaused] = useState(false);
   useEffect(() => {
-    const sections = document.querySelectorAll("main > section[id]");
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries)
@@ -265,14 +312,16 @@ export default function Portfolio() {
       },
       { rootMargin: "-15% 0px -55% 0px", threshold: 0 },
     );
-    sections.forEach((section) => observer.observe(section));
+    document
+      .querySelectorAll("main > section[id]")
+      .forEach((section) => observer.observe(section));
     if (window.location.hash)
       document.getElementById(window.location.hash.slice(1))?.scrollIntoView();
     return () => observer.disconnect();
   }, []);
   return (
     <div
-      className={`cyber-portfolio${motionPaused ? " motion-paused" : ""}`}
+      className={`portfolio${motionPaused ? " motion-paused" : ""}`}
       id="top"
     >
       <a className="skip-link" href="#main-content">
@@ -282,205 +331,202 @@ export default function Portfolio() {
       <main id="main-content">
         <section className="hero wrap" id="home" aria-labelledby="hero-heading">
           <div className="hero-topline">
-            <span>
-              <span className="live-dot" /> AVAILABLE FOR REMOTE & FREELANCE
+            <span className="availability">
+              <i className="status-dot" /> Available for remote & freelance
             </span>
-            <span className="hero-location">
-              <MapPin size={12} /> OKARA, PAKISTAN{" "}
-              <span className="timezone">/ UTC +05:00</span>
+            <span>
+              <MapPin size={13} /> Based in Okara, Pakistan
             </span>
           </div>
           <div className="hero-grid">
             <div className="hero-copy">
               <p className="eyebrow">
-                <span>HELLO, WORLD.</span> I’M NOUMAN SAJID
+                FULL-STACK DEVELOPER & AGENTIC AI ENGINEER
               </p>
               <h1 id="hero-heading">
-                I build systems.
+                Nouman
                 <br />
-                <span>That think.</span>
-                <br />
-                And make <em>impact.</em>
+                <em>Sajid.</em>
+                <span className="hero-asterisk" aria-hidden="true">
+                  ✳
+                </span>
               </h1>
-              <p className="hero-description">
-                Full-stack developer & agentic AI engineer.
+              <p className="hero-intro">
+                An engineer’s mind.
                 <br />
-                Turning complex problems into intelligent, intuitive digital
-                experiences.
+                <span>A builder’s instinct.</span>
+              </p>
+              <p className="hero-description">
+                I turn complex ideas into thoughtful digital experiences — from
+                full-stack platforms to intelligent AI agents.
               </p>
               <div className="hero-actions">
                 <a className="button button-primary" href="#projects">
-                  Explore my work <ArrowUpRight size={18} />
+                  Explore my work <ArrowUpRight size={19} />
                 </a>
-                <a className="button button-ghost" href="#contact">
-                  Let’s connect <ArrowRight size={17} />
+                <a className="hero-contact-link" href="#contact">
+                  Let’s talk <ArrowRight size={17} />
                 </a>
               </div>
-              <div className="hero-socials">
-                <a
-                  href={config.contact.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Nouman on GitHub"
-                >
-                  <Github size={18} />
-                </a>
-                <a
-                  href={config.contact.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Nouman on LinkedIn"
-                >
-                  <Linkedin size={18} />
-                </a>
-                <a
-                  href={`mailto:${config.contact.email}`}
-                  aria-label="Email Nouman"
-                >
-                  <Mail size={18} />
-                </a>
-                <span>GOOD CODE. REAL-WORLD IMPACT.</span>
-              </div>
             </div>
-            <div className="hero-visual">
-              <OrbitalGraphic />
-              <PortfolioTerminal />
-            </div>
+            <SignatureArtwork />
           </div>
           <div className="hero-bottom">
-            <a href="#about">
-              <span className="scroll-icon">
-                <ArrowDown size={13} />
+            <a href="#projects">
+              <span className="scroll-circle">
+                <ArrowDown size={14} />
               </span>{" "}
-              SCROLL TO EXPLORE
+              A selection of things I’ve built
             </a>
-            <span>CRAFTED WITH LOGIC. DRIVEN BY CURIOSITY.</span>
+            <span>THOUGHTFUL BY DESIGN. HUMAN AT HEART.</span>
             <button
               type="button"
               onClick={() => setMotionPaused(!motionPaused)}
               aria-pressed={motionPaused}
+              aria-label={motionPaused ? "Resume motion" : "Pause motion"}
             >
-              {motionPaused ? <Play size={11} /> : <Pause size={11} />}
+              {motionPaused ? <Play size={12} /> : <Pause size={12} />}{" "}
               {motionPaused ? "RESUME MOTION" : "PAUSE MOTION"}
             </button>
           </div>
         </section>
-        <div className="stack-strip">
+        <div className="practice-strip">
           <div className="wrap">
-            <span>MY EVERYDAY TOOLKIT</span>
-            {[
-              "React",
-              "Next.js",
-              "TypeScript",
-              "Python",
-              "LangChain",
-              "Docker",
-            ].map((tech, i) => (
-              <span className="stack-item" key={tech}>
-                <span aria-hidden="true">
-                  {["✳", "N", "TS", "Py", "⌘", "▧"][i]}
+            <span>THE TOOLS BEHIND THE WORK</span>
+            <div>
+              {[
+                "React",
+                "Next.js",
+                "TypeScript",
+                "Python",
+                "LangChain",
+                "Docker",
+              ].map((tech, i) => (
+                <span key={tech}>
+                  <i aria-hidden="true">
+                    {["✳", "N", "TS", "Py", "⌘", "▱"][i]}
+                  </i>
+                  {tech}
                 </span>
-                {tech}
-              </span>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-        <section
-          className="section wrap about-section"
-          id="about"
-          aria-labelledby="about-heading"
-        >
-          <div className="section-index">
-            <span>01 / THE PERSON BEHIND THE CODE</span>
-            <span>CURIOUS BY DEFAULT</span>
-          </div>
-          <div className="about-grid">
-            <div>
-              <h2 id="about-heading">
-                A builder’s mindset.
-                <br />
-                An engineer’s <em>precision.</em>
-              </h2>
-              <p className="section-description">
-                I’m Nouman, a Computer Science student at National Textile
-                University, connecting thoughtful interfaces with powerful
-                systems.
-              </p>
-              <p className="about-copy">
-                My work lives at the intersection of full-stack development and
-                agentic AI. From responsive web platforms to autonomous
-                workflows, I enjoy turning the complicated into something
-                useful, clear, and a pleasure to use.
-              </p>
-              <a
-                className="text-link"
-                href="/CV/Nouman_Sajid_Resume.pdf"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Get to know my background <ArrowDownToLine size={15} />
-              </a>
-            </div>
-            <div className="profile-file">
-              <div className="profile-file-header">
-                <span>
-                  <Terminal size={14} /> developer.json
-                </span>
-                <span>PERSONAL PROFILE</span>
-              </div>
-              <div className="profile-code">
-                <span className="code-punctuation">{"{"}</span>
-                {[
-                  ["name", "Nouman Sajid"],
-                  ["focus", "Full-Stack + Agentic AI"],
-                  ["education", "BS Computer Science · NTU"],
-                  ["graduation", "2028"],
-                  ["location", "Okara, Pakistan"],
-                  ["mindset", "Learn. Build. Iterate."],
-                ].map(([key, value], i) => (
-                  <div key={key}>
-                    <span className="line-number">0{i + 2}</span>
-                    <span className="code-key">"{key}"</span>
-                    <span>: </span>
-                    <span className="code-value">"{value}"</span>
-                    {i < 5 ? "," : ""}
-                  </div>
-                ))}
-                <span className="code-punctuation">{"}"}</span>
-              </div>
-              <div className="profile-file-footer">
-                <CheckCheck size={14} /> Always a work in progress. Always
-                moving forward.
-              </div>
-            </div>
-          </div>
-        </section>
         <section
           className="section wrap projects-section"
           id="projects"
           aria-labelledby="projects-heading"
         >
           <div className="section-index">
-            <span>02 / SELECTED WORK</span>
-            <span>IDEAS, BROUGHT TO LIFE</span>
+            <span>01 / SELECTED WORK</span>
+            <span>FROM CONCEPT TO SOMETHING REAL</span>
           </div>
           <div className="section-heading-row">
             <div>
               <h2 id="projects-heading">
-                Less talk.
+                Good ideas deserve
                 <br />
-                More <em>built.</em>
+                to be <em>well built.</em>
               </h2>
-              <p className="section-description">
-                A selection of things I’ve designed, engineered, and put into
-                the world.
-              </p>
             </div>
-            <Link className="text-link" to="/myworks">
-              Explore all projects <ArrowUpRight size={16} />
-            </Link>
+            <div className="section-heading-aside">
+              <p>
+                Web platforms, intelligent agents, and tools
+                <br />
+                that make the everyday a little better.
+              </p>
+              <Link className="text-link" to="/myworks">
+                The complete collection <ArrowUpRight size={16} />
+              </Link>
+            </div>
           </div>
           <ProjectGallery />
+        </section>
+        <section
+          className="about-section"
+          id="about"
+          aria-labelledby="about-heading"
+        >
+          <div className="wrap">
+            <div className="section-index">
+              <span>02 / A LITTLE ABOUT ME</span>
+              <span>BEHIND THE WORK</span>
+            </div>
+            <div className="about-grid">
+              <div className="identity-card">
+                <div className="identity-card-top">
+                  <span>ALWAYS A STUDENT OF THE CRAFT</span>
+                  <Plus size={15} />
+                </div>
+                <div className="identity-monogram" aria-hidden="true">
+                  n<span>s.</span>
+                </div>
+                <div className="identity-card-bottom">
+                  <span>
+                    Nouman Sajid<small>Developer. Thinker. Builder.</small>
+                  </span>
+                  <span className="identity-stamp">
+                    MADE
+                    <br />
+                    IN PK ↗
+                  </span>
+                </div>
+              </div>
+              <div className="about-copy">
+                <p className="eyebrow">
+                  CURIOUS BY NATURE. INTENTIONAL BY CHOICE.
+                </p>
+                <h2 id="about-heading">
+                  I care about how
+                  <br />
+                  things <em>come together.</em>
+                </h2>
+                <p className="about-lead">
+                  The interface people touch. The systems behind it. And all the
+                  little decisions that make a product feel right.
+                </p>
+                <p>
+                  I’m Nouman, a Computer Science student at National Textile
+                  University. My work connects full-stack development with
+                  agentic AI — bringing thoughtful interfaces and intelligent
+                  workflows into the same conversation.
+                </p>
+                <p>
+                  I enjoy making complex things feel simple, learning by
+                  building, and giving every detail a reason to be there.
+                </p>
+                <div className="about-facts">
+                  <div>
+                    <span>BASED IN</span>
+                    <p>Okara, Pakistan</p>
+                  </div>
+                  <div>
+                    <span>EDUCATION</span>
+                    <p>BS Computer Science · 2028</p>
+                  </div>
+                </div>
+                <a
+                  className="text-link"
+                  href="/CV/Nouman_Sajid_Resume.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  A closer look at my résumé <ArrowDownToLine size={16} />
+                </a>
+              </div>
+            </div>
+            <details className="developer-console">
+              <summary>
+                <span>
+                  <Terminal size={16} /> For the curious minds
+                </span>
+                <span>
+                  Explore the interactive terminal <Plus size={15} />
+                </span>
+              </summary>
+              <PortfolioTerminal />
+            </details>
+          </div>
         </section>
         <section
           className="section wrap expertise-section"
@@ -488,122 +534,95 @@ export default function Portfolio() {
           aria-labelledby="expertise-heading"
         >
           <div className="section-index">
-            <span>03 / TOOLS OF THE TRADE</span>
-            <span>THE RIGHT TOOL. THE RIGHT REASON.</span>
+            <span>03 / WHAT I BRING TO THE TABLE</span>
+            <span>A CONNECTED WAY OF THINKING</span>
           </div>
           <div className="section-heading-row">
-            <div>
-              <h2 id="expertise-heading">
-                Built across the stack.
-                <br />
-                <em>Connected by intelligence.</em>
-              </h2>
-            </div>
+            <h2 id="expertise-heading">
+              From the first pixel
+              <br />
+              to the <em>bigger picture.</em>
+            </h2>
             <p className="section-description">
-              From the first pixel to the last API call.
-              <br />I connect the pieces that make a product work.
+              Different disciplines. One considered approach
+              <br />
+              to building things that work beautifully.
             </p>
           </div>
-          <div className="expertise-grid">
-            {[
-              {
-                icon: Layers3,
-                number: "01",
-                title: "Full-stack engineering",
-                description:
-                  "Fast, responsive interfaces backed by dependable APIs and thoughtfully structured data.",
-                tools: [
-                  "React",
-                  "Next.js",
-                  "TypeScript",
-                  "JavaScript",
-                  "SQL",
-                  "Tailwind",
-                ],
-              },
-              {
-                icon: Workflow,
-                number: "02",
-                title: "Agentic AI & automation",
-                description:
-                  "Intelligent workflows that connect language models, tools, and knowledge to get things done.",
-                tools: [
-                  "Python",
-                  "LangChain",
-                  "LangGraph",
-                  "RAG",
-                  "Flask",
-                  "Scikit-learn",
-                ],
-              },
-              {
-                icon: Globe2,
-                number: "03",
-                title: "Infrastructure & delivery",
-                description:
-                  "Practical foundations for deploying, maintaining, and evolving applications with confidence.",
-                tools: [
-                  "Docker",
-                  "Linux",
-                  "Git",
-                  "GitHub",
-                  "Vercel",
-                  "REST APIs",
-                ],
-              },
-            ].map((item) => (
-              <article className="expertise-card" key={item.number}>
-                <div className="expertise-card-top">
-                  <item.icon size={27} strokeWidth={1.2} />
-                  <span>/{item.number}</span>
+          <div className="expertise-list">
+            {expertise.map((item) => (
+              <article className="expertise-row" key={item.number}>
+                <span className="expertise-number">{item.number}</span>
+                <div className="expertise-title">
+                  <item.icon size={25} strokeWidth={1.3} />
+                  <div>
+                    <span>{item.subtitle}</span>
+                    <h3>{item.title}</h3>
+                  </div>
                 </div>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <div className="tech-list">
-                  {item.tools.map((tool) => (
-                    <span key={tool}>{tool}</span>
-                  ))}
+                <div className="expertise-detail">
+                  <p>{item.description}</p>
+                  <div className="tech-list">
+                    {item.tools.map((tool) => (
+                      <span key={tool}>{tool}</span>
+                    ))}
+                  </div>
                 </div>
               </article>
             ))}
           </div>
-          <div className="experience-heading">
-            <h3>
-              The journey so far<span> / EXPERIENCE & EDUCATION</span>
-            </h3>
+        </section>
+        <section
+          className="experience-section section wrap"
+          aria-labelledby="experience-heading"
+        >
+          <div className="experience-intro">
+            <p className="section-index">04 / EXPERIENCE & EDUCATION</p>
+            <h2 id="experience-heading">
+              Always learning.
+              <br />
+              <em>Always building.</em>
+            </h2>
+            <p className="section-description">
+              A few chapters from the journey so far.
+            </p>
+            <a
+              className="text-link"
+              href="/CV/Nouman_Sajid_Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View full résumé <ArrowDownToLine size={16} />
+            </a>
           </div>
           <div className="experience-list">
             {config.experiences.map((experience, i) => (
               <article key={experience.company}>
-                <span className="experience-number">0{i + 1}</span>
-                <div>
-                  <h4>{experience.position}</h4>
-                  <p>
-                    {experience.company}
-                    <span> · {experience.location}</span>
-                  </p>
+                <div className="experience-top">
+                  <span>{experience.company}</span>
+                  <span>{experience.period}</span>
                 </div>
-                <p className="experience-description">
-                  {experience.description}
-                </p>
-                <span className="experience-period">{experience.period}</span>
+                <h3>{experience.position}</h3>
+                <p>{experience.description}</p>
+                <div className="experience-bottom">
+                  <span>{experience.location}</span>
+                  <span>0{i + 1}</span>
+                </div>
               </article>
             ))}
           </div>
         </section>
         <div className="chess-callout wrap">
-          <div className="chess-symbol" aria-hidden="true">
+          <span className="chess-symbol" aria-hidden="true">
             ♞
-          </div>
+          </span>
           <div>
-            <span className="eyebrow">OFF THE CLOCK. STILL THINKING.</span>
-            <h3>Your next move?</h3>
-            <p>
-              Good engineering takes strategy. So does a good game of chess.
-            </p>
+            <p className="eyebrow">A LITTLE OFF THE CLOCK</p>
+            <h3>Good thinking takes practice.</h3>
+            <p>Fancy a game of chess before you go?</p>
           </div>
           <Link className="button button-outline" to="/play">
-            Challenge the engine <MoveUpRight size={16} />
+            Your move <ArrowUpRight size={18} />
           </Link>
         </div>
         <Contact />

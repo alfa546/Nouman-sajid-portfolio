@@ -24,12 +24,14 @@ export default function PortfolioTerminal() {
   const outputRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const focusTerminal = (event: KeyboardEvent) => {
-      const element = event.target as HTMLElement;
+      const element = event.target;
       if (
         event.key === "/" &&
+        element instanceof HTMLElement &&
         !element.closest("input, textarea, select, [contenteditable]")
       ) {
         event.preventDefault();
+        inputRef.current?.closest("details")?.setAttribute("open", "");
         inputRef.current?.focus();
       }
     };
